@@ -1,0 +1,7 @@
+C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\Uppgifter OOP-arv\Uppgifter OOP-arv\bin\Debug\Uppgifter OOP-arv.exe.config
+C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\Uppgifter OOP-arv\Uppgifter OOP-arv\bin\Debug\Uppgifter OOP-arv.exe
+C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\Uppgifter OOP-arv\Uppgifter OOP-arv\bin\Debug\Uppgifter OOP-arv.pdb
+C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\Uppgifter OOP-arv\Uppgifter OOP-arv\obj\Debug\Uppgifter OOP-arv.csprojAssemblyReference.cache
+C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\Uppgifter OOP-arv\Uppgifter OOP-arv\obj\Debug\Uppgifter OOP-arv.csproj.CoreCompileInputs.cache
+C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\Uppgifter OOP-arv\Uppgifter OOP-arv\obj\Debug\Uppgifter OOP-arv.exe
+C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\Uppgifter OOP-arv\Uppgifter OOP-arv\obj\Debug\Uppgifter OOP-arv.pdb
