@@ -1,0 +1,16 @@
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\bin\Debug\WPF Uppgift 3.exe.config
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\bin\Debug\WPF Uppgift 3.exe
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\bin\Debug\WPF Uppgift 3.pdb
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\WPF Uppgift 3.csprojAssemblyReference.cache
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\MainWindow.g.cs
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\App.g.cs
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\WPF Uppgift 3_MarkupCompile.cache
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\WPF Uppgift 3_MarkupCompile.lref
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\MainWindow.baml
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\WPF Uppgift 3.g.resources
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\WPF_Uppgift_3.Properties.Resources.resources
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\WPF Uppgift 3.csproj.GenerateResource.cache
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\WPF Uppgift 3.csproj.CoreCompileInputs.cache
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\WPF Uppgift 3.exe
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\WPF Uppgift 3.pdb
+C:\GitHub\Extra-Uppgifter\WPF Uppgift 3\WPF Uppgift 3\obj\Debug\GeneratedInternalTypeHelper.g.cs
