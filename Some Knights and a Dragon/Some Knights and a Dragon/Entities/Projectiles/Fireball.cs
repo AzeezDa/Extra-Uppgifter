@@ -35,7 +35,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
             base.Update(ref gameTime);
             animation.CheckTimer(ref gameTime);
             if (animation.TimerOn)
-                SpriteAnimationColumn = (SpriteAnimationColumn + 1) % 3;
+                Sprite.Animate(0, 2, 0, 0, double.MaxValue);
         }
     }
 }

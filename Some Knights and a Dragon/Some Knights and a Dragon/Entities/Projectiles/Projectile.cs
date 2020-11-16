@@ -21,10 +21,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
 
         public override void Draw(ref SpriteBatch _spriteBatch)
         {
-            Texture2D t = new Texture2D(_spriteBatch.GraphicsDevice, 1, 1);
-            t.SetData(new Color[] { Color.Red });
-            _spriteBatch.Draw(t, HitBox, Color.Red);
-            Sprite.Draw(ref _spriteBatch, Position, TextureDirection, SpriteAnimationColumn, SpriteAnimationRow, rotation);
+            Sprite.Draw(ref _spriteBatch, Position, TextureDirection, rotation);
         }
 
         public override void Update(ref GameTime gameTime)

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Some_Knights_and_a_Dragon.Entities;
+using Some_Knights_and_a_Dragon.Managers;
 using Some_Knights_and_a_Dragon.Windows;
 using System.Runtime.CompilerServices;
 
@@ -24,6 +25,8 @@ namespace Some_Knights_and_a_Dragon
             Content.RootDirectory = "Content";
             ContentManager = Content;
             IsMouseVisible = true;
+
+            GameWindow.InputManager = new InputManager();
         }
 
         protected override void Initialize()
@@ -37,7 +40,7 @@ namespace Some_Knights_and_a_Dragon
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            HealthBar.Setup(ref _spriteBatch);
             // TODO: use this.Content to load your game content here
         }
 
@@ -47,6 +50,7 @@ namespace Some_Knights_and_a_Dragon
                 Exit();
 
             // TODO: Add your update logic here
+            GameWindow.InputManager.Update();
             CurrentWindow.Update(ref gameTime);
             base.Update(gameTime);
         }

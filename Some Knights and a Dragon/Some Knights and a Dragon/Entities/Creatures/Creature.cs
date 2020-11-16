@@ -9,7 +9,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
     public abstract class Creature : Entity
     {
-        public int Health { get; protected set; }
+        public int CurrentHealth { get; protected set; }
+        public int MaxHealth { get; protected set; }
 
         public Creature()
         {
@@ -32,7 +33,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
         public virtual void TakeDamage(int amount)
         {
-            Health -= amount;
+            CurrentHealth -= amount;
         }
     }
 }

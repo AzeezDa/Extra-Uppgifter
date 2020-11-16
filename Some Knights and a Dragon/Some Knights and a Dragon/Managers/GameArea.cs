@@ -24,7 +24,7 @@ namespace Some_Knights_and_a_Dragon.Managers
             for (int i = 0; i < Creatures.Count; i++)
             {
                 Creatures[i].Update(ref gameTime);
-                if (Creatures[i].Health <= 0)
+                if (Creatures[i].CurrentHealth <= 0)
                 {
                     Creatures.RemoveAt(i);
                 }

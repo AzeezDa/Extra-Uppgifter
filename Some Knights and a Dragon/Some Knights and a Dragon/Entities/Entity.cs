@@ -12,7 +12,7 @@ namespace Some_Knights_and_a_Dragon.Entities
 
     public abstract class Entity
     {
-        protected Sprite Sprite;
+        public Sprite Sprite { get; protected set; }
         public string Name { get; protected set; }
         public Vector2 Position { get; protected set; }
         protected Vector2 Speed;
@@ -23,20 +23,17 @@ namespace Some_Knights_and_a_Dragon.Entities
         protected int HitBoxWidth = 0;
         protected int HitBoxHeight = 0;
 
-        protected int SpriteAnimationColumn = 0;
-        protected int SpriteAnimationRow = 0;
-
         protected TextureDirection TextureDirection;
 
         public virtual void Update(ref GameTime gameTime)
         {
-
+            Sprite.Update(ref gameTime);
             HitBox = new Rectangle(
                 (int)Position.X - HitBoxWidth * Sprite.Scale / 2,
-                (int)Position.Y - HitBoxHeight * Sprite.Scale / 2,
+                (int)Position.Y + (Sprite.Height - 2 * HitBoxHeight) * Sprite.Scale / 2,
                 HitBoxWidth * Sprite.Scale,
-                HitBoxHeight * Sprite.Scale
-                );
+                HitBoxHeight * Sprite.Scale);
+
             Position += Direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (Direction.X < 0)
             {
@@ -50,10 +47,7 @@ namespace Some_Knights_and_a_Dragon.Entities
 
         public virtual void Draw(ref SpriteBatch _spriteBatch)
         {
-            Texture2D t = new Texture2D(_spriteBatch.GraphicsDevice, 1, 1);
-            t.SetData(new Color[] { Color.Red });
-            _spriteBatch.Draw(t, HitBox, Color.Red);
-            Sprite.Draw(ref _spriteBatch, Position, TextureDirection, SpriteAnimationColumn, SpriteAnimationRow);
+            Sprite.Draw(ref _spriteBatch, Position, TextureDirection);
         }
     }
 }

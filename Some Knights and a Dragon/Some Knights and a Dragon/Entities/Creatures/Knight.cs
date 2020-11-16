@@ -9,7 +9,6 @@ using Some_Knights_and_a_Dragon.Windows;
 
 namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
-
     class Knight : Creature
     {
         public Knight()
@@ -19,37 +18,37 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             Speed = new Vector2(100, 100);
             HitBoxWidth = 10;
             HitBoxHeight = 30;
-            Health = 100;
+            CurrentHealth = 100;
+            MaxHealth = CurrentHealth;
         }
 
         public override void Draw(ref SpriteBatch spriteBatch)
         {
+            HealthBar.FloatingBar(this, ref spriteBatch);
             base.Draw(ref spriteBatch);
         }
 
         public override void Update(ref GameTime gameTime)
         {
             Direction = Vector2.Zero;
-            KeyboardState keyboardState = Keyboard.GetState();
-            MouseState mouseState = Mouse.GetState();
-            SpriteAnimationRow = 0;
-            if (keyboardState.IsKeyDown(Keys.D))
+
+            if (GameWindow.InputManager.KeyPressed(Keys.D))
             {
                 Direction.X += 1;
             }
-            if (keyboardState.IsKeyDown(Keys.A))
+            if (GameWindow.InputManager.KeyPressed(Keys.A))
             {
                 Direction.X += -1;
             }
-            if (keyboardState.IsKeyDown(Keys.W))
+            if (GameWindow.InputManager.KeyPressed(Keys.W))
                 Direction.Y += -1;
-            if (keyboardState.IsKeyDown(Keys.S))
+            if (GameWindow.InputManager.KeyPressed(Keys.S))
                 Direction.Y += 1;
 
-            if (mouseState.LeftButton == ButtonState.Pressed)
+            if (GameWindow.InputManager.LeftMouseClicked())
             {
-                SpriteAnimationRow = 1;
                 Attack();
+                Sprite.Animate(0, 1, 400);
             }
             base.Update(ref gameTime);
         }

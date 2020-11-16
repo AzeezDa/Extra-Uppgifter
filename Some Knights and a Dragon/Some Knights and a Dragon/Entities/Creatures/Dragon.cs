@@ -17,7 +17,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
         public Dragon()
         {
-            Health = 1000;
+            CurrentHealth = 1000;
+            MaxHealth = CurrentHealth;
             Sprite = new Sprite("dragon", 32, 32);
             Sprite.Scale = 10;
             Position = new Vector2(1000, 700);
@@ -40,6 +41,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Draw(ref SpriteBatch spriteBatch)
         {
             base.Draw(ref spriteBatch);
+            HealthBar.BossHealthBar(this, ref spriteBatch);
 
             foreach (Fireball fireball in fireballs)
             {
@@ -53,6 +55,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             attackTimer.CheckTimer(ref gameTime);
             if (attackTimer.TimerOn)
             {
+                Sprite.Animate(0, 1, 500);
                 foreach (Creature creature in ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Creatures)
                 {
                     Attack(creature);
@@ -74,21 +77,12 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
                     }
                 }
             }
-
-            if (attackTimer.TimerOn && SpriteAnimationRow == 1)
-            {
-                SpriteAnimationRow = 1;
-            }
-            else
-            {
-                SpriteAnimationRow = 0;
-            }
         }
 
         public override void TakeDamage(int amount)
         {
             base.TakeDamage(amount);
-            SpriteAnimationRow = 1;
+            Sprite.Animate(0, 1, 500);
         }
     }
 }
