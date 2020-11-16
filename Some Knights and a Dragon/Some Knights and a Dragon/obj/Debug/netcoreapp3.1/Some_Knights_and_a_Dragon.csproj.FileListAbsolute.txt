@@ -74,3 +74,7 @@ C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some K
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\knight.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\fireball.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\volcano_bg.xnb
+C:\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\dragon.xnb
+C:\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\fireball.xnb
+C:\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\knight.xnb
+C:\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\volcano_bg.xnb

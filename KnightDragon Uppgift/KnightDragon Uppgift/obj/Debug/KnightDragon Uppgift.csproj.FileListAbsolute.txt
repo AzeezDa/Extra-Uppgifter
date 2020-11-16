@@ -5,3 +5,10 @@ C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\KnightDragon U
 C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\obj\Debug\KnightDragon Uppgift.csproj.CoreCompileInputs.cache
 C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\obj\Debug\KnightDragon Uppgift.exe
 C:\Users\azeez.daoud\Desktop\Skolarbete\Programmering 2\Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\obj\Debug\KnightDragon Uppgift.pdb
+C:\GitHub\Extra-Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\bin\Debug\KnightDragon Uppgift.exe.config
+C:\GitHub\Extra-Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\bin\Debug\KnightDragon Uppgift.exe
+C:\GitHub\Extra-Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\bin\Debug\KnightDragon Uppgift.pdb
+C:\GitHub\Extra-Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\obj\Debug\KnightDragon Uppgift.csprojAssemblyReference.cache
+C:\GitHub\Extra-Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\obj\Debug\KnightDragon Uppgift.csproj.CoreCompileInputs.cache
+C:\GitHub\Extra-Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\obj\Debug\KnightDragon Uppgift.exe
+C:\GitHub\Extra-Uppgifter\KnightDragon Uppgift\KnightDragon Uppgift\obj\Debug\KnightDragon Uppgift.pdb

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Some_Knights_and_a_Dragon.Creatures;
+using Some_Knights_and_a_Dragon.Entities;
+using Some_Knights_and_a_Dragon.Entities.Creatures;
 using System;
 using System.Collections.Generic;
 using System.Text;

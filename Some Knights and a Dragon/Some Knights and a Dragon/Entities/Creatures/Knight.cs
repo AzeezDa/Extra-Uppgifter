@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using Some_Knights_and_a_Dragon.Managers;
 using Some_Knights_and_a_Dragon.Windows;
 
-namespace Some_Knights_and_a_Dragon.Creatures
+namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
 
     class Knight : Creature
@@ -17,7 +17,8 @@ namespace Some_Knights_and_a_Dragon.Creatures
             Sprite = new Sprite("knight", 32, 32);
             Position = new Vector2(200, 700);
             Speed = new Vector2(100, 100);
-            HitBox = new Rectangle();
+            HitBoxWidth = 10;
+            HitBoxHeight = 30;
             Health = 100;
         }
 
@@ -35,12 +36,10 @@ namespace Some_Knights_and_a_Dragon.Creatures
             if (keyboardState.IsKeyDown(Keys.D))
             {
                 Direction.X += 1;
-                TextureDirection = TextureDirection.Right;
             }
             if (keyboardState.IsKeyDown(Keys.A))
             {
                 Direction.X += -1;
-                TextureDirection = TextureDirection.Left;
             }
             if (keyboardState.IsKeyDown(Keys.W))
                 Direction.Y += -1;

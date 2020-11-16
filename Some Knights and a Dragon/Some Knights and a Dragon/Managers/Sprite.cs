@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Some_Knights_and_a_Dragon.Creatures;
+using Some_Knights_and_a_Dragon.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,14 +30,14 @@ namespace Some_Knights_and_a_Dragon.Managers
             Height = height;
         }
 
-        public void Draw(ref SpriteBatch spriteBatch, Vector2 position, TextureDirection textureDirection, int column = 0, int row = 0)
+        public void Draw(ref SpriteBatch spriteBatch, Vector2 position, TextureDirection textureDirection, int column = 0, int row = 0, float rotation = 0f)
         {
             spriteBatch.Draw(
                 spriteTexture,
                 new Rectangle((int)position.X, (int)position.Y, Width * Scale, Height * Scale),
                 new Rectangle(row * Width, column * Height, Width, Height),
                 Color.White,
-                0f,
+                rotation,
                 new Vector2(Width / 2, Height / 2),
                 textureDirection == 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
                 0);

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Some_Knights_and_a_Dragon.Creatures;
+using Some_Knights_and_a_Dragon.Entities;
 using Some_Knights_and_a_Dragon.Windows;
 using System.Runtime.CompilerServices;
 
