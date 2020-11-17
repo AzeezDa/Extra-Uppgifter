@@ -36,12 +36,12 @@ namespace Some_Knights_and_a_Dragon.Managers
             animationTimer = new Timer(1000 / 60);
         }
 
-        public Sprite(string filepath, int width, int height)
+        public Sprite(string filepath, int width, int height, int framesPerSecond = 12)
         {
             spriteTexture = Game1.ContentManager.Load<Texture2D>(filepath);
             Width = width;
             Height = height;
-            animationTimer = new Timer(1000 / 60);
+            animationTimer = new Timer(1000 / framesPerSecond);
         }
 
         public void Animate(int fromColumn, int toColumn, int fromRow, int toRow, double duration)

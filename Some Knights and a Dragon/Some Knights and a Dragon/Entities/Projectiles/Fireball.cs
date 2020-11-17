@@ -9,15 +9,14 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
 {
     class Fireball : Projectile
     {
-        Timer animation;
 
-        public Fireball(Entity owner, Vector2 position, Vector2 direction) : base(owner, position, direction)
+        public Fireball(Entity owner, Vector2 position, Vector2 direction, int power) : base(owner, position, direction, 5)
         {
-            Speed = new Vector2(100, 100);
+            Speed = new Vector2(100 + 10 * power, 100 + 10 * power);
             Sprite = new Sprite("fireball", 32, 32);
-            animation = new Timer(1000 / 12);
             HitBoxWidth = 30;
             HitBoxHeight = 30;
+            ObeysGravity = false;
         }
 
         public override void Ability()
@@ -33,9 +32,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public override void Update(ref GameTime gameTime)
         {
             base.Update(ref gameTime);
-            animation.CheckTimer(ref gameTime);
-            if (animation.TimerOn)
-                Sprite.Animate(0, 2, 0, 0, double.MaxValue);
+            Sprite.Animate(0, 2, 0, 0, double.MaxValue);
         }
     }
 }

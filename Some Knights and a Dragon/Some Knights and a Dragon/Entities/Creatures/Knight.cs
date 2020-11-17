@@ -17,8 +17,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             Position = new Vector2(200, 700);
             Speed = new Vector2(100, 100);
             HitBoxWidth = 10;
-            HitBoxHeight = 30;
-            CurrentHealth = 100;
+            HitBoxHeight = 20;
+            CurrentHealth = 1000;
             MaxHealth = CurrentHealth;
         }
 
@@ -33,13 +33,9 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             Direction = Vector2.Zero;
 
             if (GameWindow.InputManager.KeyPressed(Keys.D))
-            {
                 Direction.X += 1;
-            }
             if (GameWindow.InputManager.KeyPressed(Keys.A))
-            {
                 Direction.X += -1;
-            }
             if (GameWindow.InputManager.KeyPressed(Keys.W))
                 Direction.Y += -1;
             if (GameWindow.InputManager.KeyPressed(Keys.S))

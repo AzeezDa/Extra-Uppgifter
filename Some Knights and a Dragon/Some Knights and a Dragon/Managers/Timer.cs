@@ -14,8 +14,19 @@ namespace Some_Knights_and_a_Dragon.Managers
 
         public Timer(float interval, float duration = 0)
         {
-            this.interval = interval;
-            this.duration = duration;
+            this.interval = interval < 0 ? 0 : interval;
+            this.duration = duration < 0 ? 0 : duration;
+        }
+
+        public void NewTime(float interval)
+        {
+            this.interval = interval < 0 ? 0 : interval;
+        }
+
+        public void NewTime(float interval, float duration)
+        {
+            this.interval = interval < 0 ? 0 : interval;
+            this.duration = duration < 0 ? 0 : duration;
         }
 
         public void CheckTimer(ref GameTime gameTime)

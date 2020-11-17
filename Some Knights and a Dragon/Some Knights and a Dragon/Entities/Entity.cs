@@ -17,6 +17,12 @@ namespace Some_Knights_and_a_Dragon.Entities
         public Vector2 Position { get; protected set; }
         protected Vector2 Speed;
         protected Vector2 Direction;
+        protected Vector2 Acceleration;
+
+        public Entity()
+        {
+            Acceleration = new Vector2(0, 0);
+        }
 
         public Rectangle HitBox { get; protected set; }
 
@@ -34,7 +40,31 @@ namespace Some_Knights_and_a_Dragon.Entities
                 HitBoxWidth * Sprite.Scale,
                 HitBoxHeight * Sprite.Scale);
 
-            Position += Direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Position += Direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds + Acceleration;
+            Acceleration += ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Gravity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (Position.X - HitBox.Width / 2 < ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Left)
+            {
+                Position = new Vector2(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Left + HitBox.Width / 2, Position.Y);
+                Acceleration = Vector2.Zero;
+            }
+            if (Position.X + HitBox.Width / 2 > ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Right)
+            {
+                Position = new Vector2(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Right - HitBox.Width / 2, Position.Y);
+                Acceleration = Vector2.Zero;
+            }
+            if (Position.Y - HitBox.Height  / 2 < ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Left)
+            {
+                Position = new Vector2(Position.X, ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Top + HitBox.Height / 2);
+                Acceleration = Vector2.Zero;
+            }
+            if (Position.Y + HitBox.Height / 2> ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Bottom)
+            {
+                Position = new Vector2(Position.X, ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Bottom - HitBox.Height / 2);
+                Acceleration = Vector2.Zero;
+            }
+
+
             if (Direction.X < 0)
             {
                 TextureDirection = TextureDirection.Left;

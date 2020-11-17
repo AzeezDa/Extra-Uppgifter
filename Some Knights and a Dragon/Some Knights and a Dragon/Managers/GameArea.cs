@@ -13,6 +13,9 @@ namespace Some_Knights_and_a_Dragon.Managers
         public List<Creature> Creatures { get; protected set; }
 
         Texture2D Background;
+
+        public Vector2 Gravity { get; set; }
+        public Rectangle Boundries { get; set; }
         public GameArea(string FilePath)
         {
             Background = Game1.ContentManager.Load<Texture2D>(FilePath);
