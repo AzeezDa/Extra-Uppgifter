@@ -16,6 +16,8 @@ namespace Some_Knights_and_a_Dragon
 
         public static GameWindow CurrentWindow { get; private set; }
         public static ContentManager ContentManager { get; private set; }
+        public static InputManager InputManager { get; set; } // Static to be accessed by everywhere without being passed into objects.
+        public static FontManager FontManager { get; set; } // Static to be accessed by everywhere without being passed into the objects.
 
         public Game1()
         {
@@ -41,8 +43,8 @@ namespace Some_Knights_and_a_Dragon
 
             // TODO: use this.Content to load your game content here
             HealthBar.Setup(ref _spriteBatch); // Healthbar manager for creatures
-            GameWindow.FontManager = new FontManager(); // Manages text draws
-            GameWindow.InputManager = new InputManager(); // Manages player's input (mouse and keyboard)
+            FontManager = new FontManager(); // Manages text draws
+            InputManager = new InputManager(); // Manages player's input (mouse and keyboard)
 
         }
 
@@ -52,7 +54,7 @@ namespace Some_Knights_and_a_Dragon
                 Exit();
 
             // TODO: Add your update logic here
-            GameWindow.InputManager.Update();
+            InputManager.Update();
             CurrentWindow.Update(ref gameTime);
             base.Update(gameTime);
         }

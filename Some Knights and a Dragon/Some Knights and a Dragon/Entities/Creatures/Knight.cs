@@ -35,13 +35,13 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             // Updates animation for knight
             Direction = Vector2.Zero;
             Sprite.Animate(0, 1);
-            if (GameWindow.InputManager.KeyPressed(Keys.D))
+            if (Game1.InputManager.KeyPressed(Keys.D))
                 Direction.X += 1;
-            if (GameWindow.InputManager.KeyPressed(Keys.A))
+            if (Game1.InputManager.KeyPressed(Keys.A))
                 Direction.X += -1;
-            if (GameWindow.InputManager.KeyClicked(Keys.W) && Acceleration.Y == 0)
+            if (Game1.InputManager.KeyClicked(Keys.W) && Acceleration.Y == 0)
                 Acceleration.Y += -10;
-            if (GameWindow.InputManager.KeyPressed(Keys.S))
+            if (Game1.InputManager.KeyPressed(Keys.S))
                 Direction.Y += 1;
 
             if (Direction != Vector2.Zero)
@@ -49,12 +49,12 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
                 Sprite.Animate(0, 4);
             }
 
-            if (GameWindow.InputManager.LeftMouseClicked())
+            if (Game1.InputManager.LeftMouseClicked())
             {
                 Sprite.OneTimeAnimation(1, 10);
                 Attack();
             }
-            if (GameWindow.InputManager.RightMousePressed())
+            if (Game1.InputManager.RightMousePressed())
             {
                 Sprite.Animate(2, 1);
                 shieldUp = true;

@@ -35,7 +35,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Attack()
         {
             base.Attack();
-            arrows.Add(new Arrow(this, Position, Vector2.Normalize(GameWindow.InputManager.GetCursor() - Position), bowCharge));
+            arrows.Add(new Arrow(this, Position, Vector2.Normalize(Game1.InputManager.GetCursor() - Position), bowCharge));
         }
 
         public override void Draw(ref SpriteBatch _spriteBatch)
@@ -43,7 +43,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             base.Draw(ref _spriteBatch);
             HealthBar.FloatingBar(this, ref _spriteBatch);
 
-            _spriteBatch.DrawString(GameWindow.FontManager.DefaultFont, Name, Position + new Vector2(-35, -Sprite.Height * Sprite.Scale / 2 - 20), Color.White);
+            Game1.FontManager.WriteText(_spriteBatch, Name, Position - new Vector2(0, Sprite.Height * Sprite.Scale / 2 + 10));
 
             foreach (Arrow arrow in arrows)
             {
@@ -57,13 +57,13 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             // Controls animation of the sprite and the bow when charging and shooting
             Direction = Vector2.Zero;
             Sprite.Animate(0, 1);
-            if (GameWindow.InputManager.KeyPressed(Keys.D))
+            if (Game1.InputManager.KeyPressed(Keys.D))
                 Direction.X += 1;
-            if (GameWindow.InputManager.KeyPressed(Keys.A))
+            if (Game1.InputManager.KeyPressed(Keys.A))
                 Direction.X += -1;
-            if (GameWindow.InputManager.KeyClicked(Keys.W) && Acceleration.Y == 0)
+            if (Game1.InputManager.KeyClicked(Keys.W) && Acceleration.Y == 0)
                 Acceleration.Y += -10;
-            if (GameWindow.InputManager.KeyPressed(Keys.S))
+            if (Game1.InputManager.KeyPressed(Keys.S))
                 Direction.Y += 1;
 
             if (Direction != Vector2.Zero)
@@ -71,12 +71,12 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
                 Sprite.Animate(0, 9);
             }
 
-            if (GameWindow.InputManager.LeftMousePressed())
+            if (Game1.InputManager.LeftMousePressed())
             {
                 Sprite.Freeze(1, 9);
                 bowCharge += bowCharge >= 10 ? 0 : (float)gameTime.ElapsedGameTime.TotalSeconds * 15f;
             }
-            if (!GameWindow.InputManager.LeftMousePressed() && bowCharge > 0)
+            if (!Game1.InputManager.LeftMousePressed() && bowCharge > 0)
             {
                 Sprite.Unfreeze();
                 Attack();

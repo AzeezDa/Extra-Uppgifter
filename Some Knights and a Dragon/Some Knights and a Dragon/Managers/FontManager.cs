@@ -10,11 +10,19 @@ namespace Some_Knights_and_a_Dragon.Managers
     {
 
         // THIS CLASS IS TO BE CHANGED TO ADD DIFFERENT FONTS FOR DIFFERENT SITUATIONS
-        public SpriteFont DefaultFont { get; private set; } // Get the Default Font loaded by this class
+        private SpriteFont defaultFont; // Get the Default Font loaded by this class
 
         public FontManager(string fontName = "default_font")
         {
-            DefaultFont = Game1.ContentManager.Load<SpriteFont>(fontName);
+            defaultFont = Game1.ContentManager.Load<SpriteFont>(fontName);
+        }
+
+        public void WriteText(SpriteBatch _spriteBatch, string text, Vector2 position, Color ? color = null)
+        {
+            _spriteBatch.DrawString(defaultFont,
+                                    text,
+                                    position - defaultFont.MeasureString(text) / 2,
+                                    color ?? Color.White);
         }
     }
 }

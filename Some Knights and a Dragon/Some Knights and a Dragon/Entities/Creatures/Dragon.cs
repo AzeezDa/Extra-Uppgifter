@@ -39,7 +39,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Attack(Creature creature)
         {
             base.Attack();
-            fireballs.Add(new Fireball(this, Position, Vector2.Normalize((creature.Position - (new Vector2(0, 50))) - Position), (int)power));
+            fireballs.Add(new Fireball(this, Position, Vector2.Normalize((creature.Position - (new Vector2(0, 70))) - Position), (int)power));
         }
 
         public override void Draw(ref SpriteBatch spriteBatch)
