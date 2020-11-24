@@ -11,9 +11,11 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
     class Knight : Creature
     {
+        // Checks if the knights shield is up
+        bool shieldUp = false;
         public Knight()
         {
-            Sprite = new Sprite("knight", 32, 32);
+            Sprite = new Sprite("knight", 32, 32, 12);
             Position = new Vector2(200, 700);
             Speed = new Vector2(100, 100);
             HitBoxWidth = 10;
@@ -30,22 +32,40 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
         public override void Update(ref GameTime gameTime)
         {
+            // Updates animation for knight
             Direction = Vector2.Zero;
-
+            Sprite.Animate(0, 1);
             if (GameWindow.InputManager.KeyPressed(Keys.D))
                 Direction.X += 1;
             if (GameWindow.InputManager.KeyPressed(Keys.A))
                 Direction.X += -1;
-            if (GameWindow.InputManager.KeyPressed(Keys.W))
-                Direction.Y += -1;
+            if (GameWindow.InputManager.KeyClicked(Keys.W) && Acceleration.Y == 0)
+                Acceleration.Y += -10;
             if (GameWindow.InputManager.KeyPressed(Keys.S))
                 Direction.Y += 1;
 
+            if (Direction != Vector2.Zero)
+            {
+                Sprite.Animate(0, 4);
+            }
+
             if (GameWindow.InputManager.LeftMouseClicked())
             {
+                Sprite.OneTimeAnimation(1, 10);
                 Attack();
-                Sprite.Animate(0, 1, 400);
             }
+            if (GameWindow.InputManager.RightMousePressed())
+            {
+                Sprite.Animate(2, 1);
+                shieldUp = true;
+                Speed = new Vector2(20, 20);
+            }
+            else
+            {
+                shieldUp = false;
+                Speed = new Vector2(100, 100);
+            }
+
             base.Update(ref gameTime);
         }
 
@@ -69,6 +89,12 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             }
 
             base.Attack();
+        }
+
+        public override void TakeDamage(int amount)
+        {
+            amount /= shieldUp ? 2 : 1;
+            base.TakeDamage(amount);
         }
     }
 }

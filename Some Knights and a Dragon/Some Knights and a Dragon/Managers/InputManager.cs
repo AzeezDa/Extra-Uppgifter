@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,8 @@ namespace Some_Knights_and_a_Dragon.Managers
 {
     public class InputManager
     {
+
+        // HANDLES ALL INPUT, OTHER THINGS MIGHT BE ADDED
         private KeyboardState currentKeyboardState;
         private MouseState currentMouseState;
 
@@ -65,7 +68,11 @@ namespace Some_Knights_and_a_Dragon.Managers
             return currentMouseState.MiddleButton == ButtonState.Pressed && previousMouseState.MiddleButton == ButtonState.Released;
         }
 
-
+        public Vector2 GetCursor()
+        {
+            currentMouseState = Mouse.GetState();
+            return currentMouseState.Position.ToVector2();
+        }
         public void Update()
         {
             previousKeyboardState = currentKeyboardState;

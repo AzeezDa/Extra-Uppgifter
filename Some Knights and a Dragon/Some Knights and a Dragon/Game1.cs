@@ -25,14 +25,12 @@ namespace Some_Knights_and_a_Dragon
             Content.RootDirectory = "Content";
             ContentManager = Content;
             IsMouseVisible = true;
-
-            GameWindow.InputManager = new InputManager();
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            CurrentWindow = new GameplayWindow();
+            CurrentWindow = new GameplayWindow(); // Draws current window which is gameplay, to be changed for loading screens and menu
 
             base.Initialize();
         }
@@ -40,8 +38,12 @@ namespace Some_Knights_and_a_Dragon
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            HealthBar.Setup(ref _spriteBatch);
+
             // TODO: use this.Content to load your game content here
+            HealthBar.Setup(ref _spriteBatch); // Healthbar manager for creatures
+            GameWindow.FontManager = new FontManager(); // Manages text draws
+            GameWindow.InputManager = new InputManager(); // Manages player's input (mouse and keyboard)
+
         }
 
         protected override void Update(GameTime gameTime)

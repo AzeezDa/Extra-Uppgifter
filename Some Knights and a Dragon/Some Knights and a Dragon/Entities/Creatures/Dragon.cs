@@ -11,9 +11,13 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
     class Dragon : Creature
     {
+        // Timer for interval between fireball attacks.
         Timer attackTimer;
+
+        // Stores all fireballs
         List<Fireball> fireballs;
 
+        // The power of the fireballs, used to increase damage and speed
         float power = 0;
         public Dragon()
         {
@@ -27,7 +31,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             HitBoxWidth = 30;
             HitBoxHeight = 25;
 
-            attackTimer = new Timer(5000);
+            attackTimer = new Timer(4000);
 
             fireballs = new List<Fireball>();
         }
@@ -35,13 +39,15 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Attack(Creature creature)
         {
             base.Attack();
-            fireballs.Add(new Fireball(this, Position, Vector2.Normalize(creature.Position - Position), (int)power));
+            fireballs.Add(new Fireball(this, Position, Vector2.Normalize((creature.Position - (new Vector2(0, 50))) - Position), (int)power));
         }
 
         public override void Draw(ref SpriteBatch spriteBatch)
         {
             base.Draw(ref spriteBatch);
             HealthBar.BossHealthBar(this, ref spriteBatch);
+
+            
 
             foreach (Fireball fireball in fireballs)
             {
@@ -56,9 +62,11 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             attackTimer.CheckTimer(ref gameTime);
             if (attackTimer.TimerOn)
             {
-                Sprite.Animate(0, 1, 500);
+                Sprite.Animate(0, 1);
                 foreach (Creature creature in ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Creatures)
                 {
+                    if (creature == this)
+                        continue;
                     Attack(creature);
                 }
             }
@@ -66,7 +74,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             for (int i = 0; i < fireballs.Count; i++)
             {
                 fireballs[i].Update(ref gameTime);
-                if (fireballs[i].LifeTime < 0)
+                if (fireballs[i].LifeTime < 0 || fireballs[i].CollidingWithBoundries)
                 {
                     fireballs[i] = null;
                     fireballs.RemoveAt(i);
@@ -80,8 +88,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
                     if (fireballs[i].HitBox.Intersects(creature.HitBox))
                     {
                         creature.TakeDamage(10);
-                        power++;
-                        attackTimer.NewTime(5000 - power * 200);
+                        power++; // If dragons deals damage, increase power
+                        attackTimer.NewTime(4000 - power * 190);
                         fireballs[i] = null;
                         fireballs.RemoveAt(i);
                     }
@@ -89,11 +97,12 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             }
         }
 
+        // If dragon takes damage, increase power
         public override void TakeDamage(int amount)
         {
             base.TakeDamage(amount);
             power += (float)amount / 100;
-            Sprite.Animate(0, 1, 500);
+            attackTimer.NewTime(4000 - power * 190);
         }
     }
 }

@@ -6,13 +6,13 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Entities.Projectiles
 {
-    class Projectile : Entity
+    class Projectile : Entity // An object that is shot from a creature or other, has same properties as entity.
     {
-        public Entity Owner { get; protected set; }
+        public Entity Owner { get; protected set; } // The creature who shot the projectile
 
-        float rotation = 0f;
-        protected bool ObeysGravity;
-        public float LifeTime { get; protected set; }
+        float rotation = 0f; // How much the texture is rotated
+        protected bool ObeysGravity; // If it is changed by gravity of the GameArea
+        public float LifeTime { get; protected set; } // How long it exists in the game
 
         public Projectile(Entity owner, Vector2 position, Vector2 direction, float LifeTime = float.MaxValue)
         {
@@ -29,13 +29,16 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
 
         public override void Update(ref GameTime gameTime)
         {
+            // Rotation based on trigonometry
             rotation = (float)Math.Atan2(Direction.Y, Direction.X) + (float)Math.PI / 2;
+
+            // If it does not obej gravity, then acceleration is 0
             Acceleration *= ObeysGravity ? 1 : 0;
             LifeTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(ref gameTime);
         }
 
-        public virtual void Ability()
+        public virtual void Ability() // A special ability for the projectile
         {
 
         }

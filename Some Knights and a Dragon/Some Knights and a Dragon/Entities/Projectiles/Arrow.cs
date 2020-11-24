@@ -7,15 +7,16 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Entities.Projectiles
 {
-    class Fireball : Projectile // A fireball projectile
+    class Arrow : Projectile // An Arrow projectile
     {
-
-        public Fireball(Entity owner, Vector2 position, Vector2 direction, int power) : base(owner, position, direction, 5)
+        public int Damage { get; private set; } // How much damage the arrows deals upon hit
+        public Arrow(Entity owner, Vector2 position, Vector2 direction, float power) : base(owner, position, direction, 2)
         {
-            Speed = new Vector2(100 + 10 * power, 100 + 10 * power);
-            Sprite = new Sprite("fireball", 32, 32);
-            HitBoxWidth = 30;
-            HitBoxHeight = 30;
+            Speed = new Vector2(10 + 1000 * power, 10 + 1000 * power);
+            Damage = (int)(power * 10);
+            Sprite = new Sprite("arrow");
+            HitBoxWidth = 5;
+            HitBoxHeight = 10;
             ObeysGravity = false;
         }
 
@@ -32,6 +33,10 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public override void Update(ref GameTime gameTime)
         {
             base.Update(ref gameTime);
+            if (CollidingWithBoundries)
+            {
+                Speed = Vector2.Zero;
+            }
         }
     }
 }

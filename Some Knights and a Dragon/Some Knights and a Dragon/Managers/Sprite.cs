@@ -16,16 +16,14 @@ namespace Some_Knights_and_a_Dragon.Managers
         public int Scale = 5;
 
         Timer animationTimer;
-        private double currentAnimationDuration = 0;
 
+        int currentFrame = 0;
         int currentRow = 0;
-        int currentColumn = 0;
+        int frames = 1;
+        bool oneTimeAnimationOn = false;
+        bool freeze = false;
 
-        int fromColumn = 0;
-        int fromRow = 0;
-        int toColumn = 0;
-        int toRow = 0;
-
+        // Load a sprite with no other animations
         public Sprite(string filepath)
         {
             spriteTexture = Game1.ContentManager.Load<Texture2D>(filepath);
@@ -36,6 +34,7 @@ namespace Some_Knights_and_a_Dragon.Managers
             animationTimer = new Timer(1000 / 60);
         }
 
+        // Load spritesheet and work on it
         public Sprite(string filepath, int width, int height, int framesPerSecond = 12)
         {
             spriteTexture = Game1.ContentManager.Load<Texture2D>(filepath);
@@ -44,52 +43,84 @@ namespace Some_Knights_and_a_Dragon.Managers
             animationTimer = new Timer(1000 / framesPerSecond);
         }
 
-        public void Animate(int fromColumn, int toColumn, int fromRow, int toRow, double duration)
+        // Animate certain row and how many frames in the row, forever
+        public void Animate(int row, int frames)
         {
-            this.fromColumn = fromColumn;
-            this.toColumn = toColumn;
-            this.fromRow = fromRow;
-            this.toRow = toRow;
-            currentAnimationDuration = duration;
+            if (!oneTimeAnimationOn)
+            {
+                currentRow = row;
+                this.frames = frames;
+            }
         }
 
-        public void Animate(int column, int row, double duration)
+        // Animate certain row and how many frames in the row, once
+        public void OneTimeAnimation(int row, int frames)
         {
-            fromColumn = column;
-            toColumn = column;
-            fromRow = row;
-            toRow = row;
-            currentAnimationDuration = duration;
+            if (!oneTimeAnimationOn)
+            {
+                oneTimeAnimationOn = true;
+                currentFrame = 0;
+                currentRow = row;
+                this.frames = frames;
+            }
         }
 
+        // Freeze the sprite at a certain frame.
+        public void Freeze(int row, int frames)
+        {
+            if (!oneTimeAnimationOn)
+            {
+                oneTimeAnimationOn = true;
+                currentFrame = 0;
+                currentRow = row;
+                this.frames = frames;
+                freeze = true;
+            }
+        }
+
+        // Unfreeze the sprite from the Freeze method
+        public void Unfreeze()
+        {
+            oneTimeAnimationOn = false;
+            freeze = false;
+            currentRow = 0;
+            currentFrame = 0;
+            frames = 1;
+        }
+        
+        // Update the sprite
         public void Update(ref GameTime gameTime)
         {
             animationTimer.CheckTimer(ref gameTime);
-            if (currentAnimationDuration > 0)
+            if (animationTimer.TimerOn && oneTimeAnimationOn && freeze)
             {
-                currentAnimationDuration -= gameTime.ElapsedGameTime.TotalMilliseconds;
-
-                if (animationTimer.TimerOn)
-                {
-                    currentColumn = (currentColumn + 1) % (toColumn - fromColumn + 1);
-                    currentRow = (currentRow + 1) % (toRow - fromRow + 1);
-                }
+                currentFrame = (currentFrame == frames - 1) ? currentFrame : (currentFrame + 1);
             }
-            else
+            else if (animationTimer.TimerOn && !oneTimeAnimationOn && !freeze)
             {
-                fromColumn = 0;
-                fromRow = 0;
-                currentColumn = 0;
-                currentRow = 0;
+                currentFrame = (currentFrame + 1) % frames;
+            }
+            else if (animationTimer.TimerOn && oneTimeAnimationOn && !freeze)
+            {
+                if (currentFrame >= frames - 1)
+                {
+                    oneTimeAnimationOn = false;
+                    currentRow = 0;
+                    currentFrame = 0;
+                    frames = 1;
+                }
+                else
+                    currentFrame++;
             }
         }
 
+        // Draws the sprite
         public void Draw(ref SpriteBatch spriteBatch, Vector2 position, TextureDirection textureDirection, float rotation = 0f)
         {
             spriteBatch.Draw(
                 spriteTexture,
                 new Rectangle((int)position.X, (int)position.Y, Width * Scale, Height * Scale),
-                new Rectangle((fromRow + currentRow) * Width, (fromColumn + currentColumn) * Height, Width, Height),
+                new Rectangle(currentFrame * Width, currentRow * Height, Width, Height),
                 Color.White,
                 rotation,
                 new Vector2(Width / 2, Height / 2),

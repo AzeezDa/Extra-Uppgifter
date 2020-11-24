@@ -7,10 +7,10 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
-    public abstract class Creature : Entity
+    public abstract class Creature : Entity // Creature
     {
-        public int CurrentHealth { get; protected set; }
-        public int MaxHealth { get; protected set; }
+        public int CurrentHealth { get; protected set; } // The current health of the creature
+        public int MaxHealth { get; protected set; } // The maximum health of the creature
 
         public Creature()
         {
@@ -31,6 +31,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
         }
 
+        // Reduce current health if creature takes damage. Virtual because some creatures can reduce damage taken
         public virtual void TakeDamage(int amount)
         {
             CurrentHealth -= amount;

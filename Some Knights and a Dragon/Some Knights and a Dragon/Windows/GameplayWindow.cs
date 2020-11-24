@@ -15,13 +15,16 @@ namespace Some_Knights_and_a_Dragon.Windows
 
         public GameplayWindow()
         {
+
+            // THE CODE BELOW IS PREMILINARY, TO BE CHANGED FOR ALL LEVELS AND CHARACTERS. THIS ONLY EXISTS FOR DEBUG PURPOSES
+
             CurrentGameArea = new GameArea("volcano_bg");
 
             CurrentGameArea.Gravity = new Vector2(0, 9.8f);
             CurrentGameArea.Boundries = new Rectangle(0, 0, 1280, 800);
 
             CurrentGameArea.AddCreature(new Dragon());
-            CurrentGameArea.AddCreature(new Knight());
+            CurrentGameArea.AddCreature(new Elf());
         }
         
         public override void Draw(ref SpriteBatch _spriteBatch)

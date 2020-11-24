@@ -8,22 +8,25 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Managers
 {
-    public class GameArea
+    public class GameArea // This class is represents the "world" or "place" where creatures are and how they interaect with the enviroment
     {
-        public List<Creature> Creatures { get; protected set; }
+        public List<Creature> Creatures { get; protected set; } // All creatures in the game
 
-        Texture2D Background;
+        Texture2D Background; // The background image. TO BE CHANGED TO ADD SKY IMAGE AND FOREGROUNG IMAGE
 
-        public Vector2 Gravity { get; set; }
-        public Rectangle Boundries { get; set; }
-        public GameArea(string FilePath)
+        public Vector2 Gravity { get; set; } // Gravity of the area, used in the acceleration of the entities
+        public Rectangle Boundries { get; set; } // The boundries of the places from which creatures cannot escape
+        public GameArea(string backgroundFilePath)
         {
-            Background = Game1.ContentManager.Load<Texture2D>(FilePath);
+            // Initialize game area
+            Background = Game1.ContentManager.Load<Texture2D>(backgroundFilePath);
             Creatures = new List<Creature>();
         }
 
         public void Update(ref GameTime gameTime)
         {
+
+            // Updates all creatures, if health is less than 0, they die. Removed from the creature less
             for (int i = 0; i < Creatures.Count; i++)
             {
                 Creatures[i].Update(ref gameTime);
@@ -35,8 +38,10 @@ namespace Some_Knights_and_a_Dragon.Managers
 
         }
 
-        public void Draw(ref SpriteBatch _spriteBatch)
+        public void Draw(ref SpriteBatch _spriteBatch) // Draws background then creatures
         {
+            
+
             _spriteBatch.Draw(Background, new Rectangle(0, 0, 1280, 960), Color.White);
             foreach (Creature creature in Creatures)
             {
@@ -44,7 +49,7 @@ namespace Some_Knights_and_a_Dragon.Managers
             }
         }
 
-        public void AddCreature(Creature creature)
+        public void AddCreature(Creature creature) // Used to add creatures from outside the class, such as summoning minions.
         {
             Creatures.Add(creature);
         }

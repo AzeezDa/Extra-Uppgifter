@@ -9,7 +9,8 @@ namespace Some_Knights_and_a_Dragon
 {
     public class GameWindow
     {
-        public static InputManager InputManager { get; set; }
+        public static InputManager InputManager { get; set; } // Static to be accessed by everywhere without being passed into objects.
+        public static FontManager FontManager { get; set; } // Static to be accessed by everywhere without being passed into the objects.
         public virtual void Update(ref GameTime gameTime) // Updates the window content
         {
 
