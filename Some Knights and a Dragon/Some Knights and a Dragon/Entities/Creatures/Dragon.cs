@@ -89,7 +89,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
                     {
                         creature.TakeDamage(10);
                         power++; // If dragons deals damage, increase power
-                        attackTimer.NewTime(4000 - power * 190);
+                        attackTimer.NewTime(4000 - power * 170);
                         fireballs[i] = null;
                         fireballs.RemoveAt(i);
                     }
@@ -102,7 +102,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         {
             base.TakeDamage(amount);
             power += (float)amount / 100;
-            attackTimer.NewTime(4000 - power * 190);
+            attackTimer.NewTime(4000 - power * 170);
         }
     }
 }

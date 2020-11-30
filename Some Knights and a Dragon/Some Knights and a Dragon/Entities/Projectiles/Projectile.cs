@@ -11,12 +11,12 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public Entity Owner { get; protected set; } // The creature who shot the projectile
 
         float rotation = 0f; // How much the texture is rotated
-        protected bool ObeysGravity; // If it is changed by gravity of the GameArea
+        
         public float LifeTime { get; protected set; } // How long it exists in the game
 
-        public Projectile(Entity owner, Vector2 position, Vector2 direction, float LifeTime = float.MaxValue)
+        public Projectile(Entity owner, Vector2 position, Vector2 direction, Vector2 speed, float LifeTime = float.MaxValue)
         {
-            Direction = direction;
+            Velocity = Vector2.Normalize(direction) * speed;
             Owner = owner;
             Position = position;
             this.LifeTime = LifeTime;
@@ -30,7 +30,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public override void Update(ref GameTime gameTime)
         {
             // Rotation based on trigonometry
-            rotation = (float)Math.Atan2(Direction.Y, Direction.X) + (float)Math.PI / 2;
+            rotation = (float)Math.Atan2(Velocity.Y, Velocity.X) + (float)Math.PI / 2;
 
             // If it does not obej gravity, then acceleration is 0
             Acceleration *= ObeysGravity ? 1 : 0;

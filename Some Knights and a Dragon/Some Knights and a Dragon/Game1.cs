@@ -62,7 +62,6 @@ namespace Some_Knights_and_a_Dragon
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             // TODO: Add your drawing code here
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             CurrentWindow.Draw(ref _spriteBatch);

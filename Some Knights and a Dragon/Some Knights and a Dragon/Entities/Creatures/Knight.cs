@@ -17,10 +17,10 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         {
             Sprite = new Sprite("knight", 32, 32, 12);
             Position = new Vector2(200, 700);
-            Speed = new Vector2(100, 100);
+            Speed = new Vector2(150, 500);
             HitBoxWidth = 10;
             HitBoxHeight = 20;
-            CurrentHealth = 1000;
+            CurrentHealth = 1500;
             MaxHealth = CurrentHealth;
         }
 
@@ -33,18 +33,18 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Update(ref GameTime gameTime)
         {
             // Updates animation for knight
-            Direction = Vector2.Zero;
+            Velocity.X = 0;
             Sprite.Animate(0, 1);
             if (Game1.InputManager.KeyPressed(Keys.D))
-                Direction.X += 1;
+                Velocity.X += Speed.X;
             if (Game1.InputManager.KeyPressed(Keys.A))
-                Direction.X += -1;
-            if (Game1.InputManager.KeyClicked(Keys.W) && Acceleration.Y == 0)
-                Acceleration.Y += -10;
+                Velocity.X += -Speed.X;
+            if (Game1.InputManager.KeyClicked(Keys.W) && Velocity.Y == 0)
+                Velocity.Y += -Speed.Y;
             if (Game1.InputManager.KeyPressed(Keys.S))
-                Direction.Y += 1;
+                Velocity.Y += 1;
 
-            if (Direction != Vector2.Zero)
+            if (Velocity != Vector2.Zero)
             {
                 Sprite.Animate(0, 4);
             }
@@ -63,7 +63,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             else
             {
                 shieldUp = false;
-                Speed = new Vector2(100, 100);
+                Speed = new Vector2(150, 500);
             }
 
             base.Update(ref gameTime);

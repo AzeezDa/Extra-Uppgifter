@@ -22,7 +22,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         {
             Sprite = new Sprite("elf", 32, 32, 12);
             Position = new Vector2(200, 700);
-            Speed = new Vector2(180, 100);
+            Speed = new Vector2(180, 1000);
             HitBoxWidth = 10;
             HitBoxHeight = 20;
             CurrentHealth = 800;
@@ -35,7 +35,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Attack()
         {
             base.Attack();
-            arrows.Add(new Arrow(this, Position, Vector2.Normalize(Game1.InputManager.GetCursor() - Position), bowCharge));
+            arrows.Add(new Arrow(this, Position, Vector2.Normalize(Game1.InputManager.GetCursor() - Position), (int)bowCharge));
         }
 
         public override void Draw(ref SpriteBatch _spriteBatch)
@@ -43,7 +43,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             base.Draw(ref _spriteBatch);
             HealthBar.FloatingBar(this, ref _spriteBatch);
 
-            Game1.FontManager.WriteText(_spriteBatch, Name, Position - new Vector2(0, Sprite.Height * Sprite.Scale / 2 + 10));
+            Game1.FontManager.WriteText(_spriteBatch, Name, Position - new Vector2(0, Sprite.Height * Sprite.Scale / 2 + 10), Color.Aqua);
 
             foreach (Arrow arrow in arrows)
             {
@@ -55,18 +55,18 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         {
 
             // Controls animation of the sprite and the bow when charging and shooting
-            Direction = Vector2.Zero;
+            Velocity.X = 0;
             Sprite.Animate(0, 1);
             if (Game1.InputManager.KeyPressed(Keys.D))
-                Direction.X += 1;
+                Velocity.X += Speed.X;
             if (Game1.InputManager.KeyPressed(Keys.A))
-                Direction.X += -1;
-            if (Game1.InputManager.KeyClicked(Keys.W) && Acceleration.Y == 0)
-                Acceleration.Y += -10;
+                Velocity.X += -Speed.X;
+            if (Game1.InputManager.KeyClicked(Keys.W) && Velocity.Y == 0)
+                Velocity.Y += -Speed.Y;
             if (Game1.InputManager.KeyPressed(Keys.S))
-                Direction.Y += 1;
+                Velocity.Y += 1;
 
-            if (Direction != Vector2.Zero)
+            if (Velocity != Vector2.Zero)
             {
                 Sprite.Animate(0, 9);
             }

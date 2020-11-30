@@ -20,7 +20,7 @@ namespace Some_Knights_and_a_Dragon.Windows
 
             CurrentGameArea = new GameArea("volcano_bg");
 
-            CurrentGameArea.Gravity = new Vector2(0, 9.8f);
+            CurrentGameArea.Gravity = new Vector2(0, 5f);
             CurrentGameArea.Boundries = new Rectangle(0, 0, 1280, 800);
 
             CurrentGameArea.AddCreature(new Dragon());

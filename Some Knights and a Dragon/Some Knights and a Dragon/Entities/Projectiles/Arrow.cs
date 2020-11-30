@@ -10,14 +10,13 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
     class Arrow : Projectile // An Arrow projectile
     {
         public int Damage { get; private set; } // How much damage the arrows deals upon hit
-        public Arrow(Entity owner, Vector2 position, Vector2 direction, float power) : base(owner, position, direction, 2)
+        public Arrow(Entity owner, Vector2 position, Vector2 direction, int power) : base(owner, position, direction, new Vector2(1000 + 200 * power, 1000 + 200 * power), 5)
         {
-            Speed = new Vector2(10 + 1000 * power, 10 + 1000 * power);
-            Damage = (int)(power * 10);
+            Damage = (power * 10);
             Sprite = new Sprite("arrow");
             HitBoxWidth = 5;
             HitBoxHeight = 10;
-            ObeysGravity = false;
+            ObeysGravity = true;
         }
 
         public override void Ability()
