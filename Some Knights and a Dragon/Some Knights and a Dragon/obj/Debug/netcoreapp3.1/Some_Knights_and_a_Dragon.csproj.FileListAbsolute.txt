@@ -81,3 +81,6 @@ C:\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bi
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\default_font.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\arrow.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\elf.xnb
+C:\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\arrow.xnb
+C:\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\default_font.xnb
+C:\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\elf.xnb

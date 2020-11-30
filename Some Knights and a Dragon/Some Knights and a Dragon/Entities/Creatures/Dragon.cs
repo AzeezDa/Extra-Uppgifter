@@ -47,8 +47,6 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             base.Draw(ref spriteBatch);
             HealthBar.BossHealthBar(this, ref spriteBatch);
 
-            
-
             foreach (Fireball fireball in fireballs)
             {
                 fireball.Draw(ref spriteBatch);
