@@ -4,13 +4,13 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/arrow.png</File>
-    <File>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/default_font.spritefont</File>
-    <File>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/dragon.png</File>
-    <File>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/elf.png</File>
-    <File>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/fireball.png</File>
-    <File>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/knight.png</File>
-    <File>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/volcano_bg.png</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Backgrounds/volcano_bg.png</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/default_font.spritefont</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Entities/Creatures/elf.png</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Entities/Creatures/knight.png</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Other/arrow.png</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Weapons/bow.png</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Weapons/sword.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

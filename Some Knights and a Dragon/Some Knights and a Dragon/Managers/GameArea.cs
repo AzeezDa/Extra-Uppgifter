@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Some_Knights_and_a_Dragon.Entities;
 using Some_Knights_and_a_Dragon.Entities.Creatures;
+using Some_Knights_and_a_Dragon.Entities.Other;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,7 @@ namespace Some_Knights_and_a_Dragon.Managers
     public class GameArea // This class is represents the "world" or "place" where creatures are and how they interaect with the enviroment
     {
         public List<Creature> Creatures { get; protected set; } // All creatures in the game
+        public List<DroppedItem> DroppedItems { get; protected set; }
 
         Texture2D Background; // The background image. TO BE CHANGED TO ADD SKY IMAGE AND FOREGROUNG IMAGE
 
@@ -21,6 +23,7 @@ namespace Some_Knights_and_a_Dragon.Managers
             // Initialize game area
             Background = Game1.ContentManager.Load<Texture2D>(backgroundFilePath);
             Creatures = new List<Creature>();
+            DroppedItems = new List<DroppedItem>();
         }
 
         public void Update(ref GameTime gameTime)
@@ -36,6 +39,11 @@ namespace Some_Knights_and_a_Dragon.Managers
                 }
             }
 
+            foreach (DroppedItem droppedItem in DroppedItems)
+            {
+                droppedItem.Update(ref gameTime);
+            }
+
         }
 
         public void Draw(ref SpriteBatch _spriteBatch) // Draws background then creatures
@@ -46,6 +54,10 @@ namespace Some_Knights_and_a_Dragon.Managers
             foreach (Creature creature in Creatures)
             {
                 creature.Draw(ref _spriteBatch);
+            }
+            foreach (DroppedItem droppedItem in DroppedItems)
+            {
+                droppedItem.Draw(ref _spriteBatch);
             }
         }
 

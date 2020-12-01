@@ -12,9 +12,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
 
         public Fireball(Entity owner, Vector2 position, Vector2 direction, int power) : base(owner, position, direction, new Vector2(100 + 10 * power, 100 + 10 * power), 5)
         {
-            Sprite = new Sprite("fireball", 32, 32);
-            HitBoxWidth = 30;
-            HitBoxHeight = 30;
+
             ObeysGravity = false;
         }
 

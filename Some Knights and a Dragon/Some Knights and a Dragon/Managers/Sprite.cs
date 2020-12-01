@@ -9,7 +9,7 @@ namespace Some_Knights_and_a_Dragon.Managers
 {
     public class Sprite
     {
-        Texture2D spriteTexture;
+        public Texture2D SpriteTexture { get; private set; }
 
         public int Width { get; private set; }
         public int Height { get; private set; }
@@ -26,10 +26,10 @@ namespace Some_Knights_and_a_Dragon.Managers
         // Load a sprite with no other animations
         public Sprite(string filepath)
         {
-            spriteTexture = Game1.ContentManager.Load<Texture2D>(filepath);
+            SpriteTexture = Game1.ContentManager.Load<Texture2D>(filepath);
 
-            Width = spriteTexture.Width;
-            Height = spriteTexture.Height;
+            Width = SpriteTexture.Width;
+            Height = SpriteTexture.Height;
 
             animationTimer = new Timer(1000 / 60);
         }
@@ -37,10 +37,18 @@ namespace Some_Knights_and_a_Dragon.Managers
         // Load spritesheet and work on it
         public Sprite(string filepath, int width, int height, int framesPerSecond = 12)
         {
-            spriteTexture = Game1.ContentManager.Load<Texture2D>(filepath);
+            SpriteTexture = Game1.ContentManager.Load<Texture2D>(filepath);
             Width = width;
             Height = height;
             animationTimer = new Timer(1000 / framesPerSecond);
+        }
+
+        // New texture
+        public void NewTexture(Texture2D texture, int width, int height)
+        {
+            SpriteTexture = texture;
+            Width = width;
+            Height = height;
         }
 
         // Animate certain row and how many frames in the row, forever
@@ -118,7 +126,7 @@ namespace Some_Knights_and_a_Dragon.Managers
         public void Draw(ref SpriteBatch spriteBatch, Vector2 position, TextureDirection textureDirection, float rotation = 0f)
         {
             spriteBatch.Draw(
-                spriteTexture,
+                SpriteTexture,
                 new Rectangle((int)position.X, (int)position.Y, Width * Scale, Height * Scale),
                 new Rectangle(currentFrame * Width, currentRow * Height, Width, Height),
                 Color.White,

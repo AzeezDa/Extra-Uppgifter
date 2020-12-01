@@ -16,6 +16,16 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         {
         }
 
+        protected override void LoadSprite(string filepath)
+        {
+            Sprite = new Sprite("Entities/Creatures/" + filepath);
+        }
+
+        protected override void LoadSprite(string filepath, int width, int height)
+        {
+            Sprite = new Sprite("Entities/Creatures/" + filepath, width, height, 12);
+        }
+
         public virtual void Attack()
         {
 

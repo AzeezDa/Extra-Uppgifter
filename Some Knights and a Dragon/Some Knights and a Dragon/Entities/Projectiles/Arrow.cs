@@ -13,9 +13,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public Arrow(Entity owner, Vector2 position, Vector2 direction, int power) : base(owner, position, direction, new Vector2(1000 + 200 * power, 1000 + 200 * power), 5)
         {
             Damage = (power * 10);
-            Sprite = new Sprite("arrow");
-            HitBoxWidth = 5;
-            HitBoxHeight = 10;
+            LoadSprite("arrow");
             ObeysGravity = true;
         }
 

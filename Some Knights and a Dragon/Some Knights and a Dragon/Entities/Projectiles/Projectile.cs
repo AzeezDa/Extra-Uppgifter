@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Some_Knights_and_a_Dragon.Managers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,6 +23,10 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
             this.LifeTime = LifeTime;
         }
 
+        protected override void LoadSprite(string filepath)
+        {
+            Sprite = new Sprite("Entities/Projectiles/" + filepath);
+        }
         public override void Draw(ref SpriteBatch _spriteBatch)
         {
             Sprite.Draw(ref _spriteBatch, Position, TextureDirection, rotation);
