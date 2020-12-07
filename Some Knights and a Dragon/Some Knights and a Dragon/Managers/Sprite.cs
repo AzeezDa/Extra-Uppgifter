@@ -123,16 +123,17 @@ namespace Some_Knights_and_a_Dragon.Managers
         }
 
         // Draws the sprite
-        public void Draw(ref SpriteBatch spriteBatch, Vector2 position, TextureDirection textureDirection, float rotation = 0f)
+        public void Draw(ref SpriteBatch spriteBatch, Vector2 position, TextureDirection textureDirection, float rotation = 0f, Vector2? origin = null)
         {
+
             spriteBatch.Draw(
                 SpriteTexture,
                 new Rectangle((int)position.X, (int)position.Y, Width * Scale, Height * Scale),
                 new Rectangle(currentFrame * Width, currentRow * Height, Width, Height),
                 Color.White,
                 rotation,
-                new Vector2(Width / 2, Height / 2),
-                textureDirection == 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
+                origin ?? new Vector2(Width / 2, Height / 2),
+                textureDirection == TextureDirection.Left ? SpriteEffects.FlipHorizontally : textureDirection == TextureDirection.Down ? SpriteEffects.FlipVertically : SpriteEffects.None,
                 0);
         }
 

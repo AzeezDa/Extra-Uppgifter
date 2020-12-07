@@ -22,9 +22,5 @@ namespace Some_Knights_and_a_Dragon.Items
             Sprite = new Sprite("Items/Consumable/" + filePath);
         }
 
-        public virtual void OnUse()
-        {
-
-        }
     }
 }

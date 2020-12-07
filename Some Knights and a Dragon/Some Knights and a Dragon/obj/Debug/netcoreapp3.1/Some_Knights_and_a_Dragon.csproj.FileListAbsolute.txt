@@ -84,3 +84,5 @@ C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some K
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Backgrounds\volcano_bg.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Entities\Creatures\elf.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Entities\Creatures\knight.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Menus\inventoryBack.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Menus\inventoryTexture.xnb

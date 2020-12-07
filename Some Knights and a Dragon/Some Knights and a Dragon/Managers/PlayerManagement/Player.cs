@@ -15,6 +15,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         public Creature Creature { get; private set; }
         public InventoryManager Inventory { get; private set; }
 
+        bool attacking;
         public Player(Creature creature)
         {
             Creature = creature;
@@ -23,6 +24,8 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
         public void Update(ref GameTime gameTime)
         {
+            Inventory.Update(ref gameTime);
+
             for (int i = 0; i < ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.DroppedItems.Count; i++)
             {
                 if (Vector2.Distance(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.DroppedItems[i].Position, Creature.Position) <= 50)
@@ -39,11 +42,34 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 Creature.AddToVelocity(new Vector2(-Creature.Speed.X, 0));
             if (Game1.InputManager.KeyClicked(Keys.W) && Creature.Velocity.Y == 0)
                 Creature.AddToVelocity(new Vector2(0, -Creature.Speed.Y));
+            if (Game1.InputManager.LeftMousePressed())
+            {
+                Inventory.CurrentItem.Item.OnUse();
+                attacking = true;
+            }
+            else
+            {
+                if (Inventory.CurrentItem != null)
+                {
+                    Inventory.CurrentItem.Item.ResetSprite();
+                }
+                attacking = false;
+            }
         }
 
         public void Draw(ref SpriteBatch _spritebatch)
         {
             Inventory.Draw(ref _spritebatch);
+            if (Inventory.CurrentItem != null)
+            {
+                Inventory.CurrentItem.Item.DrawOn(
+                    ref _spritebatch,
+                    Creature.Position,
+                    Creature.TextureDirection,
+                    attacking && Creature.TextureDirection == Entities.TextureDirection.Left ? (float)Math.PI / 2 : attacking ? -(float)Math.PI / 2 : 0
+                    );
+            }
+            
         }
     }
 }

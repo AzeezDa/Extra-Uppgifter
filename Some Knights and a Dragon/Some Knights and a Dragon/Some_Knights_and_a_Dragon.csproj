@@ -22,5 +22,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Entities\Creatures\" />
+    <Folder Include="Content\Items\Weapons\" />
   </ItemGroup>
 </Project>

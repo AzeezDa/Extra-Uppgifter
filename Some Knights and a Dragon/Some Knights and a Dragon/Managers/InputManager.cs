@@ -19,6 +19,7 @@ namespace Some_Knights_and_a_Dragon.Managers
         public InputManager()
         {
         }
+
         public bool KeyPressed(Keys key)
         {
             currentKeyboardState = Keyboard.GetState();
@@ -36,6 +37,16 @@ namespace Some_Knights_and_a_Dragon.Managers
         {   
             currentMouseState = Mouse.GetState();
             return currentMouseState.LeftButton == ButtonState.Pressed;
+        }
+
+        public int ScrollValue()
+        {
+            currentMouseState = Mouse.GetState();
+            if (currentMouseState.ScrollWheelValue > previousMouseState.ScrollWheelValue)
+                return 1;
+            else if (currentMouseState.ScrollWheelValue < previousMouseState.ScrollWheelValue)
+                return -1;
+            return 0;
         }
 
         public bool RightMousePressed()

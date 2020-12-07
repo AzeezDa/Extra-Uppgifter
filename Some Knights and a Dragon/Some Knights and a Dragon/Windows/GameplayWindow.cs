@@ -29,9 +29,9 @@ namespace Some_Knights_and_a_Dragon.Windows
             CurrentGameArea.AddCreature(Player.Creature);
 
             CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(900, 400), new Items.Weapons.ElvenBow()));
-            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(600, 400), new Items.Weapons.Sword()));
-            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(700, 400), new Items.Weapons.Sword()));
-            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(800, 400), new Items.Weapons.Sword()));
+            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(600, 400), new Items.Other.Arrow()));
+            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(700, 400), new Items.Other.Arrow()));
+            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(800, 400), new Items.Other.Arrow()));
             CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(500, 400), new Items.Weapons.Sword()));
         }
         

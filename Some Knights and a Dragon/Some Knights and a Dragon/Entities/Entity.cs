@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Entities
 {
-    public enum TextureDirection { Left, Right } // Direction of the texture based on direction of the movement
+    public enum TextureDirection { Left, Right, Up, Down } // Direction of the texture based on direction of the movement
 
     public abstract class Entity // Any object that moves and has a texture.
     {
@@ -32,7 +32,7 @@ namespace Some_Knights_and_a_Dragon.Entities
 
         public Rectangle HitBox { get; protected set; }
 
-        protected TextureDirection TextureDirection;
+        public TextureDirection TextureDirection { get; protected set; }
 
         protected virtual void LoadSprite(string filepath)
         {
