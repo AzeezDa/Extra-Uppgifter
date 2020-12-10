@@ -13,7 +13,12 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
     {
         public Knight()
         {
-            LoadSprite("knight");
+            LoadSprite("knight", 16, 30);
+            Position = new Vector2(400, 400);
+            Speed = new Vector2(250, 1000);
+            CurrentHealth = 100;
+            MaxHealth = 100;
+
         }
 
         public override void Draw(ref SpriteBatch spriteBatch)

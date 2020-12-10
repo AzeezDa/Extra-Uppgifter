@@ -74,7 +74,22 @@ namespace Some_Knights_and_a_Dragon.Managers
         }
 
         // Freeze the sprite at a certain frame.
-        public void Freeze(int row, int frames)
+        public void Freeze(int row, int frame)
+        {
+            freeze = true;
+            oneTimeAnimationOn = false;
+            currentRow = row;
+            currentFrame = frame;
+        }
+
+        // Freezes the sprite at the current frame
+        public void Freeze()
+        {
+            freeze = true;
+            oneTimeAnimationOn = false;
+        }
+
+        public void AnimateAndFreeze(int row, int frames)
         {
             if (!oneTimeAnimationOn)
             {
@@ -91,11 +106,9 @@ namespace Some_Knights_and_a_Dragon.Managers
         {
             oneTimeAnimationOn = false;
             freeze = false;
-            currentRow = 0;
-            currentFrame = 0;
-            frames = 1;
         }
         
+
         // Update the sprite
         public void Update(ref GameTime gameTime)
         {

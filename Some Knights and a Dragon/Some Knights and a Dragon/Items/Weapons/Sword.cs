@@ -13,7 +13,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
             Description = "This sword can cut enemies, pretty good, ey?";
             LoadSprite("sword");
             Damage = 15;
-            Handle = new Vector2(-Sprite.Width / 2 * Sprite.Scale, 0);
+            Handle = new Vector2(0, 2);
         }
     }
 }

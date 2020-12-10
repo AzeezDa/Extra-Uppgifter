@@ -35,25 +35,36 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 }
             }
 
+            
             Creature.MultiplyWithVelocity(new Vector2(0, 1));
+            Creature.Sprite.Freeze();
             if (Game1.InputManager.KeyPressed(Keys.D))
+            {
                 Creature.AddToVelocity(new Vector2(Creature.Speed.X, 0));
+                Creature.Walk();
+            }
             if (Game1.InputManager.KeyPressed(Keys.A))
+            {
                 Creature.AddToVelocity(new Vector2(-Creature.Speed.X, 0));
+                Creature.Walk();
+            }
             if (Game1.InputManager.KeyClicked(Keys.W) && Creature.Velocity.Y == 0)
                 Creature.AddToVelocity(new Vector2(0, -Creature.Speed.Y));
+
             if (Game1.InputManager.LeftMousePressed())
             {
-                Inventory.CurrentItem.Item.OnUse();
+                Inventory.CurrentItem.Item.OnUse(gameTime);
+                Creature.Attack();
                 attacking = true;
             }
-            else
+            else if(attacking)
             {
                 if (Inventory.CurrentItem != null)
                 {
-                    Inventory.CurrentItem.Item.ResetSprite();
+                    Inventory.CurrentItem.Item.AfterUse();
                 }
                 attacking = false;
+                Creature.ResetPose();
             }
         }
 
@@ -64,7 +75,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             {
                 Inventory.CurrentItem.Item.DrawOn(
                     ref _spritebatch,
-                    Creature.Position,
+                    Creature,
                     Creature.TextureDirection,
                     attacking && Creature.TextureDirection == Entities.TextureDirection.Left ? (float)Math.PI / 2 : attacking ? -(float)Math.PI / 2 : 0
                     );

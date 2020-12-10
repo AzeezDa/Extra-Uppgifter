@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Some_Knights_and_a_Dragon.Entities.Creatures;
 using Some_Knights_and_a_Dragon.Managers;
+using Some_Knights_and_a_Dragon.Windows;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +15,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public Arrow(Entity owner, Vector2 position, Vector2 direction, int power) : base(owner, position, direction, new Vector2(1000 + 200 * power, 1000 + 200 * power), 5)
         {
             Damage = (power * 10);
-            LoadSprite("arrow");
+            LoadSprite("Items/Other/arrow");
             ObeysGravity = true;
         }
 
@@ -30,10 +32,6 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public override void Update(ref GameTime gameTime)
         {
             base.Update(ref gameTime);
-            if (CollidingWithBoundries)
-            {
-                Speed = Vector2.Zero;
-            }
         }
     }
 }

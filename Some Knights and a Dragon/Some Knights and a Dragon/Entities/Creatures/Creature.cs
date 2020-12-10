@@ -12,9 +12,19 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public int CurrentHealth { get; protected set; } // The current health of the creature
         public int MaxHealth { get; protected set; } // The maximum health of the creature
 
+        // Body part positions Used for items:
+
+        private Vector2 handPosition;
+        public Vector2 HandPosition { 
+            get { return handPosition * (TextureDirection == TextureDirection.Right? new Vector2(-1, 1) : Vector2.One) + Position; } 
+            protected set { handPosition = value * Sprite.Scale; } 
+        }
+
         public Creature()
         {
         }
+
+
 
         protected override void LoadSprite(string filepath)
         {
@@ -45,6 +55,17 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public virtual void TakeDamage(int amount)
         {
             CurrentHealth -= amount;
+        }
+
+        // Animation Methods
+        public virtual void ResetPose()
+        {
+
+        }
+
+        public virtual void Walk()
+        {
+
         }
     }
 }

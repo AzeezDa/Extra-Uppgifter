@@ -5,15 +5,16 @@ using System.Collections.Generic;
 using System.Text;
 using Some_Knights_and_a_Dragon.Managers;
 using Microsoft.Xna.Framework.Input;
+using Some_Knights_and_a_Dragon.Entities.Creatures;
 
 namespace Some_Knights_and_a_Dragon.Items
 {
     public abstract class Item
     {
-        public Sprite Sprite { get; protected set; }
-        public string Name { get; protected set; }
-        public string Description { get; protected set; }
-        public Vector2 Handle { get; protected set; }
+        public Sprite Sprite { get; protected set; } // The Sprite Class of the item
+        public string Name { get; protected set; } // Name of the item
+        public string Description { get; protected set; } // A small description
+        public Vector2 Handle { get; protected set; } // Where the item is held by a creature
 
         public Item()
         {
@@ -33,23 +34,24 @@ namespace Some_Knights_and_a_Dragon.Items
         {
             Sprite.Update(ref gameTime);
         }
-        public virtual void OnUse()
+        public virtual void OnUse(GameTime gameTime)
         {
 
         }
 
-        public virtual void ResetSprite()
+        public virtual void AfterUse()
         {
-            Sprite.Unfreeze();
+
         }
 
-        public void DrawOn(ref SpriteBatch spriteBatch, Vector2 position, Entities.TextureDirection textureDirection, float rotation = 0)
+        public void DrawOn(ref SpriteBatch spriteBatch, Creature creature, Entities.TextureDirection textureDirection, float rotation = 0)
         {
-
+            // rotation = rotation * (textureDirection == Entities.TextureDirection.Right ? -1 : 1);
             Sprite.Draw(ref spriteBatch,
-                position + Handle * (textureDirection == Entities.TextureDirection.Right ? new Vector2(-1,1) : Vector2.One),
+                creature.HandPosition,
                 textureDirection, 
-                rotation);
+                rotation,
+                textureDirection == Entities.TextureDirection.Left ? new Vector2(Sprite.Width - Handle.X, Handle.Y) : Handle);
         }
     }
 }

@@ -20,10 +20,28 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             Speed = new Vector2(250, 1000);
             CurrentHealth = 100;
             MaxHealth = 100;
+            HandPosition = new Vector2(0, 2);
         }
         public override void Attack()
         {
             base.Attack();
+            HandPosition = new Vector2(-3, 6);
+            Sprite.AnimateAndFreeze(1, 2);
+        }
+
+
+        public override void ResetPose()
+        {
+            base.ResetPose();
+            HandPosition = new Vector2(0, 2);
+            Sprite.Unfreeze();
+        }
+
+        public override void Walk()
+        {
+            base.Walk();
+            Sprite.Unfreeze();
+            Sprite.Animate(0, 9);
         }
 
         public override void Draw(ref SpriteBatch _spriteBatch)

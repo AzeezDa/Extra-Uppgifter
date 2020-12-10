@@ -102,13 +102,13 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             }
         }
 
-        public void RemoveItem(Item item)
+        public void RemoveItem(string name)
         {
             for (int i = 0; i < 5; i++)
             {
                 if (inventory[i] == null)
                     continue;
-                if (item.Name == inventory[i].Item.Name)
+                if (name == inventory[i].Item.Name)
                 {
                     if (inventory[i].Amount == 1)
                         inventory[i] = null;

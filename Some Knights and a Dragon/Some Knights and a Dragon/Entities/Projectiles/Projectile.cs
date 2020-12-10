@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Entities.Projectiles
 {
-    class Projectile : Entity // An object that is shot from a creature or other, has same properties as entity.
+    public class Projectile : Entity // An object that is shot from a creature or other, has same properties as entity.
     {
         public Entity Owner { get; protected set; } // The creature who shot the projectile
 
@@ -20,12 +20,13 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
             Velocity = Vector2.Normalize(direction) * speed;
             Owner = owner;
             Position = position;
+            Speed = speed;
             this.LifeTime = LifeTime;
         }
 
         protected override void LoadSprite(string filepath)
         {
-            Sprite = new Sprite("Entities/Projectiles/" + filepath);
+            Sprite = new Sprite(filepath);
         }
         public override void Draw(ref SpriteBatch _spriteBatch)
         {
