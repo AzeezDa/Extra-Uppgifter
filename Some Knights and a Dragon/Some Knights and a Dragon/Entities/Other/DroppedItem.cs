@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Some_Knights_and_a_Dragon.Entities.Other
+namespace Some_Knights_and_a_Dragon.Entities
 {
     public class DroppedItem : Entity
     {

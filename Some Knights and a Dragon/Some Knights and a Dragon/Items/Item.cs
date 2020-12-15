@@ -44,14 +44,17 @@ namespace Some_Knights_and_a_Dragon.Items
 
         }
 
-        public void DrawOn(ref SpriteBatch spriteBatch, Creature creature, Entities.TextureDirection textureDirection, float rotation = 0)
+        public void DrawOn(ref SpriteBatch spriteBatch, Creature creature, Entities.TextureDirection textureDirection)
         {
-            // rotation = rotation * (textureDirection == Entities.TextureDirection.Right ? -1 : 1);
             Sprite.Draw(ref spriteBatch,
                 creature.HandPosition,
-                textureDirection, 
-                rotation,
+                textureDirection,
                 textureDirection == Entities.TextureDirection.Left ? new Vector2(Sprite.Width - Handle.X, Handle.Y) : Handle);
+        }
+
+        public virtual void UseAnimation(GameTime gameTime)
+        {
+
         }
     }
 }

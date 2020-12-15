@@ -19,20 +19,25 @@ namespace Some_Knights_and_a_Dragon.Windows
 
             // THE CODE BELOW IS PREMILINARY, TO BE CHANGED FOR ALL LEVELS AND CHARACTERS. THIS ONLY EXISTS FOR DEBUG PURPOSES
 
-            Player = new Player(new Elf());
+            
 
             CurrentGameArea = new GameArea("Backgrounds/volcano_bg");
 
             CurrentGameArea.Gravity = new Vector2(0, 5f);
             CurrentGameArea.Boundries = new Rectangle(0, 0, 1280, 800);
 
-            CurrentGameArea.AddCreature(Player.Creature);
+            CurrentGameArea.Boss = new DragonBoss();
+            CurrentGameArea.AddCreature(CurrentGameArea.Boss.Creature);
 
-            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(900, 400), new Items.Weapons.ElvenBow()));
-            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(600, 400), new Items.Other.Arrow()));
-            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(700, 400), new Items.Other.Arrow()));
-            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(800, 400), new Items.Other.Arrow()));
-            CurrentGameArea.DroppedItems.Add(new Entities.Other.DroppedItem(new Vector2(500, 400), new Items.Weapons.Sword()));
+            Player = new Player(new Elf());
+            CurrentGameArea.AddCreature(Player.Creature);
+            CurrentGameArea.DroppedItems.Add(new DroppedItem(new Vector2(400, 400), new Items.Weapons.ElvenBow()));
+            CurrentGameArea.DroppedItems.Add(new DroppedItem(new Vector2(500, 400), new Items.Weapons.Sword()));
+
+            for (int i = 0; i < 32; i++)
+            {
+                CurrentGameArea.DroppedItems.Add(new DroppedItem(new Vector2(550 + i, 400), new Items.Other.Arrow()));
+            }
         }
         
         public override void Draw(ref SpriteBatch _spriteBatch)

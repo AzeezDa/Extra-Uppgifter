@@ -6,8 +6,10 @@
   <SourceFiles>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Backgrounds/volcano_bg.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/default_font.spritefont</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Entities/Creatures/dragon.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Entities/Creatures/elf.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Entities/Creatures/knight.png</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Entities/Projectiles/fireball.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Other/arrow.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Weapons/bow.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Weapons/sword.png</File>
@@ -15,6 +17,8 @@
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Menus/inventoryTexture.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

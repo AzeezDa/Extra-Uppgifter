@@ -26,7 +26,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         {
             Inventory.Update(ref gameTime);
 
-            for (int i = 0; i < ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.DroppedItems.Count; i++)
+            for (int i = ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.DroppedItems.Count - 1; i >= 0; --i)
             {
                 if (Vector2.Distance(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.DroppedItems[i].Position, Creature.Position) <= 50)
                 {
@@ -35,7 +35,30 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 }
             }
 
-            
+            if(Creature.CurrentHealth > 0)
+                PlayerMovementAndInput(gameTime);
+        }
+
+        public void Draw(ref SpriteBatch _spritebatch)
+        {
+
+            if (Creature.CurrentHealth > 0)
+            {
+                HealthBar.FloatingBar(Creature, ref _spritebatch);
+                Inventory.Draw(ref _spritebatch);
+                if (Inventory.CurrentItem != null)
+                {
+                    Inventory.CurrentItem.Item.DrawOn(
+                        ref _spritebatch,
+                        Creature,
+                        Creature.TextureDirection
+                        );
+                }
+            }
+        }
+
+        public void PlayerMovementAndInput(GameTime gameTime)
+        {
             Creature.MultiplyWithVelocity(new Vector2(0, 1));
             Creature.Sprite.Freeze();
             if (Game1.InputManager.KeyPressed(Keys.D))
@@ -53,11 +76,14 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
             if (Game1.InputManager.LeftMousePressed())
             {
-                Inventory.CurrentItem.Item.OnUse(gameTime);
+                if (Inventory.CurrentItem != null)
+                {
+                    Inventory.CurrentItem.Item.OnUse(gameTime);
+                }
                 Creature.Attack();
                 attacking = true;
             }
-            else if(attacking)
+            else if (attacking)
             {
                 if (Inventory.CurrentItem != null)
                 {
@@ -66,21 +92,6 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 attacking = false;
                 Creature.ResetPose();
             }
-        }
-
-        public void Draw(ref SpriteBatch _spritebatch)
-        {
-            Inventory.Draw(ref _spritebatch);
-            if (Inventory.CurrentItem != null)
-            {
-                Inventory.CurrentItem.Item.DrawOn(
-                    ref _spritebatch,
-                    Creature,
-                    Creature.TextureDirection,
-                    attacking && Creature.TextureDirection == Entities.TextureDirection.Left ? (float)Math.PI / 2 : attacking ? -(float)Math.PI / 2 : 0
-                    );
-            }
-            
         }
     }
 }

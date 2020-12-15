@@ -30,7 +30,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         }
         public override void Draw(ref SpriteBatch _spriteBatch)
         {
-            Sprite.Draw(ref _spriteBatch, Position, TextureDirection, rotation);
+            Sprite.Rotation = rotation;
+            Sprite.Draw(ref _spriteBatch, Position, TextureDirection);
         }
 
         public override void Update(ref GameTime gameTime)

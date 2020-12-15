@@ -13,10 +13,23 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
     {
         public Dragon()
         {
+            LoadSprite("dragon", 32, 32);
+            Position = new Vector2(900, 400);
+            Speed = new Vector2(250, 1000);
+            CurrentHealth = 1000;
+            MaxHealth = 1000;
+            Sprite.Scale = 10;
         }
 
-        public override void Attack(Creature creature)
+        public override void Attack()
         {
+            Sprite.OneTimeAnimation(0, 3);
+        }
+
+        public override void Walk()
+        {
+            base.Walk();
+            Sprite.Animate(0, 2);
         }
 
         public override void Draw(ref SpriteBatch spriteBatch)
@@ -27,8 +40,6 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Update(ref GameTime gameTime)
         {
             base.Update(ref gameTime);
-
-            
         }
 
         public override void TakeDamage(int amount)

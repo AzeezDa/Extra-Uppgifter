@@ -17,6 +17,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
             Damage = (power * 10);
             LoadSprite("Items/Other/arrow");
             ObeysGravity = true;
+            
         }
 
         public override void Ability()
@@ -32,6 +33,17 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public override void Update(ref GameTime gameTime)
         {
             base.Update(ref gameTime);
+            foreach (Creature creature in ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Creatures)
+            {
+                if (creature == Owner)
+                    continue;
+
+                if (creature.HitBox.Contains(Position))
+                {
+                    creature.TakeDamage(Damage);
+                    LifeTime = 0;
+                }
+            }
         }
     }
 }

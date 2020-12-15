@@ -25,8 +25,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Attack()
         {
             base.Attack();
-            HandPosition = new Vector2(-3, 6);
-            Sprite.AnimateAndFreeze(1, 2);
+            HandPosition = new Vector2(-3, 0);
+            Sprite.OneTimeAnimation(1, 2);
         }
 
 

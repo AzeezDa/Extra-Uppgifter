@@ -2,8 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Some_Knights_and_a_Dragon.Entities;
 using Some_Knights_and_a_Dragon.Entities.Creatures;
-using Some_Knights_and_a_Dragon.Entities.Other;
 using Some_Knights_and_a_Dragon.Entities.Projectiles;
+using Some_Knights_and_a_Dragon.Items;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +21,8 @@ namespace Some_Knights_and_a_Dragon.Managers
         public Vector2 Gravity { get; set; } // Gravity of the area, used in the acceleration of the entities
         public Rectangle Boundries { get; set; } // The boundries of the places from which creatures cannot escape
 
+        public Boss Boss { get; set; }
+
         public GameArea(string backgroundFilePath)
         {
             // Initialize game area
@@ -33,11 +35,12 @@ namespace Some_Knights_and_a_Dragon.Managers
         public void Update(ref GameTime gameTime)
         {
             // Updates all creatures, if health is less than 0, they die. Removed from the creature less
-            for (int i = 0; i < Creatures.Count; i++)
+            for (int i = Creatures.Count - 1; i >= 0; --i)
             {
                 Creatures[i].Update(ref gameTime);
                 if (Creatures[i].CurrentHealth <= 0)
                 {
+                    if (Boss.Creature == Creatures[i])
                     Creatures[i] = null;
                     Creatures.RemoveAt(i);
                 }
@@ -48,7 +51,7 @@ namespace Some_Knights_and_a_Dragon.Managers
                 droppedItem.Update(ref gameTime);
             }
 
-            for (int i = 0; i < Projectiles.Count; i++)
+            for (int i = Projectiles.Count - 1; i >= 0; --i)
             {
                 Projectiles[i].Update(ref gameTime);
                 if (Projectiles[i].LifeTime <= 0)
@@ -57,6 +60,9 @@ namespace Some_Knights_and_a_Dragon.Managers
                     Projectiles.RemoveAt(i);
                 }
             }
+
+            if (Boss.Creature.CurrentHealth > 0)
+                Boss.Update(gameTime);
         }
 
         public void Draw(ref SpriteBatch _spriteBatch) // Draws background then creatures
@@ -76,7 +82,8 @@ namespace Some_Knights_and_a_Dragon.Managers
             {
                 projectile.Draw(ref _spriteBatch);
             }
-
+            if (Boss.Creature.CurrentHealth > 0)
+                Boss.Draw(_spriteBatch);
         }
 
         public void AddCreature(Creature creature) // Used to add creatures from outside the class, such as summoning minions.
@@ -87,6 +94,11 @@ namespace Some_Knights_and_a_Dragon.Managers
         public void AddProjectile(Projectile projectile)
         {
             Projectiles.Add(projectile);
+        }
+
+        public void AddDroppedItem(Vector2 position, Item item)
+        {
+            DroppedItems.Add(new DroppedItem(position, item));
         }
     }
 }
