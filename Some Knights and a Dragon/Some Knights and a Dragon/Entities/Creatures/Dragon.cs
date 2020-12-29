@@ -13,11 +13,11 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
     {
         public Dragon()
         {
-            LoadSprite("dragon", 32, 32);
+            LoadSprite("dragon", 3, 1);
             Position = new Vector2(900, 400);
             Speed = new Vector2(250, 1000);
-            CurrentHealth = 1000;
-            MaxHealth = 1000;
+            MaxHealth = 4000;
+            CurrentHealth = MaxHealth;
             Sprite.Scale = 10;
         }
 

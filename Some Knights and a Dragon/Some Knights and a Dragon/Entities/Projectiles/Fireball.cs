@@ -12,9 +12,9 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
     class Fireball : Projectile // A fireball projectile
     {
         int damage = 10;
-        public Fireball(Entity owner, Vector2 position, Vector2 direction, int power) : base(owner, position, direction, new Vector2(100 + 50 * power, 100 + 50 * power), 5)
+        public Fireball(Entity owner, Vector2 position, Vector2 direction, int power) : base(owner, position, direction, new Vector2(100 + 10 * power, 100 + 10 * power), 5)
         {
-            LoadSprite("Entities/Projectiles/fireball", 17, 27);
+            LoadSprite("Entities/Projectiles/fireball", 5, 1);
             Sprite.Scale = 3;
             ObeysGravity = false;
             damage = power * 2;
@@ -47,6 +47,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
                 if (HitBox.Intersects(creature.HitBox))
                 {
                     creature.TakeDamage(damage);
+                    creature.AddEffect(new Effects.Burning(3));
                     LifeTime = 0;
                 }
             }

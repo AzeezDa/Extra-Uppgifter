@@ -16,6 +16,7 @@ namespace Some_Knights_and_a_Dragon
 
         public static GameWindow CurrentWindow { get; private set; }
         public static ContentManager ContentManager { get; private set; }
+        public static TextureManager TextureManager { get; private set; }
         public static InputManager InputManager { get; set; } // Static to be accessed by everywhere without being passed into objects.
         public static FontManager FontManager { get; set; } // Static to be accessed by everywhere without being passed into the objects.
 
@@ -32,6 +33,9 @@ namespace Some_Knights_and_a_Dragon
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            FontManager = new FontManager(); // Manages text draws
+            InputManager = new InputManager(); // Manages player's input (mouse and keyboard)
+            TextureManager = new TextureManager(); // Mananges textures such that no duplicates are made
             CurrentWindow = new GameplayWindow(); // Draws current window which is gameplay, to be changed for loading screens and menu
 
             base.Initialize();
@@ -43,8 +47,6 @@ namespace Some_Knights_and_a_Dragon
 
             // TODO: use this.Content to load your game content here
             HealthBar.Setup(ref _spriteBatch); // Healthbar manager for creatures
-            FontManager = new FontManager(); // Manages text draws
-            InputManager = new InputManager(); // Manages player's input (mouse and keyboard)
 
         }
 

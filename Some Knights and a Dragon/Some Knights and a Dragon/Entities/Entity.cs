@@ -77,25 +77,25 @@ namespace Some_Knights_and_a_Dragon.Entities
             if (Position.X - HitBox.Width / 2 < ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Left)
             {
                 Position = new Vector2(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Left + HitBox.Width / 2, Position.Y);
-                Velocity = Vector2.Zero;
+                Velocity *= new Vector2(0, 1);
                 CollidingWithBoundries = true;
             }
             if (Position.X + HitBox.Width / 2 > ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Right)
             {
                 Position = new Vector2(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Right - HitBox.Width / 2, Position.Y);
-                Velocity = Vector2.Zero;
+                Velocity *= new Vector2(0, 1);
                 CollidingWithBoundries = true;
             }
-            if (Position.Y - HitBox.Height  / 2 < ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Left)
+            if (Position.Y - HitBox.Height  / 2 < ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Top)
             {
                 Position = new Vector2(Position.X, ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Top + HitBox.Height / 2);
-                Velocity = Vector2.Zero;
+                Velocity *= new Vector2(1, 0);
                 CollidingWithBoundries = true;
             }
             if (Position.Y + HitBox.Height / 2> ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Bottom)
             {
                 Position = new Vector2(Position.X, ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Bottom - HitBox.Height / 2);
-                Velocity = Vector2.Zero;
+                Velocity *= new Vector2(1, 0);
                 CollidingWithBoundries = true;
             }
         }

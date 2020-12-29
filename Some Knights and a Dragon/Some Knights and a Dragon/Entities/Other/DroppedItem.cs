@@ -15,13 +15,17 @@ namespace Some_Knights_and_a_Dragon.Entities
 
         public Item Item { get; private set; }
 
+        private double animationOffset;
+
         public DroppedItem(Vector2 position, Item item)
         {
+            Random r = new Random();
             Item = item;
             Position = position;
             Speed = Vector2.Zero;
             LifeTime = 0;
             Sprite = item.Sprite;
+            animationOffset = r.NextDouble();
         }
         public override void Draw(ref SpriteBatch _spriteBatch)
         {
@@ -33,7 +37,7 @@ namespace Some_Knights_and_a_Dragon.Entities
             base.Update(ref gameTime);
             LifeTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             
-            Position = new Vector2(Position.X, ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Bottom + 15 * (float)Math.Sin(3 * LifeTime) - 40);
+            Position = new Vector2(Position.X, ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Bottom + 15 * (float)Math.Sin(3 * (LifeTime + animationOffset)) - 40);
             if (CollidingWithBoundries)
             {
                 ObeysGravity = false;
@@ -44,7 +48,7 @@ namespace Some_Knights_and_a_Dragon.Entities
         protected override void LoadSprite(string filepath)
         {
             base.LoadSprite(filepath);
-            Sprite = new Sprite(filepath + "lmao");
+            Sprite = new Sprite(filepath);
         }
     }
 }

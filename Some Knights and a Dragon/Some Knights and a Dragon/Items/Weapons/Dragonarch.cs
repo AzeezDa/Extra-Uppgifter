@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using Some_Knights_and_a_Dragon.Entities.Projectiles;
 using Some_Knights_and_a_Dragon.Windows;
 using System;
@@ -8,29 +7,24 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Items.Weapons
 {
-    public class ElvenBow : Weapon
+    class Dragonarch : Weapon
     {
-        int power;
-        bool shoot;
-        public ElvenBow()
+        int power = 0;
+        bool shoot = false;
+        public Dragonarch()
         {
-            Name = "Elven Bow";
-            Description = "This bow of an elf was not left on the shelf.";
-            LoadSprite("bow", 4, 1);
-            Damage = 10;
+            Name = "Dragonarch";
+            Description = "This bow was found inside the dragon. It is hot but still holdable. Arrows seem to lit up while close to it.";
+            LoadSprite("dragonarch", 4, 1);
+            Damage = 20;
             Handle = new Vector2(Sprite.Width / 2, 8);
             power = 0;
             shoot = false;
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
         public override void OnUse(GameTime gameTime)
         {
-            power = power > 10 ? 10 : power + 1;
+            power = power > 20 ? 20 : power + 3;
             if (((GameplayWindow)Game1.CurrentWindow).Player.Inventory.ItemInInventory("Arrow"))
             {
                 Sprite.AnimateAndFreeze(0, 4);
@@ -48,14 +42,14 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
             if (shoot)
             {
                 ((GameplayWindow)Game1.CurrentWindow).Player.Inventory.RemoveItem("Arrow");
-                ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Projectiles.Add(new Arrow(
+                ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Projectiles.Add(new Fireball(
                     ((GameplayWindow)Game1.CurrentWindow).Player.Creature,
                     ((GameplayWindow)Game1.CurrentWindow).Player.Creature.Position,
                     Vector2.Normalize(Game1.InputManager.GetCursor() - ((GameplayWindow)Game1.CurrentWindow).Player.Creature.Position), power
                     ));
                 shoot = false;
                 power = 0;
-                Sprite.Freeze(0,0);
+                Sprite.Freeze(0, 0);
                 Handle = new Vector2(Sprite.Width / 2, 8);
                 Sprite.Rotation = 0;
             }
@@ -67,12 +61,12 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
             if (((GameplayWindow)Game1.CurrentWindow).Player.Creature.TextureDirection == Entities.TextureDirection.Left)
             {
                 Sprite.Rotation *= Sprite.Rotation < 0 ? -1 : 1;
-                Sprite.Rotation = Sprite.Rotation >= (float)Math.PI / 2 ? (float)Math.PI / 2 : Sprite.Rotation + 6.0f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Sprite.Rotation = Sprite.Rotation >= (float)Math.PI / 2 ? (float)Math.PI / 2 : Sprite.Rotation + power * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             else
             {
                 Sprite.Rotation *= Sprite.Rotation > 0 ? -1 : 1;
-                Sprite.Rotation = Sprite.Rotation <= -(float)Math.PI / 2 ? -(float)Math.PI / 2 : Sprite.Rotation - 6.0f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Sprite.Rotation = Sprite.Rotation <= -(float)Math.PI / 2 ? -(float)Math.PI / 2 : Sprite.Rotation - power * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
         }
     }

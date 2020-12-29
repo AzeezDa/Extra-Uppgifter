@@ -27,7 +27,7 @@ namespace Some_Knights_and_a_Dragon.Managers
         // Load a sprite with no other animations
         public Sprite(string filepath)
         {
-            SpriteTexture = Game1.ContentManager.Load<Texture2D>(filepath);
+            SpriteTexture = Game1.TextureManager.GetTexture(filepath);
 
             Width = SpriteTexture.Width;
             Height = SpriteTexture.Height;
@@ -36,11 +36,19 @@ namespace Some_Knights_and_a_Dragon.Managers
         }
 
         // Load spritesheet and work on it
-        public Sprite(string filepath, int width, int height, int framesPerSecond = 12)
+        public Sprite(string filepath, Rectangle frame, int framesPerSecond = 12)
         {
-            SpriteTexture = Game1.ContentManager.Load<Texture2D>(filepath);
-            Width = width;
-            Height = height;
+            SpriteTexture = Game1.TextureManager.GetTexture(filepath);
+            Width = frame.Width;
+            Height = frame.Height;
+            animationTimer = new Timer(1000 / framesPerSecond);
+        }
+
+        public Sprite(string filepath, int xFrames, int yFrames, int framesPerSecond = 12)
+        {
+            SpriteTexture = Game1.TextureManager.GetTexture(filepath);
+            Width = SpriteTexture.Width / xFrames;
+            Height = SpriteTexture.Height / yFrames;
             animationTimer = new Timer(1000 / framesPerSecond);
         }
 

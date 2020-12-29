@@ -12,6 +12,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public int CurrentHealth { get; protected set; } // The current health of the creature
         public int MaxHealth { get; protected set; } // The maximum health of the creature
 
+        public List<Effects.Effect> CurrentEffects { get; private set; }
+
         // Body part positions Used for items:
 
         private Vector2 handPosition;
@@ -22,8 +24,27 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
         public Creature()
         {
+            CurrentEffects = new List<Effects.Effect>();
         }
 
+
+        public override void Update(ref GameTime gameTime)
+        {
+            base.Update(ref gameTime);
+            foreach (Effects.Effect effect in CurrentEffects)
+            {
+                effect.Update(gameTime, this);
+            }
+        }
+
+        public override void Draw(ref SpriteBatch _spriteBatch)
+        {
+            base.Draw(ref _spriteBatch);
+            foreach (Effects.Effect effect in CurrentEffects)
+            {
+                effect.Draw(_spriteBatch, this);
+            }
+        }
 
 
         protected override void LoadSprite(string filepath)
@@ -66,6 +87,22 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public virtual void Walk()
         {
 
+        }
+
+        public void AddEffect(Effects.Effect effect)
+        {
+            CurrentEffects.Add(effect);
+        }
+
+        public void RemoveEffect(string name)
+        {
+            for (int i = CurrentEffects.Count; i >= 0; --i)
+            {
+                if (CurrentEffects[i].Name == name)
+                {
+                    CurrentEffects.RemoveAt(i);
+                }
+            }
         }
     }
 }

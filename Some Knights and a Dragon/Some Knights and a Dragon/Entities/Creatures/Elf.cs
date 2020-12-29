@@ -15,7 +15,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
         public Elf() 
         {
-            LoadSprite("elf", 11, 32);
+            LoadSprite("elf", 9, 2);
             Position = new Vector2(400, 400);
             Speed = new Vector2(250, 1000);
             CurrentHealth = 100;

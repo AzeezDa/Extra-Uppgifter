@@ -13,7 +13,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
     {
         public Knight()
         {
-            LoadSprite("knight", 16, 30);
+            LoadSprite("knight", 4, 2);
             Position = new Vector2(400, 400);
             Speed = new Vector2(250, 1000);
             CurrentHealth = 100;

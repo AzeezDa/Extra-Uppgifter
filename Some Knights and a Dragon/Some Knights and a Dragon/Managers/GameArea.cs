@@ -16,7 +16,7 @@ namespace Some_Knights_and_a_Dragon.Managers
         public List<DroppedItem> DroppedItems { get; protected set; }
         public List<Projectile> Projectiles { get; protected set; }
 
-        Texture2D Background; // The background image. TO BE CHANGED TO ADD SKY IMAGE AND FOREGROUNG IMAGE
+        public Background Background { get; set; } // The background image. TO BE CHANGED TO ADD SKY IMAGE AND FOREGROUNG IMAGE
 
         public Vector2 Gravity { get; set; } // Gravity of the area, used in the acceleration of the entities
         public Rectangle Boundries { get; set; } // The boundries of the places from which creatures cannot escape
@@ -26,7 +26,7 @@ namespace Some_Knights_and_a_Dragon.Managers
         public GameArea(string backgroundFilePath)
         {
             // Initialize game area
-            Background = Game1.ContentManager.Load<Texture2D>(backgroundFilePath);
+            Background = new Background(backgroundFilePath, 4);
             Creatures = new List<Creature>();
             DroppedItems = new List<DroppedItem>();
             Projectiles = new List<Projectile>();
@@ -61,15 +61,15 @@ namespace Some_Knights_and_a_Dragon.Managers
                 }
             }
 
-            if (Boss.Creature.CurrentHealth > 0)
+            if (Boss.IsAlive)
                 Boss.Update(gameTime);
+
+            Background.Update(gameTime);
         }
 
         public void Draw(ref SpriteBatch _spriteBatch) // Draws background then creatures
         {
-            
-
-            _spriteBatch.Draw(Background, new Rectangle(0, 0, 1280, 960), Color.White);
+            Background.Draw(_spriteBatch);
             foreach (Creature creature in Creatures)
             {
                 creature.Draw(ref _spriteBatch);

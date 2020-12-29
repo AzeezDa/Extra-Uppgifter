@@ -11,12 +11,19 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
     public class DragonBoss : Boss
     {
-        Timer timer;
-        int power = 10;
+        Timer fireballTimer;
+        Timer rainOfFireTimer;
+        Random r = new Random();
+        int power = 5;
         public DragonBoss()
         {
             Creature = new Dragon();
-            timer = new Timer(2000);
+            fireballTimer = new Timer(2000);
+            rainOfFireTimer = new Timer(3000);
+
+            AddLoot(new Items.Weapons.Dragonarch(), 1);
+            AddLoot(new Items.Other.Arrow(), 10);
+            AddLoot(new Items.Weapons.Dragonbone(), 1);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -32,8 +39,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            timer.CheckTimer(ref gameTime);
-            if (timer.TimerOn)
+            fireballTimer.CheckTimer(ref gameTime);
+            if (fireballTimer.TimerOn)
             {
                 foreach (Creature creature in ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Creatures)
                 {
@@ -45,7 +52,40 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
                     Creature.Attack();
                 }   
             }
+            Phase1(ref gameTime);
+            Phase2(ref gameTime);
+        }
+
+        private void Phase1(ref GameTime gameTime)
+        {
             
+            rainOfFireTimer.CheckTimer(ref gameTime);
+            
+            if (Creature.CurrentHealth <= Creature.MaxHealth / 2)
+            {
+                ((GameplayWindow)Game1.CurrentWindow).Player.Creature.AddToPosition(new Vector2(-100 * (float)gameTime.ElapsedGameTime.TotalSeconds, 0));
+                if (rainOfFireTimer.TimerOn)
+                {
+                    power++;
+                    for (int i = 1; i < 6; i++)
+                    {
+                        ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.AddProjectile(new Fireball(Creature, new Vector2(i * 200 + r.Next(0, 100), 50 + r.Next(0, 50)), new Vector2(0, 0.3f), 2));
+                    }
+                }
+            }
+        }
+
+        private void Phase2(ref GameTime gameTime)
+        {
+            
+            if (Creature.CurrentHealth <= Creature.MaxHealth / 10 && rainOfFireTimer.TimerOn)
+            {
+                ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Background.ChangeSpeed(1, 100);
+                for (int i = 1; i < 4; i++)
+                {
+                    ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.AddProjectile(new Fireball(Creature, new Vector2(i * 200 + r.Next(0, 100), 50 + r.Next(0, 50)), new Vector2(0, 0.5f), 10));
+                }
+            }
         }
     }
 }

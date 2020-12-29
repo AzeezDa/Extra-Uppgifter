@@ -21,10 +21,12 @@ namespace Some_Knights_and_a_Dragon.Windows
 
             
 
-            CurrentGameArea = new GameArea("Backgrounds/volcano_bg");
+            CurrentGameArea = new GameArea("volcano");
+            CurrentGameArea.Background.ChangeSpeed(1, 15);
+            CurrentGameArea.Background.ChangeSpeed(0, 5);
 
             CurrentGameArea.Gravity = new Vector2(0, 5f);
-            CurrentGameArea.Boundries = new Rectangle(0, 0, 1280, 800);
+            CurrentGameArea.Boundries = new Rectangle(0, 0, 1280, 850);
 
             CurrentGameArea.Boss = new DragonBoss();
             CurrentGameArea.AddCreature(CurrentGameArea.Boss.Creature);
