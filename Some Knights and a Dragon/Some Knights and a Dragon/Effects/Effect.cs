@@ -7,12 +7,12 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Effects
 {
-    public abstract class Effect
+    public abstract class Effect // Effects such as poisoned, burning, sleeping etc. derive from this class.
     {
-        public string Name { get; protected set; }
-        public string Description { get; protected set; }
-        protected Texture2D Texture;
-        public double Duration { get; protected set; }
+        public string Name { get; protected set; } // Name of the effect
+        public string Description { get; protected set; } // Description of the effect
+        protected Texture2D Texture; // Texture displayed when having this effect (WORK IN PROGRESS)
+        public double Duration { get; protected set; } // Duration of the effect
         public Effect(string name, int duration)
         {
             Duration = duration;

@@ -69,32 +69,32 @@ namespace Some_Knights_and_a_Dragon.Entities
                 Sprite.Width * Sprite.Scale);
 
             // Updates movment, TO BE CHANGED FOR ACCURACY
-            Acceleration = ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Gravity;
-            Velocity += Acceleration * ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Gravity * (ObeysGravity ? 1 : 0);
+            Acceleration = Game1.WindowManager.GetGameplayWindow().CurrentLevel.Gravity;
+            Velocity += Acceleration * Game1.WindowManager.GetGameplayWindow().CurrentLevel.Gravity * (ObeysGravity ? 1 : 0);
             Position += Acceleration * (float)Math.Pow(gameTime.ElapsedGameTime.TotalSeconds, 2.0) / 2 + Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // CHECKS COLLISION WITH BOUNDRIES
-            if (Position.X - HitBox.Width / 2 < ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Left)
+            if (Position.X - HitBox.Width / 2 < Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Left)
             {
-                Position = new Vector2(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Left + HitBox.Width / 2, Position.Y);
+                Position = new Vector2(Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Left + HitBox.Width / 2, Position.Y);
                 Velocity *= new Vector2(0, 1);
                 CollidingWithBoundries = true;
             }
-            if (Position.X + HitBox.Width / 2 > ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Right)
+            if (Position.X + HitBox.Width / 2 > Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Right)
             {
-                Position = new Vector2(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Right - HitBox.Width / 2, Position.Y);
+                Position = new Vector2(Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Right - HitBox.Width / 2, Position.Y);
                 Velocity *= new Vector2(0, 1);
                 CollidingWithBoundries = true;
             }
-            if (Position.Y - HitBox.Height  / 2 < ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Top)
+            if (Position.Y - HitBox.Height  / 2 < Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Top)
             {
-                Position = new Vector2(Position.X, ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Top + HitBox.Height / 2);
+                Position = new Vector2(Position.X, Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Top + HitBox.Height / 2);
                 Velocity *= new Vector2(1, 0);
                 CollidingWithBoundries = true;
             }
-            if (Position.Y + HitBox.Height / 2> ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Bottom)
+            if (Position.Y + HitBox.Height / 2> Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Bottom)
             {
-                Position = new Vector2(Position.X, ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Boundries.Bottom - HitBox.Height / 2);
+                Position = new Vector2(Position.X, Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Bottom - HitBox.Height / 2);
                 Velocity *= new Vector2(1, 0);
                 CollidingWithBoundries = true;
             }
@@ -106,6 +106,7 @@ namespace Some_Knights_and_a_Dragon.Entities
             Sprite.Draw(ref _spriteBatch, Position, TextureDirection);
         }
 
+        // THE BELOW FUNCTION ARE DOING AS THEIR SIGNATURES TELL
         public void ChangePosition(Vector2 position)
         {
             Position = position;

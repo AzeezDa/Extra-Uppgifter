@@ -31,7 +31,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
         public override void OnUse(GameTime gameTime)
         {
             power = power > 10 ? 10 : power + 1;
-            if (((GameplayWindow)Game1.CurrentWindow).Player.Inventory.ItemInInventory("Arrow"))
+            if (Game1.WindowManager.GetGameplayWindow().Player.Inventory.ItemInInventory("Arrow"))
             {
                 Sprite.AnimateAndFreeze(0, 4);
                 shoot = true;
@@ -47,11 +47,11 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
 
             if (shoot)
             {
-                ((GameplayWindow)Game1.CurrentWindow).Player.Inventory.RemoveItem("Arrow");
-                ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Projectiles.Add(new Arrow(
-                    ((GameplayWindow)Game1.CurrentWindow).Player.Creature,
-                    ((GameplayWindow)Game1.CurrentWindow).Player.Creature.Position,
-                    Vector2.Normalize(Game1.InputManager.GetCursor() - ((GameplayWindow)Game1.CurrentWindow).Player.Creature.Position), power
+                Game1.WindowManager.GetGameplayWindow().Player.Inventory.RemoveItem("Arrow");
+                Game1.WindowManager.GetGameplayWindow().CurrentLevel.Projectiles.Add(new Arrow(
+                    Game1.WindowManager.GetGameplayWindow().Player.Creature,
+                    Game1.WindowManager.GetGameplayWindow().Player.Creature.Position,
+                    Vector2.Normalize(Game1.InputManager.GetCursor() - Game1.WindowManager.GetGameplayWindow().Player.Creature.Position), power
                     ));
                 shoot = false;
                 power = 0;
@@ -64,7 +64,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
         public override void UseAnimation(GameTime gameTime)
         {
             base.UseAnimation(gameTime);
-            if (((GameplayWindow)Game1.CurrentWindow).Player.Creature.TextureDirection == Entities.TextureDirection.Left)
+            if (Game1.WindowManager.GetGameplayWindow().Player.Creature.TextureDirection == Entities.TextureDirection.Left)
             {
                 Sprite.Rotation *= Sprite.Rotation < 0 ? -1 : 1;
                 Sprite.Rotation = Sprite.Rotation >= (float)Math.PI / 2 ? (float)Math.PI / 2 : Sprite.Rotation + 6.0f * (float)gameTime.ElapsedGameTime.TotalSeconds;

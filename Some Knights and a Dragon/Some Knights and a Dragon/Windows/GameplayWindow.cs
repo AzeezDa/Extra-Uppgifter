@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Some_Knights_and_a_Dragon.Managers;
 using Some_Knights_and_a_Dragon.Entities;
 using Some_Knights_and_a_Dragon.Entities.Creatures;
+using Some_Knights_and_a_Dragon.Levels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,50 +11,59 @@ using Some_Knights_and_a_Dragon.Managers.PlayerManagement;
 
 namespace Some_Knights_and_a_Dragon.Windows
 {
-    class GameplayWindow : GameWindow
+    public class GameplayWindow : GameWindow
     {
-        public GameArea CurrentGameArea { get; private set; }
-        public Player Player { get; private set; }
+        public Level CurrentLevel { get; private set; } // The Current level of the game
+        public Player Player { get; private set; } // The player object
+
+        public XMLManager<Level> LevelLoader { get; private set; } // Manages the loading of XML files
         public GameplayWindow()
         {
 
-            // THE CODE BELOW IS PREMILINARY, TO BE CHANGED FOR ALL LEVELS AND CHARACTERS. THIS ONLY EXISTS FOR DEBUG PURPOSES
+            LevelLoader = new XMLManager<Level>();
+        }
 
-            
+        public override void LoadContent() // Loads the content of the level
+        {
+            base.LoadContent();
 
-            CurrentGameArea = new GameArea("volcano");
-            CurrentGameArea.Background.ChangeSpeed(1, 15);
-            CurrentGameArea.Background.ChangeSpeed(0, 5);
-
-            CurrentGameArea.Gravity = new Vector2(0, 5f);
-            CurrentGameArea.Boundries = new Rectangle(0, 0, 1280, 850);
-
-            CurrentGameArea.Boss = new DragonBoss();
-            CurrentGameArea.AddCreature(CurrentGameArea.Boss.Creature);
+            // CODE IS FOR DEBUG WILL BE CHANGED TO BE MORE DYNAMIC AND DEPENDANT ON THE XML LOADERS
+            CurrentLevel = LevelLoader.Get("Levels/Dragonfall.xml");
+            CurrentLevel.LoadContent();
 
             Player = new Player(new Elf());
-            CurrentGameArea.AddCreature(Player.Creature);
-            CurrentGameArea.DroppedItems.Add(new DroppedItem(new Vector2(400, 400), new Items.Weapons.ElvenBow()));
-            CurrentGameArea.DroppedItems.Add(new DroppedItem(new Vector2(500, 400), new Items.Weapons.Sword()));
+            CurrentLevel.AddCreature(Player.Creature);
+            CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(400, 400), new Items.Weapons.ElvenBow()));
+            CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(500, 400), new Items.Weapons.Sword()));
 
             for (int i = 0; i < 32; i++)
             {
-                CurrentGameArea.DroppedItems.Add(new DroppedItem(new Vector2(550 + i, 400), new Items.Other.Arrow()));
+                CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(550 + i, 400), new Items.Other.Arrow()));
             }
         }
-        
+
         public override void Draw(ref SpriteBatch _spriteBatch)
         {
             base.Draw(ref _spriteBatch);
-            CurrentGameArea.Draw(ref _spriteBatch);
+            CurrentLevel.Draw(ref _spriteBatch);
             Player.Draw(ref _spriteBatch);
         }
 
         public override void Update(ref GameTime gameTime)
         {
             base.Update(ref gameTime);
-            CurrentGameArea.Update(ref gameTime);
+            CurrentLevel.Update(ref gameTime);
             Player.Update(ref gameTime);
+        }
+
+        // Loads a new level and calls the Garbage collector to more 
+        public void NewLevel(string levelName)
+        {
+            CurrentLevel = null;
+            GC.Collect();
+            CurrentLevel = LevelLoader.Get("Levels/" + levelName);
+            CurrentLevel.LoadContent();
+            CurrentLevel.Creatures.Add(Player.Creature);
         }
     }
 }

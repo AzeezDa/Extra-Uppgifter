@@ -21,8 +21,10 @@ namespace Some_Knights_and_a_Dragon.Managers
         int currentFrame = 0;
         int currentRow = 0;
         int frames = 1;
-        bool oneTimeAnimationOn = false;
+        bool oneTimeAnimationOn = false; // If the animation is on state that is does an animation once such as attack
         bool freeze = false;
+
+        public Rectangle BoundaryBox;
 
         // Load a sprite with no other animations
         public Sprite(string filepath)
@@ -159,5 +161,25 @@ namespace Some_Knights_and_a_Dragon.Managers
                 0);
         }
 
+        // Draws a frame of the sprite
+        public void DrawFrame(ref SpriteBatch spriteBatch, Vector2 position, int row, int column, TextureDirection textureDirection = TextureDirection.Right, Vector2? origin = null)
+        {
+
+            spriteBatch.Draw(
+                SpriteTexture,
+                new Rectangle((int)position.X, (int)position.Y, Width * Scale, Height * Scale),
+                new Rectangle(column * Width, row * Height, Width, Height),
+                Color.White,
+                Rotation,
+                origin ?? new Vector2(Width / 2, Height / 2),
+                textureDirection == TextureDirection.Left ? SpriteEffects.FlipHorizontally : textureDirection == TextureDirection.Down ? SpriteEffects.FlipVertically : SpriteEffects.None,
+                0);
+        }
+
+        public Rectangle GetBoundaryBoxAt(Vector2 position)
+        {
+            return new Rectangle((int)position.X - Width * Scale / 2, (int)position.Y - Height * Scale / 2,
+                                 Width * Scale, Height * Scale);
+        }
     }
 }

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Background>
+    <LayerSpeeds>
+      <float>5</float>
+      <float>15</float>
+      <float>0</float>
+      <float>0</float>
+    </LayerSpeeds>
+    <LayerFrames>
+      <float>0</float>
+      <float>0</float>
+      <float>0</float>
+      <float>0</float>
+    </LayerFrames>
+    <FilePath>volcano</FilePath>
+    <Layers>4</Layers>
+  </Background>
+  <BossClassName>Some_Knights_and_a_Dragon.Entities.Creatures.DragonBoss</BossClassName>
+  <NextLevel>Endwood.xml</NextLevel>
+  <LevelMusic>dragonBossMusic</LevelMusic>
+  <Gravity>
+    <X>0</X>
+    <Y>5</Y>
+  </Gravity>
+  <Boundries>
+    <Location>
+      <X>0</X>
+      <Y>0</Y>
+    </Location>
+    <Size>
+      <X>1280</X>
+      <Y>850</Y>
+    </Size>
+  </Boundries>
+</Level>

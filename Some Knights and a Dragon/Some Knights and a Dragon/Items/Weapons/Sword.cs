@@ -24,13 +24,13 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
             base.OnUse(gameTime);
             if (!attacked)
             {
-                foreach (Creature creature in ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Creatures)
+                foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures)
                 {
-                    if (creature == ((GameplayWindow)Game1.CurrentWindow).Player.Creature)
+                    if (creature == Game1.WindowManager.GetGameplayWindow().Player.Creature)
                         continue;
 
-                    if (creature.HitBox.Contains(((GameplayWindow)Game1.CurrentWindow).Player.Creature.Position +
-                        (((GameplayWindow)Game1.CurrentWindow).Player.Creature.TextureDirection == Entities.TextureDirection.Left ? new Vector2(30, 0) : new Vector2(-30, 0))))
+                    if (creature.HitBox.Contains(Game1.WindowManager.GetGameplayWindow().Player.Creature.Position +
+                        (Game1.WindowManager.GetGameplayWindow().Player.Creature.TextureDirection == Entities.TextureDirection.Left ? new Vector2(30, 0) : new Vector2(-30, 0))))
                     {
                         creature.TakeDamage(Damage);
                         attacked = true;

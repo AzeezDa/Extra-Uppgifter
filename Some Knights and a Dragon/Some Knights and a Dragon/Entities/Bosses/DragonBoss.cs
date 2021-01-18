@@ -11,79 +11,80 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
     public class DragonBoss : Boss
     {
-        Timer fireballTimer;
-        Timer rainOfFireTimer;
+        Timer fireballTimer; // Timer for the fireballs thrown from the boss
+        Timer rainOfFireTimer; // Timer for the fireballs that rain from the sky (phase 1 and 2)
         Random r = new Random();
-        int power = 5;
+        int power = 5; // The power of the Dragon's attacks
         public DragonBoss()
         {
+            // Sets up the dragon and its timers.
             Creature = new Dragon();
             fireballTimer = new Timer(2000);
             rainOfFireTimer = new Timer(3000);
 
+            // LOOT OF THE BOSS
             AddLoot(new Items.Weapons.Dragonarch(), 1);
             AddLoot(new Items.Other.Arrow(), 10);
             AddLoot(new Items.Weapons.Dragonbone(), 1);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch) // Draws the boss
         {
             base.Draw(spriteBatch);
-        }
-
-        public override void OnDeath()
-        {
-            base.OnDeath();
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            // Handles the fireball attacks.
             fireballTimer.CheckTimer(ref gameTime);
             if (fireballTimer.TimerOn)
             {
-                foreach (Creature creature in ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Creatures)
+                foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures)
                 {
                     if (creature == Creature)
                         continue;
 
-                    ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.AddProjectile(new Fireball(Creature, Creature.Position + new Vector2(0, -100),
+                    Game1.WindowManager.GetGameplayWindow().CurrentLevel.AddProjectile(new Fireball(Creature, Creature.Position + new Vector2(0, -100),
                     Vector2.Normalize(creature.Position - (Creature.Position + new Vector2(0, -100))), power));
                     Creature.Attack();
                 }   
             }
             Phase1(ref gameTime);
-            Phase2(ref gameTime);
+            Phase2();
         }
 
         private void Phase1(ref GameTime gameTime)
         {
             
+            // When below 50%: The player is blown to the left and fireballs start shooting from the sky
             rainOfFireTimer.CheckTimer(ref gameTime);
             
             if (Creature.CurrentHealth <= Creature.MaxHealth / 2)
             {
-                ((GameplayWindow)Game1.CurrentWindow).Player.Creature.AddToPosition(new Vector2(-100 * (float)gameTime.ElapsedGameTime.TotalSeconds, 0));
+                Game1.WindowManager.GetGameplayWindow().Player.Creature.AddToPosition(new Vector2(-100 * (float)gameTime.ElapsedGameTime.TotalSeconds, 0));
                 if (rainOfFireTimer.TimerOn)
                 {
                     power++;
                     for (int i = 1; i < 6; i++)
                     {
-                        ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.AddProjectile(new Fireball(Creature, new Vector2(i * 200 + r.Next(0, 100), 50 + r.Next(0, 50)), new Vector2(0, 0.3f), 2));
+                        Game1.WindowManager.GetGameplayWindow().CurrentLevel.AddProjectile(new Fireball(Creature, new Vector2(i * 200 + r.Next(0, 100), 50 + r.Next(0, 50)), new Vector2(0, 0.3f), 3));
                     }
                 }
             }
         }
 
-        private void Phase2(ref GameTime gameTime)
+        private void Phase2()
         {
             
+            // When below 10%: The player is blown further and more fireballs rain from the sky
             if (Creature.CurrentHealth <= Creature.MaxHealth / 10 && rainOfFireTimer.TimerOn)
             {
-                ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.Background.ChangeSpeed(1, 100);
+                Game1.WindowManager.GetGameplayWindow().CurrentLevel.Background.ChangeSpeed(1, 100);
                 for (int i = 1; i < 4; i++)
                 {
-                    ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.AddProjectile(new Fireball(Creature, new Vector2(i * 200 + r.Next(0, 100), 50 + r.Next(0, 50)), new Vector2(0, 0.5f), 10));
+                    Game1.WindowManager.GetGameplayWindow().CurrentLevel.AddProjectile(new Fireball(Creature, new Vector2(i * 200 + r.Next(0, 100), 50 + r.Next(0, 50)), new Vector2(0, 0.5f), 10));
                 }
             }
         }

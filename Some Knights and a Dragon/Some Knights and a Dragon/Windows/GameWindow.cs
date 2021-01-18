@@ -9,6 +9,10 @@ namespace Some_Knights_and_a_Dragon
 {
     public class GameWindow
     {
+        public virtual void LoadContent() // Loads the content of the window
+        {
+
+        }
         public virtual void Update(ref GameTime gameTime) // Updates the window content
         {
 

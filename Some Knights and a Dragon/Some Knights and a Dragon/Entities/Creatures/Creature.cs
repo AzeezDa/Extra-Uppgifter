@@ -12,7 +12,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public int CurrentHealth { get; protected set; } // The current health of the creature
         public int MaxHealth { get; protected set; } // The maximum health of the creature
 
-        public List<Effects.Effect> CurrentEffects { get; private set; }
+        public List<Effects.Effect> CurrentEffects { get; private set; } // List of effects on the creature
 
         // Body part positions Used for items:
 
@@ -31,9 +31,11 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public override void Update(ref GameTime gameTime)
         {
             base.Update(ref gameTime);
-            foreach (Effects.Effect effect in CurrentEffects)
+            for (int i = CurrentEffects.Count - 1; i >= 0; --i)
             {
-                effect.Update(gameTime, this);
+                CurrentEffects[i].Update(gameTime, this);
+                if (CurrentEffects[i].Duration <= 0)
+                    CurrentEffects.RemoveAt(i);
             }
         }
 

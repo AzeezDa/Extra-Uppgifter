@@ -64,7 +64,6 @@ C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some K
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\runtimes\win7-arm\native\libuv.dll
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\libuv.dll
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
-C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\obj\Debug\netcoreapp3.1\Some_Knights_and_a_Dragon.csprojAssemblyReference.cache
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\obj\Debug\netcoreapp3.1\Some_Knights_and_a_Dragon.AssemblyInfoInputs.cache
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\obj\Debug\netcoreapp3.1\Some_Knights_and_a_Dragon.AssemblyInfo.cs
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\obj\Debug\netcoreapp3.1\Some_Knights_and_a_Dragon.csproj.CoreCompileInputs.cache
@@ -91,3 +90,13 @@ C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some K
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Items\Weapons\dragonarch.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Items\Weapons\dragonbone.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Backgrounds\volcano.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Menus\playButton.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Menus\quitButton.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Menus\logo.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Music\intro.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Music\intro.wma
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Music\dragonBossMusic.wma
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Music\dragonBossMusic.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Levels\Dragonfall.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\obj\Debug\netcoreapp3.1\Some_Knights_and_a_Dragon.csprojAssemblyReference.cache
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Backgrounds\endwood.xnb

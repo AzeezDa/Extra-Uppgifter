@@ -7,7 +7,7 @@ using Some_Knights_and_a_Dragon.Items;
 
 namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 {
-    public class InventoryItem
+    public class InventoryItem // Every item in the inventory consists of this class: 1 Item class and one int for the amount of that item 
     {
         public Item Item;
         public int Amount;
@@ -22,9 +22,10 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
     {
 
         // Inventory Management fields
-        private InventoryItem[] inventory;
-        private int currentItemIndex;
-        public InventoryItem CurrentItem { get => inventory[currentItemIndex]; }
+        private InventoryItem[] inventory; // Array of the items
+        private int currentItemIndex; // Array index of the current item held by the player
+        public InventoryItem CurrentItem { get => inventory[currentItemIndex]; } // Gets the current item held by the player
+
         // Inventory Textures
         private Texture2D currentInventoryItemBackground;
         private Texture2D inventoryBackground;
@@ -32,11 +33,11 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         {
             inventory = new InventoryItem[5];
             currentItemIndex = 0;
-            currentInventoryItemBackground = Game1.ContentManager.Load<Texture2D>("Menus/inventoryBack");
-            inventoryBackground = Game1.ContentManager.Load<Texture2D>("Menus/inventoryTexture");
+            currentInventoryItemBackground = Game1.TextureManager.GetTexture("Menus/inventoryBack");
+            inventoryBackground = Game1.TextureManager.GetTexture("Menus/inventoryTexture");
         }
 
-        public void Update(ref GameTime gameTime)
+        public void Update(ref GameTime gameTime) // Updates the Inventory
         {
             for (int i = 0; i < 5; i++)
             {
@@ -46,6 +47,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 }
             }
 
+            // Scrolls wheel is used to handle the change of item in hand
             if (currentItemIndex + Game1.InputManager.ScrollValue() > 4)
                 currentItemIndex = 0;
             else if (currentItemIndex + Game1.InputManager.ScrollValue() < 0)
@@ -54,6 +56,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 currentItemIndex += Game1.InputManager.ScrollValue();
         }
 
+        // Draws the items stored in the correct playe (Visualisation of the array)
         public void Draw(ref SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
@@ -85,7 +88,8 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             }
         }
 
-        public void NewItem(Item item)
+        
+        public void NewItem(Item item) // Adds a new item to the first empty spot in the inventory
         {
             for (int i = 0; i < 5; i++)
             {
@@ -102,7 +106,8 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             }
         }
 
-        public void RemoveItem(string name)
+        
+        public void RemoveItem(string name) // Removes the item from the inventory (Reduces its amount by 1)
         {
             for (int i = 0; i < 5; i++)
             {
@@ -119,7 +124,8 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             }
         }
 
-        public bool ItemInInventory(string name)
+         
+        public bool ItemInInventory(string name) // Checks if an item in in the inventory
         {
             for (int i = 0; i < 5; i++)
             {

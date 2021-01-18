@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using Some_Knights_and_a_Dragon.Entities;
 using Some_Knights_and_a_Dragon.Managers;
 using Some_Knights_and_a_Dragon.Windows;
@@ -14,12 +16,14 @@ namespace Some_Knights_and_a_Dragon
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public static GameWindow CurrentWindow { get; private set; }
-        public static ContentManager ContentManager { get; private set; }
-        public static TextureManager TextureManager { get; private set; }
+        public static bool Quit { get; set; }
+        
+        public static WindowManager WindowManager { get; private set; } // Manages the windows/screens displayed
+        public static ContentManager ContentManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
+        public static TextureManager TextureManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
         public static InputManager InputManager { get; set; } // Static to be accessed by everywhere without being passed into objects.
         public static FontManager FontManager { get; set; } // Static to be accessed by everywhere without being passed into the objects.
-
+        public static SongManager SongManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -35,9 +39,10 @@ namespace Some_Knights_and_a_Dragon
             // TODO: Add your initialization logic here
             FontManager = new FontManager(); // Manages text draws
             InputManager = new InputManager(); // Manages player's input (mouse and keyboard)
-            TextureManager = new TextureManager(); // Mananges textures such that no duplicates are made
-            CurrentWindow = new GameplayWindow(); // Draws current window which is gameplay, to be changed for loading screens and menu
-
+            TextureManager = new TextureManager(GraphicsDevice); // Mananges textures such that no duplicates are made
+            SongManager = new SongManager(); // Manages background music
+            WindowManager = new WindowManager(); // Manages displayed windows
+            
             base.Initialize();
         }
 
@@ -46,18 +51,18 @@ namespace Some_Knights_and_a_Dragon
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            HealthBar.Setup(ref _spriteBatch); // Healthbar manager for creatures
+            HealthBar.Setup(ref _spriteBatch); // Health bar manager for creatures
 
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape) || Quit)
                 Exit();
 
             // TODO: Add your update logic here
             InputManager.Update();
-            CurrentWindow.Update(ref gameTime);
+            WindowManager.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -65,8 +70,8 @@ namespace Some_Knights_and_a_Dragon
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
-            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            CurrentWindow.Draw(ref _spriteBatch);
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp); // Sampler is used to make scaled sprites not blurry but keep their pixely look.
+            WindowManager.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);

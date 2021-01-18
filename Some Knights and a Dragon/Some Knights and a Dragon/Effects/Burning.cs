@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Effects
 {
-    public class Burning : Effect
+    public class Burning : Effect // BURNING EFFECT: Take damage every second
     {
         Timer timer;
         public Burning(int duration) : base("Burning", duration)

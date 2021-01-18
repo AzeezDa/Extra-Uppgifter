@@ -34,16 +34,17 @@ namespace Some_Knights_and_a_Dragon.Items
         {
             Sprite.Update(ref gameTime);
         }
-        public virtual void OnUse(GameTime gameTime)
+        public virtual void OnUse(GameTime gameTime) // When used do this
         {
 
         }
 
-        public virtual void AfterUse()
+        public virtual void AfterUse() // After used do this
         {
 
         }
 
+        // Draws the item on a creature
         public void DrawOn(ref SpriteBatch spriteBatch, Creature creature, Entities.TextureDirection textureDirection)
         {
             Sprite.Draw(ref spriteBatch,
@@ -52,7 +53,7 @@ namespace Some_Knights_and_a_Dragon.Items
                 textureDirection == Entities.TextureDirection.Left ? new Vector2(Sprite.Width - Handle.X, Handle.Y) : Handle);
         }
 
-        public virtual void UseAnimation(GameTime gameTime)
+        public virtual void UseAnimation(GameTime gameTime) // Animation if the item is used.
         {
 
         }

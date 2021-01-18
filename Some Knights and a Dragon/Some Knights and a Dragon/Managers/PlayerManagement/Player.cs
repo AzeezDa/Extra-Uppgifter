@@ -12,10 +12,10 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 {
     public class Player
     {
-        public Creature Creature { get; private set; }
-        public InventoryManager Inventory { get; private set; }
+        public Creature Creature { get; private set; } // Creature of the player
+        public InventoryManager Inventory { get; private set; } // The inventory system check the class for more info
 
-        bool attacking;
+        bool isAttacking;
         public Player(Creature creature)
         {
             Creature = creature;
@@ -24,25 +24,26 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
         public void Update(ref GameTime gameTime)
         {
-            Inventory.Update(ref gameTime);
+            Inventory.Update(ref gameTime); // Updates the inventory
 
-            for (int i = ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.DroppedItems.Count - 1; i >= 0; --i)
+            // If player close to dropped item, that item is added to the inventory
+            for (int i = Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems.Count - 1; i >= 0; --i)
             {
-                if (Vector2.Distance(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.DroppedItems[i].Position, Creature.Position) <= 50)
+                if (Vector2.Distance(Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems[i].Position, Creature.Position) <= 50)
                 {
-                    Inventory.NewItem(((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.DroppedItems[i].Item);
-                    ((GameplayWindow)Game1.CurrentWindow).CurrentGameArea.DroppedItems.RemoveAt(i);
+                    Inventory.NewItem(Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems[i].Item);
+                    Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems.RemoveAt(i);
                 }
             }
 
-            if(Creature.CurrentHealth > 0)
+            if(Creature.CurrentHealth > 0) // if player is alive, they can move
                 PlayerMovementAndInput(gameTime);
         }
 
         public void Draw(ref SpriteBatch _spritebatch)
         {
 
-            if (Creature.CurrentHealth > 0)
+            if (Creature.CurrentHealth > 0) // If player is alive, their life and texture is displayed
             {
                 HealthBar.FloatingBar(Creature, ref _spritebatch);
                 Inventory.Draw(ref _spritebatch);
@@ -57,7 +58,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             }
         }
 
-        public void PlayerMovementAndInput(GameTime gameTime)
+        public void PlayerMovementAndInput(GameTime gameTime) // Handles the movement and its animation: uses WASD format and space for jump. Mouse is used for attacks
         {
             Creature.MultiplyWithVelocity(new Vector2(0, 1));
             Creature.Sprite.Freeze();
@@ -81,15 +82,15 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                     Inventory.CurrentItem.Item.OnUse(gameTime);
                 }
                 Creature.Attack();
-                attacking = true;
+                isAttacking = true;
             }
-            else if (attacking)
+            else if (isAttacking)
             {
                 if (Inventory.CurrentItem != null)
                 {
                     Inventory.CurrentItem.Item.AfterUse();
                 }
-                attacking = false;
+                isAttacking = false;
                 Creature.ResetPose();
             }
         }
