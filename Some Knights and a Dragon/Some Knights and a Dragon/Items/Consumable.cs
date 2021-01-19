@@ -14,12 +14,12 @@ namespace Some_Knights_and_a_Dragon.Items
 
         protected override void LoadSprite(string filePath, int width, int height)
         {
-            Sprite = new Sprite("Items/Consumable/" + filePath, width, height, 12);
+            Sprite = new Sprite("Items/Consumables/" + filePath, width, height, 12);
         }
 
         protected override void LoadSprite(string filePath)
         {
-            Sprite = new Sprite("Items/Consumable/" + filePath);
+            Sprite = new Sprite("Items/Consumables/" + filePath);
         }
 
     }

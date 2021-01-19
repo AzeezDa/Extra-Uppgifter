@@ -26,6 +26,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             AddLoot(new Items.Weapons.Dragonarch(), 1);
             AddLoot(new Items.Other.Arrow(), 10);
             AddLoot(new Items.Weapons.Dragonbone(), 1);
+            AddLoot(new Items.Other.Coin(), 20);
         }
 
         public override void Draw(SpriteBatch spriteBatch) // Draws the boss

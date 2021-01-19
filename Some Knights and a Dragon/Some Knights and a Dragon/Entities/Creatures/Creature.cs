@@ -80,6 +80,11 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             CurrentHealth -= amount;
         }
 
+        public virtual void AddHealth(int amount) // Add health to the creature
+        {
+            CurrentHealth = MaxHealth + amount > MaxHealth ? MaxHealth : CurrentHealth + amount;
+        }
+
         // Animation Methods
         public virtual void ResetPose()
         {

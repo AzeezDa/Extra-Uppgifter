@@ -31,8 +31,14 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             {
                 if (Vector2.Distance(Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems[i].Position, Creature.Position) <= 50)
                 {
-                    Inventory.NewItem(Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems[i].Item);
-                    Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems.RemoveAt(i);
+                    if (Inventory.InventoryFull() && 
+                        Inventory.ItemInInventory(Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems[i].Item.Name) ||
+                        !Inventory.InventoryFull())
+                    {
+                        Inventory.NewItem(Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems[i].Item);
+                        Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems.RemoveAt(i);
+                    }
+                    
                 }
             }
 
@@ -92,6 +98,12 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 }
                 isAttacking = false;
                 Creature.ResetPose();
+            }
+
+            if (Game1.InputManager.KeyClicked(Keys.Q) && Inventory.CurrentItem != null)
+            {
+                Game1.WindowManager.GetGameplayWindow().CurrentLevel.AddDroppedItem(Creature.Position + new Vector2(Creature.TextureDirection == Entities.TextureDirection.Right ? 100 : -100, 30),
+                    Inventory.RemoveAtCurrentIndex());
             }
         }
     }

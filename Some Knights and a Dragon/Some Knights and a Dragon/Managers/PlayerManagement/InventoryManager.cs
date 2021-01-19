@@ -86,6 +86,9 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                     Game1.FontManager.WriteText(spriteBatch, inventory[i].Amount.ToString(), new Vector2(1280 / 2 + 64 * (i - 2), 960 - 64), Color.Red);
                 }
             }
+
+            if (CurrentItem != null)
+                Game1.FontManager.WriteText(spriteBatch, CurrentItem.Item.Name, new Vector2(1280 / 2, 940));
         }
 
         
@@ -93,35 +96,79 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         {
             for (int i = 0; i < 5; i++)
             {
+                if (inventory[i] != null)
+                {
+                    if (item.Name == inventory[i].Item.Name)
+                    {
+                        inventory[i].Amount++;
+                        return;
+                    }
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
                 if (inventory[i] == null)
                 {
                     inventory[i] = new InventoryItem(item, 1);
-                    break;
-                }
-                if (item.Name == inventory[i].Item.Name)
-                {
-                    inventory[i].Amount++;
-                    break;
+                    return;
                 }
             }
         }
 
         
-        public void RemoveItem(string name) // Removes the item from the inventory (Reduces its amount by 1)
+        public Item RemoveItem(string name) // Removes the item from the inventory (Reduces its amount by 1) and returns it as an output
         {
+            Item item;
             for (int i = 0; i < 5; i++)
             {
                 if (inventory[i] == null)
                     continue;
                 if (name == inventory[i].Item.Name)
                 {
+                    item = inventory[i].Item;
                     if (inventory[i].Amount == 1)
                         inventory[i] = null;
                     else
                         inventory[i].Amount--;
-                    break;
+                    return item;
                 }
             }
+            return null;
+        }
+
+        public Item RemoveItem(string name, int amount) // Removes the item from the inventory (Reduces its amount by the given amount) and returns it as an output
+        {
+            Item item;
+            for (int i = 0; i < 5; i++)
+            {
+                if (inventory[i] == null)
+                    continue;
+                if (name == inventory[i].Item.Name)
+                {
+                    item = inventory[i].Item;
+                    if (inventory[i].Amount == amount)
+                        inventory[i] = null;
+                    else
+                        inventory[i].Amount-= amount;
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        public Item RemoveAtCurrentIndex()
+        {
+            Item item;
+            if (inventory[currentItemIndex] != null)
+            {
+                item = inventory[currentItemIndex].Item;
+                if (inventory[currentItemIndex].Amount == 1)
+                    inventory[currentItemIndex] = null;
+                else
+                    inventory[currentItemIndex].Amount--;
+                return item;
+            }
+            return null;
         }
 
          
@@ -136,9 +183,31 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                     return true;
                 }
             }
-
             return false;
         }
 
+        public bool ItemInInventory(string name, int amount) // Checks if an item in in the inventory with a specific amount
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (inventory[i] == null)
+                    continue;
+                if (inventory[i].Item.Name == name && inventory[i].Amount >= amount)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool InventoryFull() // Returns true if the inventory is full
+        {
+            foreach (InventoryItem item in inventory)
+            {
+                if (item == null)
+                    return false;
+            }
+            return true;
+        }
     }
 }

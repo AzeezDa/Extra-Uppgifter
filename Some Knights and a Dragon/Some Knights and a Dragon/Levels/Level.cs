@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Text;
 using Some_Knights_and_a_Dragon.Windows;
+using Some_Knights_and_a_Dragon.Managers.PlayerManagement;
 
 namespace Some_Knights_and_a_Dragon.Levels
 {
@@ -24,6 +25,8 @@ namespace Some_Knights_and_a_Dragon.Levels
         public List<Projectile> Projectiles { get; private set; } // Projectiles shot by the creatures
         [XmlIgnore]
         public Boss Boss { get; set; } // The boss object
+        [XmlIgnore]
+        public TradingManager TradingManager { get; private set; } // The trading manager with the mysterious man
 
         // LOADED FROM XML
         public string BossClassName { get; set; } // Boss class name
@@ -32,6 +35,11 @@ namespace Some_Knights_and_a_Dragon.Levels
         public Background Background { get; set; } // The background image class
         public Vector2 Gravity { get; set; } // Gravity of the area, used in the acceleration of the entities
         public Rectangle Boundries { get; set; } // The boundries of the places from which creatures cannot escape
+
+        public Level()
+        {
+            TradingManager = new TradingManager();
+        }
 
         public void LoadContent() // Loads the level
         {
@@ -80,6 +88,7 @@ namespace Some_Knights_and_a_Dragon.Levels
                 Boss.Update(gameTime);
             else
             {
+                TradingManager.Update(gameTime);
                 if (Game1.InputManager.KeyClicked(Microsoft.Xna.Framework.Input.Keys.N))
                 {
                     Game1.WindowManager.GetGameplayWindow().NewLevel(NextLevel);
@@ -87,27 +96,28 @@ namespace Some_Knights_and_a_Dragon.Levels
             }
         }
 
-        public void Draw(ref SpriteBatch _spriteBatch) // Draws background then creatures
+        public void Draw(ref SpriteBatch spriteBatch) // Draws background then creatures
         {
             // Draws everything in this order: Background, Creatures, Items, Projectiles, Boss, Text
-            Background.Draw(_spriteBatch);
+            Background.Draw(spriteBatch);
             foreach (Creature creature in Creatures)
             {
-                creature.Draw(ref _spriteBatch);
+                creature.Draw(ref spriteBatch);
             }
             foreach (DroppedItem droppedItem in DroppedItems)
             {
-                droppedItem.Draw(ref _spriteBatch);
+                droppedItem.Draw(ref spriteBatch);
             }
             foreach (Projectile projectile in Projectiles)
             {
-                projectile.Draw(ref _spriteBatch);
+                projectile.Draw(ref spriteBatch);
             }
             if (Boss.IsAlive)
-                Boss.Draw(_spriteBatch);
+                Boss.Draw(spriteBatch);
             else
             {
-                Game1.FontManager.WriteText(_spriteBatch, "Press N to Continue!", new Vector2(640, 480));
+                TradingManager.Draw(spriteBatch);
+                Game1.FontManager.WriteText(spriteBatch, "Press N to Continue!", new Vector2(640, 480));
             }
 
         }
@@ -125,6 +135,14 @@ namespace Some_Knights_and_a_Dragon.Levels
         public void AddDroppedItem(Vector2 position, Item item) // Adds a dropped item to its list.
         {
             DroppedItems.Add(new DroppedItem(position, item));
+        }
+
+        public void AddDroppedItem(Vector2 position, Item item, int amount) // Adds a dropped item to its list.
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                DroppedItems.Add(new DroppedItem(position, item));
+            }
         }
     }
 }

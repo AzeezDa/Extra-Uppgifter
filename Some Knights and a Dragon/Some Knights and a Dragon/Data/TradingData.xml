@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Items>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Other.Arrow" Cost="1" Amount ="10"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.Sword" Cost="5" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.ElvenBow" Cost="5" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.Dragonarch" Cost="10" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.Dragonbone" Cost="10" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Consumables.HealingPotion" Cost="20" Amount ="1"/>
+</Items>

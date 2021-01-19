@@ -21,7 +21,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Entities\Creatures\" />
+    <Folder Include="Content\Items\Consumables\" />
     <Folder Include="Content\Items\Weapons\" />
     <Folder Include="Content\Music\" />
   </ItemGroup>

@@ -11,6 +11,7 @@ namespace Some_Knights_and_a_Dragon.Items.Other
             Name = "Arrow";
             Description = "An arrow that should be used in bows, duh!";
             LoadSprite("Items/Other/arrow");
+            Sprite.Scale = 3;
         }
     }
 }
