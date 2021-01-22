@@ -33,8 +33,8 @@ namespace Some_Knights_and_a_Dragon.Windows
 
             Player = new Player(new Elf());
             CurrentLevel.AddCreature(Player.Creature);
-            CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(400, 400), new Items.Weapons.ElvenBow()));
-            CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(500, 400), new Items.Weapons.Sword()));
+            CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(400, 400), new Items.Weapons.Sword()));
+            CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(500, 400), new Items.Weapons.ElvenBow()));
 
             for (int i = 0; i < 32; i++)
             {

@@ -36,20 +36,30 @@ namespace Some_Knights_and_a_Dragon.Entities
         {
             base.Update(ref gameTime);
             LifeTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            
+
             // Changes position to give the floating animation effect using a Asin(Bx + C) + D function
-            Position = new Vector2(Position.X, Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Bottom + 15 * (float)Math.Sin(3 * (LifeTime + animationOffset)) - 40);
+            if (!ObeysGravity)
+            {
+                Position = new Vector2(Position.X, Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boundries.Bottom + 15 * (float)Math.Sin(3 * (LifeTime + animationOffset)) - 80);
+            }
             if (CollidingWithBoundries) // Makes the item gravity less to float up and down
             {
+                
                 ObeysGravity = false;
                 Velocity *= 0;
             }
+            
         }
 
         protected override void LoadSprite(string filepath) // Loads the sprite
         {
             base.LoadSprite(filepath);
             Sprite = new Sprite(filepath);
+        }
+
+        public void Remove()
+        {
+            LifeTime = 300;
         }
     }
 }

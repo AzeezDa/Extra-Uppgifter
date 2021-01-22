@@ -34,7 +34,6 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
         public TradingManager()
         {
-            LoadTrading();
             creature = new MysteriousMan();
             tradingInventoryIndex = 0;
         }
@@ -45,6 +44,8 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
             if (Vector2.Distance(Game1.WindowManager.GetGameplayWindow().Player.Creature.Position, creature.Position) < 100)
                 playerClose = true;
+            else
+                playerClose = false;
 
             if (playerClose)
             {
@@ -106,7 +107,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         {
             tradeItems = new List<TradeItem>();
             XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(Environment.CurrentDirectory + "/../../../Data/TradingData.xml");
+            xmlDocument.Load(Environment.CurrentDirectory + "/../../../Data/" + Game1.WindowManager.GetGameplayWindow().CurrentLevel.TraderData);
             foreach (XmlNode node in xmlDocument.SelectSingleNode("Items").ChildNodes)
             {
                 tradeItems.Add(new TradeItem(node.Attributes["Name"].Value, int.Parse(node.Attributes["Cost"].Value), int.Parse(node.Attributes["Amount"].Value)));

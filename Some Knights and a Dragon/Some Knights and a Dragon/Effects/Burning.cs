@@ -25,7 +25,7 @@ namespace Some_Knights_and_a_Dragon.Effects
         public override void Update(GameTime gameTime, Creature creature)
         {
             base.Update(gameTime, creature);
-            timer.CheckTimer(ref gameTime);
+            timer.CheckTimer(gameTime);
             if (timer.TimerOn)
                 creature.TakeDamage(3);
         }

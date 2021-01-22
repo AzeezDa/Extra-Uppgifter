@@ -44,6 +44,18 @@
 /processorParam:TextureFormat=Compressed
 /build:default_font.spritefont
 
+#begin Entities/Creatures/bird.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Creatures/bird.png
+
 #begin Entities/Creatures/dragon.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -92,6 +104,42 @@
 /processorParam:TextureFormat=Color
 /build:Entities/Creatures/mysteriousman.png;Entities/Creatures/mysteriousMan.png
 
+#begin Entities/Creatures/snake.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Creatures/snake.png
+
+#begin Entities/Creatures/stoneGuardian.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Creatures/stoneGuardian.png
+
+#begin Entities/Creatures/stoneQueen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Creatures/stoneQueen.png
+
 #begin Entities/Projectiles/fireball.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -103,6 +151,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Entities/Projectiles/fireball.png
+
+#begin Items/Consumables/diskOfFortune.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Consumables/diskOfFortune.png
 
 #begin Items/Consumables/healingPotion.png
 /importer:TextureImporter
@@ -140,6 +200,18 @@
 /processorParam:TextureFormat=Color
 /build:Items/Other/coin.png
 
+#begin Items/Other/queenleaf.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Other/queenleaf.png
+
 #begin Items/Weapons/bow.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -175,6 +247,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Items/Weapons/dragonbone.png
+
+#begin Items/Weapons/hornOfTheWild.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Weapons/hornOfTheWild.png
+
+#begin Items/Weapons/queensBlade.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Weapons/queensBlade.png
 
 #begin Items/Weapons/sword.png
 /importer:TextureImporter

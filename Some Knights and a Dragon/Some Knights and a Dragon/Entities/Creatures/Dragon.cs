@@ -26,9 +26,9 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             Sprite.OneTimeAnimation(0, 3);
         }
 
-        public override void Walk()
+        public override void WalkAnimation()
         {
-            base.Walk();
+            base.WalkAnimation();
             Sprite.Animate(0, 2);
         }
 

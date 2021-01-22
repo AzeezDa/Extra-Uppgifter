@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Items>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Other.Arrow" Cost="1" Amount ="15"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.Sword" Cost="1" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.ElvenBow" Cost="1" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.Dragonarch" Cost="5" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.Dragonbone" Cost="5" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Consumables.HealingPotion" Cost="15" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Consumables.DiskOfFortune" Cost="500" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.QueensBlade" Cost="1000" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.HornOfTheWild" Cost="2500" Amount ="1"/>
+</Items>

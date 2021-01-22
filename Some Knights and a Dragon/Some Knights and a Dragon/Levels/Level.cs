@@ -32,6 +32,7 @@ namespace Some_Knights_and_a_Dragon.Levels
         public string BossClassName { get; set; } // Boss class name
         public string NextLevel { get; set; } // Xml file fo the next level
         public string LevelMusic { get; set; } // Music file name
+        public string TraderData { get; set; } // XML files of the trades from teh mysterious man
         public Background Background { get; set; } // The background image class
         public Vector2 Gravity { get; set; } // Gravity of the area, used in the acceleration of the entities
         public Rectangle Boundries { get; set; } // The boundries of the places from which creatures cannot escape
@@ -50,6 +51,7 @@ namespace Some_Knights_and_a_Dragon.Levels
             Background.LoadContent();
             Boss = (Boss)Activator.CreateInstance(null, BossClassName).Unwrap();
             Creatures.Add(Boss.Creature);
+            TradingManager.LoadTrading();
         }
 
         public void Update(ref GameTime gameTime)
@@ -66,9 +68,14 @@ namespace Some_Knights_and_a_Dragon.Levels
             }
 
             // Updates all the items dropped on the ground
-            foreach (DroppedItem droppedItem in DroppedItems)
+            for (int i = DroppedItems.Count - 1; i >= 0; --i)
             {
-                droppedItem.Update(ref gameTime);
+                DroppedItems[i].Update(ref gameTime);
+                if (DroppedItems[i].LifeTime >= 300) // Removed after 5 mins
+                {
+                    DroppedItems[i] = null;
+                    DroppedItems.RemoveAt(i);
+                }
             }
 
             // Updates all the projectiles, if lifetime is less than or equal to 0, they are removed.
@@ -142,6 +149,17 @@ namespace Some_Knights_and_a_Dragon.Levels
             for (int i = 0; i < amount; i++)
             {
                 DroppedItems.Add(new DroppedItem(position, item));
+            }
+        }
+
+        public void RemoveAllOfDroppedItem(string name) // Removes all of a dropped item
+        {
+            foreach (DroppedItem item in DroppedItems)
+            {
+                if (item.Name == name)
+                {
+                    item.Remove();
+                }
             }
         }
     }

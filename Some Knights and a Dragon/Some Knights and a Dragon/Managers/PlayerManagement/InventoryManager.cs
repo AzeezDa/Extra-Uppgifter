@@ -56,7 +56,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 currentItemIndex += Game1.InputManager.ScrollValue();
         }
 
-        // Draws the items stored in the correct playe (Visualisation of the array)
+        // Draws the items stored in the correct place (Visualisation of the array)
         public void Draw(ref SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
@@ -200,6 +200,21 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             return false;
         }
 
+        public int AmountOf(string name) // Returns the amount of a specific item in the inventory
+        {
+            int amount = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                if (inventory[i] == null)
+                    continue;
+                if (inventory[i].Item.Name == name)
+                {
+                    amount += inventory[i].Amount;
+                }
+            }
+            return amount;
+        }
+
         public bool InventoryFull() // Returns true if the inventory is full
         {
             foreach (InventoryItem item in inventory)
@@ -208,6 +223,20 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                     return false;
             }
             return true;
+        }
+
+        public void RemoveAll(string name) // Removes all amount of a specific item from the inventory
+        {
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (inventory[i] == null)
+                    continue;
+                if (name == inventory[i].Item.Name)
+                {
+                    inventory[i]= null;
+                }
+            }
         }
     }
 }

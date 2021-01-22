@@ -31,8 +31,14 @@ namespace Some_Knights_and_a_Dragon.Managers
             this.duration = duration < 0 ? 0 : duration;
         }
 
+        // Adds timer to the timer's interval
+        public void AddToTimer(float interval)
+        {
+            this.interval = this.interval + interval < 0 ? 0 : this.interval + interval;
+        }
+
         // Check if timer has passed, changes the TimerOn field.
-        public void CheckTimer(ref GameTime gameTime)
+        public void CheckTimer(GameTime gameTime)
         {
             previousTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (TimerOn)

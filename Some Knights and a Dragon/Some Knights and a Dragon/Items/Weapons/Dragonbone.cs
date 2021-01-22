@@ -19,7 +19,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
             Name = "Dragonbone";
             Description = "This sword seem to radiate and vary in heat. OW! IT'S BURNING!";
             LoadSprite("Dragonbone", 5, 1);
-            Damage = 15;
+            Damage = 30;
             Handle = new Vector2(0, 2);
             timer = new Timer(1000);
         }
@@ -27,7 +27,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            timer.CheckTimer(ref gameTime);
+            timer.CheckTimer(gameTime);
             if (timer.TimerOn && fireDuration <= 0 && r.NextDouble() < 0.01)
                 fireDuration = 10;
 

@@ -12,6 +12,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         public int CurrentHealth { get; protected set; } // The current health of the creature
         public int MaxHealth { get; protected set; } // The maximum health of the creature
 
+        public float GetHealthRatio { get => (float)CurrentHealth / (float)MaxHealth; } // Gets the ratio current / max health
+
         public List<Effects.Effect> CurrentEffects { get; private set; } // List of effects on the creature
 
         // Body part positions Used for items:
@@ -82,7 +84,27 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
         public virtual void AddHealth(int amount) // Add health to the creature
         {
-            CurrentHealth = MaxHealth + amount > MaxHealth ? MaxHealth : CurrentHealth + amount;
+            CurrentHealth = CurrentHealth + amount > MaxHealth ? MaxHealth : CurrentHealth + amount;
+        }
+
+        public void ChangeMaxHealth(int amount)
+        {
+            MaxHealth = amount;
+        }
+
+        public void AddToMaxHealth(int amount)
+        {
+            MaxHealth += amount;
+        }
+
+        public void SetHealthToMax()
+        {
+            CurrentHealth = MaxHealth;
+        }
+
+        public void Kill()
+        {
+            CurrentHealth = 0;
         }
 
         // Animation Methods
@@ -91,11 +113,24 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
         }
 
-        public virtual void Walk()
+        public virtual void WalkAnimation()
         {
 
         }
 
+        public bool MoveTo(GameTime gameTime, Vector2 position, Vector2 speed,  float range = 1) // Change velocity of creature to move to position, returns true if creature in range of the position
+        {
+            if (Vector2.Distance(position, Position) > range)
+            {
+                ChangeVelocity(Vector2.Normalize(position - Position) * speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                WalkAnimation();
+                return false;
+            }
+            else
+                return true;
+        }
+
+        // Effect methods
         public void AddEffect(Effects.Effect effect)
         {
             CurrentEffects.Add(effect);

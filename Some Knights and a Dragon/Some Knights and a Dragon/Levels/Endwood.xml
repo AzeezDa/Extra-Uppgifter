@@ -10,9 +10,10 @@
     <FilePath>endwood</FilePath>
     <Layers>1</Layers>
   </Background>
-  <BossClassName>Some_Knights_and_a_Dragon.Entities.Creatures.DragonBoss</BossClassName>
+  <BossClassName>Some_Knights_and_a_Dragon.Entities.Creatures.StoneQueenBoss</BossClassName>
   <NextLevel>Dragonfall.xml</NextLevel>
   <LevelMusic>dragonBossMusic</LevelMusic>
+  <TraderData>EndwoodTrades.xml</TraderData>
   <Gravity>
     <X>0</X>
     <Y>5</Y>

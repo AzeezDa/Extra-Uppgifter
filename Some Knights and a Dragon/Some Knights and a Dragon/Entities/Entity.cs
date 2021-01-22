@@ -66,7 +66,7 @@ namespace Some_Knights_and_a_Dragon.Entities
                 (int)Position.X - Sprite.Width / 2 * Sprite.Scale,
                 (int)Position.Y - Sprite.Height / 2 * Sprite.Scale,
                 Sprite.Width * Sprite.Scale,
-                Sprite.Width * Sprite.Scale);
+                Sprite.Height * Sprite.Scale);
 
             // Updates movment, TO BE CHANGED FOR ACCURACY
             Acceleration = Game1.WindowManager.GetGameplayWindow().CurrentLevel.Gravity;

@@ -19,6 +19,7 @@
   <BossClassName>Some_Knights_and_a_Dragon.Entities.Creatures.DragonBoss</BossClassName>
   <NextLevel>Endwood.xml</NextLevel>
   <LevelMusic>dragonBossMusic</LevelMusic>
+  <TraderData>DragonfallTrades.xml</TraderData>
   <Gravity>
     <X>0</X>
     <Y>5</Y>
@@ -30,7 +31,7 @@
     </Location>
     <Size>
       <X>1280</X>
-      <Y>850</Y>
+      <Y>900</Y>
     </Size>
   </Boundries>
 </Level>

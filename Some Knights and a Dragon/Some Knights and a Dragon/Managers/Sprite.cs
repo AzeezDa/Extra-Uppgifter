@@ -123,7 +123,7 @@ namespace Some_Knights_and_a_Dragon.Managers
         // Update the sprite
         public void Update(ref GameTime gameTime)
         {
-            animationTimer.CheckTimer(ref gameTime);
+            animationTimer.CheckTimer(gameTime);
             if (animationTimer.TimerOn && oneTimeAnimationOn && freeze)
             {
                 currentFrame = (currentFrame == frames - 1) ? currentFrame : (currentFrame + 1);

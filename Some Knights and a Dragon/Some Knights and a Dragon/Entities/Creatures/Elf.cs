@@ -37,9 +37,9 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             Sprite.Unfreeze();
         }
 
-        public override void Walk()
+        public override void WalkAnimation()
         {
-            base.Walk();
+            base.WalkAnimation();
             Sprite.Unfreeze();
             Sprite.Animate(0, 9);
         }

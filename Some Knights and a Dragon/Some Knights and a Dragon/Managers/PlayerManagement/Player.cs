@@ -71,12 +71,12 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             if (Game1.InputManager.KeyPressed(Keys.D))
             {
                 Creature.AddToVelocity(new Vector2(Creature.Speed.X, 0));
-                Creature.Walk();
+                Creature.WalkAnimation();
             }
             if (Game1.InputManager.KeyPressed(Keys.A))
             {
                 Creature.AddToVelocity(new Vector2(-Creature.Speed.X, 0));
-                Creature.Walk();
+                Creature.WalkAnimation();
             }
             if (Game1.InputManager.KeyClicked(Keys.W) && Creature.Velocity.Y == 0)
                 Creature.AddToVelocity(new Vector2(0, -Creature.Speed.Y));

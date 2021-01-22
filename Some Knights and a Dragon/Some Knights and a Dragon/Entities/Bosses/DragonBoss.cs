@@ -39,7 +39,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             base.Update(gameTime);
 
             // Handles the fireball attacks.
-            fireballTimer.CheckTimer(ref gameTime);
+            fireballTimer.CheckTimer(gameTime);
             if (fireballTimer.TimerOn)
             {
                 foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures)
@@ -60,9 +60,9 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         {
             
             // When below 50%: The player is blown to the left and fireballs start shooting from the sky
-            rainOfFireTimer.CheckTimer(ref gameTime);
+            rainOfFireTimer.CheckTimer(gameTime);
             
-            if (Creature.CurrentHealth <= Creature.MaxHealth / 2)
+            if (Creature.GetHealthRatio < 0.5)
             {
                 Game1.WindowManager.GetGameplayWindow().Player.Creature.AddToPosition(new Vector2(-100 * (float)gameTime.ElapsedGameTime.TotalSeconds, 0));
                 if (rainOfFireTimer.TimerOn)
@@ -80,7 +80,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         {
             
             // When below 10%: The player is blown further and more fireballs rain from the sky
-            if (Creature.CurrentHealth <= Creature.MaxHealth / 10 && rainOfFireTimer.TimerOn)
+            if (Creature.GetHealthRatio < 0.1 && rainOfFireTimer.TimerOn)
             {
                 Game1.WindowManager.GetGameplayWindow().CurrentLevel.Background.ChangeSpeed(1, 100);
                 for (int i = 1; i < 4; i++)
