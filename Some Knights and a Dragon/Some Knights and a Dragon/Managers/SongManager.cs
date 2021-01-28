@@ -18,5 +18,15 @@ namespace Some_Knights_and_a_Dragon.Managers
             Song song = Game1.ContentManager.Load<Song>("Music/" + songName);
             MediaPlayer.Play(song);
         }
+
+        public void Pause()
+        {
+            MediaPlayer.Pause();
+        }
+
+        public void Resume()
+        {
+            MediaPlayer.Resume();
+        }
     }
 }

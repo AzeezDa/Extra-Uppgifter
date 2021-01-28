@@ -17,16 +17,14 @@ namespace Some_Knights_and_a_Dragon.Windows
         public Player Player { get; private set; } // The player object
 
         public XMLManager<Level> LevelLoader { get; private set; } // Manages the loading of XML files
-        public GameplayWindow()
+        public GameplayWindow() : base("Gameplay Window")
         {
-
             LevelLoader = new XMLManager<Level>();
         }
 
         public override void LoadContent() // Loads the content of the level
         {
             base.LoadContent();
-
             // CODE IS FOR DEBUG WILL BE CHANGED TO BE MORE DYNAMIC AND DEPENDANT ON THE XML LOADERS
             CurrentLevel = LevelLoader.Get("Levels/Dragonfall.xml");
             CurrentLevel.LoadContent();
@@ -40,6 +38,7 @@ namespace Some_Knights_and_a_Dragon.Windows
             {
                 CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(550 + i, 400), new Items.Other.Arrow()));
             }
+            Loaded = true;
         }
 
         public override void Draw(ref SpriteBatch _spriteBatch)

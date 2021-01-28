@@ -9,6 +9,14 @@ namespace Some_Knights_and_a_Dragon
 {
     public class GameWindow
     {
+        public bool Loaded { get; protected set; }
+        public string Name { get; private set; }
+
+        public GameWindow(string name)
+        {
+            Loaded = false;
+            Name = name;
+        }
         public virtual void LoadContent() // Loads the content of the window
         {
 

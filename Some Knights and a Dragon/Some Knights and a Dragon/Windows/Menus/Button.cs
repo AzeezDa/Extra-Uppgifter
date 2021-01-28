@@ -7,37 +7,29 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Windows.Menus
 {
-    public class Button
+    public class Button : MenuItem
     {
-        Sprite sprite;
-        Vector2 position;
-        bool hover;
-
         public delegate void OnClickDelegate();
         public OnClickDelegate OnClick { get; set; }
-        
 
-        public Button(string filepath, Vector2 position)
+        public Button(string filepath, Vector2 position, string name, OnClickDelegate onClick) : base(position, name)
         {
-            sprite = new Sprite("Menus/" + filepath, 2, 1);
-            this.position = position;
+            Sprite = new Sprite("Menus/" + filepath, 2, 1);
+            OnClick = onClick;
         }
-        public void Update(ref GameTime gameTime)
+        public override void Update()
         {
-            hover = false;
-            if (sprite.GetBoundaryBoxAt(position).Contains(Game1.InputManager.GetCursor()))
-                hover = true;
-
-            if (hover && Game1.InputManager.LeftMouseClicked())
+            base.Update();
+            if (Hover && Game1.InputManager.LeftMouseClicked())
                 OnClick();
         }
 
-        public void Draw(ref SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            if (hover)
-                sprite.DrawFrame(ref spriteBatch, position, 0, 1);
+            if (Hover)
+                Sprite.DrawFrame(ref spriteBatch, Position, 0, 1);
             else
-                sprite.DrawFrame(ref spriteBatch, position, 0, 0);
+                Sprite.DrawFrame(ref spriteBatch, Position, 0, 0);
         }
     }
 }

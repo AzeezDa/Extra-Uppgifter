@@ -14,6 +14,9 @@ namespace Some_Knights_and_a_Dragon.Managers
         public int Width { get; private set; }
         public int Height { get; private set; }
         public int Scale = 5;
+
+        public int ScaledWidth { get => Width * Scale; }
+        public int ScaledHeight { get => Height * Scale; }
         public float Rotation { get; set; }
 
         Timer animationTimer;

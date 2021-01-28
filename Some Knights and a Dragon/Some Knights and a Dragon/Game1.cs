@@ -2,12 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Media;
-using Some_Knights_and_a_Dragon.Entities;
 using Some_Knights_and_a_Dragon.Managers;
-using Some_Knights_and_a_Dragon.Windows;
-using System.Runtime.CompilerServices;
 
 namespace Some_Knights_and_a_Dragon
 {
@@ -21,8 +16,8 @@ namespace Some_Knights_and_a_Dragon
         public static WindowManager WindowManager { get; private set; } // Manages the windows/screens displayed
         public static ContentManager ContentManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
         public static TextureManager TextureManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
-        public static InputManager InputManager { get; set; } // Static to be accessed by everywhere without being passed into objects.
-        public static FontManager FontManager { get; set; } // Static to be accessed by everywhere without being passed into the objects.
+        public static InputManager InputManager { get; private set; } // Static to be accessed by everywhere without being passed into objects.
+        public static FontManager FontManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
         public static SongManager SongManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
         public Game1()
         {
@@ -57,7 +52,7 @@ namespace Some_Knights_and_a_Dragon
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape) || Quit)
+            if (Quit)
                 Exit();
 
             // TODO: Add your update logic here
