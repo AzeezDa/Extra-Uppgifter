@@ -22,6 +22,7 @@ namespace Some_Knights_and_a_Dragon.Windows.Menus
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+            Game1.FontManager.WriteTitle(spriteBatch, Name, Position + new Vector2(0, -50)); // Writes the name of the slider above the slider
             if (Hover)
             {
                 Sprite.DrawFrame(ref spriteBatch, Position, 0, 1);
@@ -38,7 +39,7 @@ namespace Some_Knights_and_a_Dragon.Windows.Menus
         public override void Update()
         {
             base.Update();
-            if (Hover)
+            if (Hover) // If hovering then updates the slider value
             {
                 if (Game1.InputManager.LeftMousePressed())
                 {

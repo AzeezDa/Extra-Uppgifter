@@ -10,7 +10,10 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
 {
     public class ElvenBow : Weapon
     {
-        int power;
+
+        // WEAPON: Consumes an arrow to shoot it. Base damage is 10
+
+        int power; // Charge power of the bow, the more the player holds the more power it gains and the more damage it deals
         bool shoot;
         public ElvenBow()
         {
@@ -30,8 +33,8 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
 
         public override void OnUse(GameTime gameTime)
         {
-            power = power > 10 ? 10 : power + 1;
-            if (Game1.WindowManager.GetGameplayWindow().Player.Inventory.ItemInInventory("Arrow"))
+            power = power > 10 ? 10 : power + 1; // Max power is 10
+            if (Game1.WindowManager.GetGameplayWindow().Player.Inventory.ItemInInventory("Arrow")) // If Arrow in inventory, charge
             {
                 Sprite.AnimateAndFreeze(0, 4);
                 shoot = true;
@@ -45,7 +48,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
         {
             base.AfterUse();
 
-            if (shoot)
+            if (shoot) // Consumes the arrow and shoots it
             {
                 Game1.WindowManager.GetGameplayWindow().Player.Inventory.RemoveItem("Arrow");
                 Game1.WindowManager.GetGameplayWindow().CurrentLevel.Projectiles.Add(new Arrow(

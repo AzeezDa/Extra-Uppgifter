@@ -8,8 +8,10 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
 {
     public class QueensBlade : Weapon
     {
+        // WEAPON: This sword is large and does more damage the more it is used. Base damage is 70 and then +2 per strength point
+
         bool attacked = false;
-        int strength = 0;
+        int strength = 0; // Strength point, increases on use
         public QueensBlade()
         {
             Name = "Queen's Blade";

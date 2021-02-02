@@ -29,6 +29,7 @@ namespace Some_Knights_and_a_Dragon.Levels
         public TradingManager TradingManager { get; private set; } // The trading manager with the mysterious man
 
         // LOADED FROM XML
+        public string Name { get; set; } // The name of the level
         public string BossClassName { get; set; } // Boss class name
         public string NextLevel { get; set; } // Xml file fo the next level
         public string LevelMusic { get; set; } // Music file name
@@ -36,6 +37,7 @@ namespace Some_Knights_and_a_Dragon.Levels
         public Background Background { get; set; } // The background image class
         public Vector2 Gravity { get; set; } // Gravity of the area, used in the acceleration of the entities
         public Rectangle Boundries { get; set; } // The boundries of the places from which creatures cannot escape
+        public Vector2 PlayerStartingPosition { get; set; } // Self described
 
         public Level()
         {
@@ -52,6 +54,7 @@ namespace Some_Knights_and_a_Dragon.Levels
             Boss = (Boss)Activator.CreateInstance(null, BossClassName).Unwrap();
             Creatures.Add(Boss.Creature);
             TradingManager.LoadTrading();
+            Game1.WindowManager.GetGameplayWindow().Player.Creature.ChangePosition(PlayerStartingPosition);
         }
 
         public void Update(ref GameTime gameTime)

@@ -7,6 +7,8 @@ namespace Some_Knights_and_a_Dragon.Items.Consumables
 {
     public class HealingPotion : Consumable
     {
+        // CONSUMABLE: When used it adds 20 to the player's current health
+
         public HealingPotion()
         {
             LoadSprite("healingPotion");

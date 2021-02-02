@@ -6,6 +6,7 @@ namespace Some_Knights_and_a_Dragon.Items.Other
 {
     public class Queenleaf : Item
     {
+        // ITEM: Queenleaf is used in the fight to help The Stone Queen
         public Queenleaf()
         {
             Name = "Queenleaf";

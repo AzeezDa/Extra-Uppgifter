@@ -9,6 +9,8 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
 {
     public class Sword : Weapon
     {
+        // WEAPON: A sword that is used in melee. Base damage is 15
+
         bool attacked = false;
         public Sword()
         {

@@ -7,6 +7,7 @@ namespace Some_Knights_and_a_Dragon.Items.Consumables
 {
     public class DiskOfFortune : Consumable
     {
+        // CONSUMABLE: When used it increase the player's maximum health by 80
         public DiskOfFortune()
         {
             LoadSprite("diskOfFortune");

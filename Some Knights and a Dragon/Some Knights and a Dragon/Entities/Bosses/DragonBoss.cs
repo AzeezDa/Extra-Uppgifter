@@ -11,6 +11,11 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
     public class DragonBoss : Boss
     {
+
+        // BOSS: The fire dragon shoots fire balls at the player. 
+        // When at 50% fireballs rain from the sky and the player is pushed. 
+        // At 10% even more fireballs rain down and the push is stronger
+
         Timer fireballTimer; // Timer for the fireballs thrown from the boss
         Timer rainOfFireTimer; // Timer for the fireballs that rain from the sky (phase 1 and 2)
         Random r = new Random();
@@ -47,6 +52,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
                     if (creature == Creature)
                         continue;
 
+                    // Shoots the the all other creatures with a fireball
                     Game1.WindowManager.GetGameplayWindow().CurrentLevel.AddProjectile(new Fireball(Creature, Creature.Position + new Vector2(0, -100),
                     Vector2.Normalize(creature.Position - (Creature.Position + new Vector2(0, -100))), power));
                     Creature.Attack();

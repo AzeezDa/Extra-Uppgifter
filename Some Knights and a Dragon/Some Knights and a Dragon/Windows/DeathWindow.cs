@@ -1,30 +1,28 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Some_Knights_and_a_Dragon.Windows.Menus;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Some_Knights_and_a_Dragon.Windows.Menus;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Audio;
 
 namespace Some_Knights_and_a_Dragon.Windows
 {
-    public class PauseWindow : GameWindow
+    public class DeathWindow : GameWindow
     {
         List<MenuItem> menuItems;
-        public PauseWindow() : base("Pause Window")
+        public DeathWindow() : base("Death Window")
         {
             menuItems = new List<MenuItem>();
-            menuItems.Add(new Button(new Vector2(640, 300), "Resume", ResumeButton));
-            menuItems.Add(new Button(new Vector2(640, 400), "Main Menu", BackToMainMenu));
-            menuItems.Add(new Button(new Vector2(640, 500), "Settings", OpenSettings));
+            menuItems.Add(new Button(new Vector2(640, 500), "Respawn", RespawnPlayer));
+            menuItems.Add(new Button(new Vector2(640, 700), "Main Menu", BackToMain));
         }
+
         public override void Draw(ref SpriteBatch _spriteBatch)
         {
             base.Draw(ref _spriteBatch);
-            _spriteBatch.Draw(Game1.TextureManager.BlankTexture, new Rectangle(0, 0, 1280, 960), Color.Gray * 0.5f); // Draws a faint foreground on the screen
+            _spriteBatch.Draw(Game1.TextureManager.BlankTexture, new Rectangle(0, 0, 1280, 960), Color.Crimson * 0.7f); // Draws a faint foreground on the screen
 
-            Game1.FontManager.WriteTitle(_spriteBatch, "PAUSED", new Vector2(640, 300));
+            Game1.FontManager.WriteTitle(_spriteBatch, "YOU ARE DEAD", new Vector2(640, 400), Color.Black);
 
             foreach (MenuItem menuItem in menuItems)
             {
@@ -47,23 +45,17 @@ namespace Some_Knights_and_a_Dragon.Windows
             }
         }
 
-        public void ResumeButton()
+        public void RespawnPlayer() // Resets the level and changes the gamestate to playing
         {
+            Game1.WindowManager.GetGameplayWindow().ResetLevel();
             Game1.WindowManager.GameState = Managers.GameState.Playing;
-            Game1.SongManager.Resume();
-            
         }
 
-        public void BackToMainMenu()
+        public void BackToMain()
         {
             Game1.WindowManager.GameState = Managers.GameState.MainMenu;
             Game1.WindowManager.UnloadGameplay();
             Game1.SongManager.Play("intro");
-        }
-
-        public void OpenSettings()
-        {
-            Game1.WindowManager.GameState = Managers.GameState.SettingsInGame;
         }
     }
 }

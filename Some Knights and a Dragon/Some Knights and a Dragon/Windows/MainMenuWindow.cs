@@ -16,8 +16,10 @@ namespace Some_Knights_and_a_Dragon.Windows
         public MainMenuWindow() : base("Menu Window")
         {
             menuItems = new List<MenuItem>();
-            menuItems.Add(new Button("playButton", new Vector2(640, 500), "Play Button", PlayButtonClick));
-            menuItems.Add(new Button("quitButton", new Vector2(640, 600), "Quit Button", QuitButtonClick));
+            menuItems.Add(new Button(new Vector2(640, 500), "Play", PlayButtonClick));
+            menuItems.Add(new Button(new Vector2(640, 600), "Settings", SettingsButtonClick));
+            menuItems.Add(new Button(new Vector2(640, 700), "Quit", QuitButtonClick));
+
             logo = new Sprite("Menus/logo");
 
             Game1.SongManager.Play("intro");
@@ -52,6 +54,11 @@ namespace Some_Knights_and_a_Dragon.Windows
         public void QuitButtonClick()
         {
             Game1.Quit = true;
+        }
+
+        public void SettingsButtonClick()
+        {
+            Game1.WindowManager.GameState = GameState.SettingsMainMenu;
         }
     }
 }

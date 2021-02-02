@@ -26,11 +26,9 @@ namespace Some_Knights_and_a_Dragon.Windows
         {
             base.LoadContent();
             // CODE IS FOR DEBUG WILL BE CHANGED TO BE MORE DYNAMIC AND DEPENDANT ON THE XML LOADERS
-            CurrentLevel = LevelLoader.Get("Levels/Dragonfall.xml");
-            CurrentLevel.LoadContent();
-
             Player = new Player(new Elf());
-            CurrentLevel.AddCreature(Player.Creature);
+            NewLevel("Dragonfall.xml");
+
             CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(400, 400), new Items.Weapons.Sword()));
             CurrentLevel.DroppedItems.Add(new DroppedItem(new Vector2(500, 400), new Items.Weapons.ElvenBow()));
 
@@ -53,6 +51,8 @@ namespace Some_Knights_and_a_Dragon.Windows
             base.Update(ref gameTime);
             CurrentLevel.Update(ref gameTime);
             Player.Update(ref gameTime);
+            if (!Player.IsAlive)
+                Game1.WindowManager.GameState = GameState.Dead;
         }
 
         // Loads a new level and calls the Garbage collector to more 
@@ -63,6 +63,12 @@ namespace Some_Knights_and_a_Dragon.Windows
             CurrentLevel = LevelLoader.Get("Levels/" + levelName);
             CurrentLevel.LoadContent();
             CurrentLevel.Creatures.Add(Player.Creature);
+        }
+
+        public void ResetLevel()
+        {
+            Player.Creature.SetHealthToMax();
+            NewLevel(CurrentLevel.Name + ".xml");
         }
     }
 }

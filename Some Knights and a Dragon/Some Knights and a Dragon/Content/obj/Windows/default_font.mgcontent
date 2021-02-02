@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/default_font.spritefont</SourceFile>
-  <SourceTime>2021-01-19T19:29:03.721845+01:00</SourceTime>
+  <SourceTime>2021-02-02T12:12:21.3832442+01:00</SourceTime>
   <DestFile>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/bin/Windows/default_font.xnb</DestFile>
-  <DestTime>2021-01-21T13:43:49.9485379+01:00</DestTime>
+  <DestTime>2021-02-02T12:39:08.9115192+01:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

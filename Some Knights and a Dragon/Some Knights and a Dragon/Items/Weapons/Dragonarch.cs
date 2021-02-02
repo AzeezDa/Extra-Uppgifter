@@ -9,8 +9,11 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
 {
     class Dragonarch : Weapon
     {
-        int power = 0;
-        bool shoot = false;
+
+        // WEAPONS: This is a bow that shoots consums arrows and shoots fireballs. Base Damage is 20
+
+        int power = 0; // The charge power of the arrow. The more the player holds to charge the more power the bow gains
+        bool shoot = false; // If the player is charging then this is true
         public Dragonarch()
         {
             Name = "Dragonarch";
@@ -24,7 +27,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
 
         public override void OnUse(GameTime gameTime)
         {
-            power = power > 20 ? 20 : power + 3;
+            power = power > 20 ? 20 : power + 3; // Max charge power is 20
             if (Game1.WindowManager.GetGameplayWindow().Player.Inventory.ItemInInventory("Arrow"))
             {
                 Sprite.AnimateAndFreeze(0, 4);
@@ -38,7 +41,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
         public override void AfterUse()
         {
             base.AfterUse();
-
+            // After used one arrow is removed from the inventory and all other values are returned to their original values
             if (shoot)
             {
                 Game1.WindowManager.GetGameplayWindow().Player.Inventory.RemoveItem("Arrow");

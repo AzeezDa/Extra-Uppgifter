@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Level xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Dragonfall</Name>
   <Background>
     <LayerSpeeds>
       <float>5</float>
@@ -34,4 +35,8 @@
       <Y>900</Y>
     </Size>
   </Boundries>
+  <PlayerStartingPosition>
+    <X>100</X>
+    <Y>1000</Y>
+  </PlayerStartingPosition>
 </Level>

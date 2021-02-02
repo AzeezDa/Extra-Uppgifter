@@ -12,6 +12,15 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 {
     public class StoneQueenBoss : Boss
     {
+
+        // BOSS: The Stone queen has been petrified and the player has to collect the leaves the drop from the birds to mend the queen.
+        // There is a guardian in front of the queen that must be dealt with to reach the queen. The stone guardian respawns after 15 seconds of it being destroyed.
+        // From the stone guardian spawns snakes that attack the player. There are also birds that spawn which aid the player by dropping leaves.
+        // When close to the queen the leaves in the player's inventory are removed periodically to heal the player and damage the queen to release her.
+        // The birds also damage the queen during the time the guardian is dead
+        // After 15 seconds the guardian respawns and if the player is inside the queen's area they take massive damage and are cast out from that area to continue the phase 1.
+        // When the stone queen is broken at around 50% then the fight ends and the queen is unleashed
+
         List<Snake> snakes;
         List<Bird> birds;
         StoneGuardian guardian;
@@ -55,6 +64,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
         public override void OnDeath()
         {
+
+            // Kills birds and snakes on boss fight end and drops the loot and animates the breaking animation
             AddLoot(new Coin(), Game1.WindowManager.GetGameplayWindow().Player.Inventory.AmountOf("Queenleaf") * 5);
             Game1.WindowManager.GetGameplayWindow().CurrentLevel.RemoveAllOfDroppedItem("Queenleaf");
             Game1.WindowManager.GetGameplayWindow().Player.Inventory.RemoveAll("Queenleaf");
@@ -87,7 +98,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             }
         }
 
-        private void GuardianPhase(GameTime gameTime)
+        private void GuardianPhase(GameTime gameTime) // Controls the spawning of the guardian and when he is down and up
         {
             if (Game1.WindowManager.GetGameplayWindow().Player.Creature.Position.X > 850 && guardian.CurrentHealth > 0)
             {
@@ -96,9 +107,11 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             if (guardian.CurrentHealth <= 0)
             {
                 birdAttackTimer.CheckTimer(gameTime);
-                if (birdAttackTimer.TimerOn)
+                if (birdAttackTimer.TimerOn) // Birds attack queen when timer is up
                 {
                     Creature.TakeDamage(birds.Count * 50);
+
+                    // If player is close to queen, queen takes damage and player is healed with the queenleaves
                     if (Vector2.Distance(Game1.WindowManager.GetGameplayWindow().Player.Creature.Position, Creature.Position) < 50 &&
                         Game1.WindowManager.GetGameplayWindow().Player.Inventory.ItemInInventory("Queenleaf"))
                     {
@@ -122,7 +135,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             }
         }
 
-        private void Phase1(GameTime gameTime)
+        private void Phase1(GameTime gameTime) // The phase when the guardian is up
         {
             snakeTimer.CheckTimer(gameTime);
             birdTimer.CheckTimer(gameTime);
@@ -140,7 +153,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
                     snakes.RemoveAt(i);
                     continue;
                 }
-                if (snakes[i].MoveTo(gameTime, Game1.WindowManager.GetGameplayWindow().Player.Creature.Position, new Vector2(5000, 0), 100))
+                if (snakes[i].MoveTo(gameTime, Game1.WindowManager.GetGameplayWindow().Player.Creature.Position, new Vector2(5000, 0), 100)) // If snakes close to player, attack
                 {
                     if (snakeAttackTimer.TimerOn)
                     {
@@ -152,13 +165,13 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
 
             foreach (Bird bird in birds)
             {
-                if (guardian.CurrentHealth > 0)
+                if (guardian.CurrentHealth > 0) // If guardian health is greater than 0 then the birds give leaves
                 {
                     bird.MoveTo(gameTime, new Vector2(Game1.WindowManager.GetGameplayWindow().Player.Creature.Position.X, 0), new Vector2(10000, 10000), 100);
                     if (snakeTimer.TimerOn)
                         Game1.WindowManager.GetGameplayWindow().CurrentLevel.AddDroppedItem(bird.Position, new Queenleaf());
                 }
-                else
+                else // Else they move to the queen to attack
                 {
                     bird.MoveTo(gameTime, new Vector2(Creature.Position.X, Creature.Position.Y - 300), new Vector2(10000, 10000), 10);
                 }

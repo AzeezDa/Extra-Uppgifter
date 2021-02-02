@@ -20,12 +20,12 @@ namespace Some_Knights_and_a_Dragon.Items
         {
         }
 
-        protected virtual void LoadSprite(string filePath, int width, int height)
+        protected virtual void LoadSprite(string filePath, int width, int height) // Loads the sprite of the item if it has animation
         {
             Sprite = new Sprite(filePath, width, height, 12);
         }
 
-        protected virtual void LoadSprite(string filePath)
+        protected virtual void LoadSprite(string filePath) // Loads the sprite of the item if it has no animation
         {
             Sprite = new Sprite(filePath);
         }
@@ -45,7 +45,7 @@ namespace Some_Knights_and_a_Dragon.Items
         }
 
         // Draws the item on a creature
-        public void DrawOn(ref SpriteBatch spriteBatch, Creature creature, Entities.TextureDirection textureDirection)
+        public void DrawOn(ref SpriteBatch spriteBatch, Creature creature, Entities.TextureDirection textureDirection) // Draws the item on a creature
         {
             Sprite.Draw(ref spriteBatch,
                 creature.HandPosition,

@@ -14,6 +14,8 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
     {
         public Creature Creature { get; private set; } // Creature of the player
         public InventoryManager Inventory { get; private set; } // The inventory system check the class for more info
+        
+        public bool IsAlive { get => Creature.CurrentHealth > 0; } // Returns true if the player is alive
 
         bool isAttacking;
         public Player(Creature creature)
@@ -42,14 +44,14 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 }
             }
 
-            if(Creature.CurrentHealth > 0) // if player is alive, they can move
+            if(IsAlive) // if player is alive, they can move
                 PlayerMovementAndInput(gameTime);
         }
 
         public void Draw(ref SpriteBatch _spritebatch)
         {
 
-            if (Creature.CurrentHealth > 0) // If player is alive, their life and texture is displayed
+            if (IsAlive) // If player is alive, their life and texture is displayed
             {
                 HealthBar.FloatingBar(Creature, ref _spritebatch);
                 Inventory.Draw(ref _spritebatch);

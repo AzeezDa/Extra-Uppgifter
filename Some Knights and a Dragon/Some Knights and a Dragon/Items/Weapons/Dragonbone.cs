@@ -10,8 +10,11 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
 {
     public class Dragonbone : Weapon
     {
+
+        // WEAPON: This is a sword that occasionally lights up to burn enemies. Base damage is 30
+
         bool attacked = false;
-        double fireDuration = 0;
+        double fireDuration = 0; // The time the fire mechanic is on
         Random r = new Random();
         Timer timer;
         public Dragonbone()
@@ -28,7 +31,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
         {
             base.Update(gameTime);
             timer.CheckTimer(gameTime);
-            if (timer.TimerOn && fireDuration <= 0 && r.NextDouble() < 0.01)
+            if (timer.TimerOn && fireDuration <= 0 && r.NextDouble() < 0.01) // 1% Chance every second to light the sword on fire
                 fireDuration = 10;
 
             fireDuration -= gameTime.ElapsedGameTime.TotalSeconds;
@@ -42,7 +45,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
         public override void OnUse(GameTime gameTime)
         {
             base.OnUse(gameTime);
-            if (!attacked)
+            if (!attacked) // If is not attacking it attacks the creature in front of the user
             {
                 foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures)
                 {
@@ -62,7 +65,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
         public override void AfterUse()
         {
             base.AfterUse();
-            attacked = false;
+            attacked = false; // Resets
         }
     }
 }

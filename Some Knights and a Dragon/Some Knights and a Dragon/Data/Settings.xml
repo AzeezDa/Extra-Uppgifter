@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--DO NOT CHANGE ANYTHING IN THIS FILE!-->
+<!--Includes all the settings to be parsed into the game-->
+<Settings>
+  <!--Volume of the music played-->
+  <MusicVolume>31.538464</MusicVolume>
+</Settings>
