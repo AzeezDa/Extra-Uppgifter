@@ -33,11 +33,12 @@ namespace Some_Knights_and_a_Dragon.Levels
         public string BossClassName { get; set; } // Boss class name
         public string NextLevel { get; set; } // Xml file fo the next level
         public string LevelMusic { get; set; } // Music file name
-        public string TraderData { get; set; } // XML files of the trades from teh mysterious man
+        public string TraderData { get; set; } // XML files of the trades from the mysterious man
         public Background Background { get; set; } // The background image class
         public Vector2 Gravity { get; set; } // Gravity of the area, used in the acceleration of the entities
         public Rectangle Boundries { get; set; } // The boundries of the places from which creatures cannot escape
         public Vector2 PlayerStartingPosition { get; set; } // Self described
+        public List<string> TexturesToLoad { get; set; } // This list is sent to the TextureManager during level loading to preload the textures of the levels to improve performance
 
         public Level()
         {
@@ -46,15 +47,29 @@ namespace Some_Knights_and_a_Dragon.Levels
 
         public void LoadContent() // Loads the level
         {
+            // Recreates the Entity lists
             Creatures = new List<Creature>();
             DroppedItems = new List<DroppedItem>();
             Projectiles = new List<Projectile>();
+
+            Game1.TextureManager.Reload(TexturesToLoad);
+
+            // Plays the song of the level
             Game1.SongManager.Play(LevelMusic);
+
+            // Loads the background and its content
             Background.LoadContent();
+
+            // Sets up the boss
             Boss = (Boss)Activator.CreateInstance(null, BossClassName).Unwrap();
             Creatures.Add(Boss.Creature);
+
+            // Loads the trading system for the level
             TradingManager.LoadTrading();
+
+            // Sets the player's position to the level's starting position
             Game1.WindowManager.GetGameplayWindow().Player.Creature.ChangePosition(PlayerStartingPosition);
+
         }
 
         public void Update(ref GameTime gameTime)

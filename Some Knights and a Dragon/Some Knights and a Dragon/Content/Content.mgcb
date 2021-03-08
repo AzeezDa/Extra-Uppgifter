@@ -25,6 +25,30 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/Endwood.png;Backgrounds/endwood.png
 
+#begin Backgrounds/mainBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/mainBackground.png
+
+#begin Backgrounds/theMaw.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/theMaw.png
+
 #begin Backgrounds/volcano.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -355,6 +379,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Menus/sliderButton.png
+
+#begin Menus/textBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Menus/textBackground.png
 
 #begin Music/dragonBossMusic.mp3
 /importer:Mp3Importer

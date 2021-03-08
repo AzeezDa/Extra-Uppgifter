@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item Name="Bob" BossesDefeated="3" Ticks="180000000" />
+  <Item Name="Shlob" BossesDefeated="3" Ticks="100000000000" />
+  <Item Name="Dob" BossesDefeated="2" Ticks="100000123000" />
+  <Item Name="Nob" BossesDefeated="3" Ticks="1002000000" />
+  <Item Name="Hob" BossesDefeated="3" Ticks="100000000020" />
+  <Item Name="Gob" BossesDefeated="3" Ticks="100000003" />
+  <Item Name="Sob" BossesDefeated="3" Ticks="100000000012" />
+  <Item Name="Job" BossesDefeated="3" Ticks="100000000000" />
+  <Item Name="Lob" BossesDefeated="3" Ticks="100000000000" />
+  <Item Name="Wob" BossesDefeated="2" Ticks="100000123000" />
+  <Item Name="Fob" BossesDefeated="3" Ticks="1002000000" />
+  <Item Name="Mob" BossesDefeated="3" Ticks="100000000020" />
+  <Item Name="Rob" BossesDefeated="3" Ticks="100000003" />
+  <Item Name="Flob" BossesDefeated="3" Ticks="100000000012" />
+  <Item Name="Yob" BossesDefeated="10" Ticks="1000000" />
+  <Item Name="dubdubduudbud" BossesDefeated="1" Ticks="637507881265323012" />
+  <Item Name="wassup" BossesDefeated="1" Ticks="591445755" />
+  <Item Name="dubdubduudbud" BossesDefeated="0" Ticks="186396574" />
+</Items>

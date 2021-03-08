@@ -33,4 +33,11 @@
     <X>100</X>
     <Y>1000</Y>
   </PlayerStartingPosition>
+  <TexturesToLoad>
+    <string>Backgrounds/endwood</string>
+    <string>Entities/Creatures/bird</string>
+    <string>Entities/Creatures/snake</string>
+    <string>Entities/Creatures/stoneGuardian</string>
+    <string>Entities/Creatures/stoneQueen</string>
+  </TexturesToLoad>
 </Level>

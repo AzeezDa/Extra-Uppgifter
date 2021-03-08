@@ -37,9 +37,10 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             HealthBar.BossHealthBar(Creature, ref spriteBatch); // Mega healthbar on the screen
         }
 
-        // On death: the boss Drops all the loot
+        // On death: the boss Drops all the loot and update the high score recorder
         public virtual void OnDeath()
         {
+            Game1.WindowManager.GetGameplayWindow().HighScoreRecorder.BossDefeatedUpdate();
             Random r = new Random();
             for (int i = 0; i < Loot.Count; i++)
             {

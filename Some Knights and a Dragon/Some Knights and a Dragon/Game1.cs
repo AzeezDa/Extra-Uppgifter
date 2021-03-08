@@ -19,6 +19,8 @@ namespace Some_Knights_and_a_Dragon
         public static InputManager InputManager { get; private set; } // Static to be accessed by everywhere without being passed into objects.
         public static FontManager FontManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
         public static SongManager SongManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
+
+        public static Microsoft.Xna.Framework.GameWindow GameWindow; // Static to be used from everywhere, this is used to handle text input events
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -34,10 +36,10 @@ namespace Some_Knights_and_a_Dragon
             // TODO: Add your initialization logic here
             FontManager = new FontManager(); // Manages text draws
             InputManager = new InputManager(); // Manages player's input (mouse and keyboard)
+            GameWindow = Window;
             TextureManager = new TextureManager(GraphicsDevice); // Mananges textures such that no duplicates are made
             SongManager = new SongManager(); // Manages background music
             WindowManager = new WindowManager(); // Manages displayed windows
-            
             base.Initialize();
         }
 

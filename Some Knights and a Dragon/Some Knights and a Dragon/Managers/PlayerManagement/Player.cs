@@ -20,6 +20,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         bool isAttacking;
         public Player(Creature creature)
         {
+            // Initiate creature and inventory
             Creature = creature;
             Inventory = new InventoryManager();
         }
@@ -46,6 +47,9 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
             if(IsAlive) // if player is alive, they can move
                 PlayerMovementAndInput(gameTime);
+
+            if (!IsAlive) // If the playe is dead, change the game state to dead
+                Game1.WindowManager.GameState = GameState.Dead;
         }
 
         public void Draw(ref SpriteBatch _spritebatch)
@@ -68,8 +72,13 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
         public void PlayerMovementAndInput(GameTime gameTime) // Handles the movement and its animation: uses WASD format and space for jump. Mouse is used for attacks
         {
+            // Remove all x directional speed
             Creature.MultiplyWithVelocity(new Vector2(0, 1));
+
+            // Stop the frame
             Creature.Sprite.Freeze();
+
+            // For the W,A and D, do the appropiate move and animation
             if (Game1.InputManager.KeyPressed(Keys.D))
             {
                 Creature.AddToVelocity(new Vector2(Creature.Speed.X, 0));
@@ -83,6 +92,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             if (Game1.InputManager.KeyClicked(Keys.W) && Creature.Velocity.Y == 0)
                 Creature.AddToVelocity(new Vector2(0, -Creature.Speed.Y));
 
+            // Use item if left mouse pressed
             if (Game1.InputManager.LeftMousePressed())
             {
                 if (Inventory.CurrentItem != null)
@@ -92,7 +102,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 Creature.Attack();
                 isAttacking = true;
             }
-            else if (isAttacking)
+            else if (isAttacking) // Do after an attack
             {
                 if (Inventory.CurrentItem != null)
                 {
@@ -102,6 +112,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 Creature.ResetPose();
             }
 
+            // Drop item if Q is pressed
             if (Game1.InputManager.KeyClicked(Keys.Q) && Inventory.CurrentItem != null)
             {
                 Game1.WindowManager.GetGameplayWindow().CurrentLevel.AddDroppedItem(Creature.Position + new Vector2(Creature.TextureDirection == Entities.TextureDirection.Right ? 100 : -100, 30),

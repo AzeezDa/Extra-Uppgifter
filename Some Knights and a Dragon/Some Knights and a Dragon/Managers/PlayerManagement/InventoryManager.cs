@@ -22,16 +22,16 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
     {
 
         // Inventory Management fields
-        private InventoryItem[] inventory; // Array of the items
+        public InventoryItem[] Inventory { get; private set; } // Array of the items
         private int currentItemIndex; // Array index of the current item held by the player
-        public InventoryItem CurrentItem { get => inventory[currentItemIndex]; } // Gets the current item held by the player
+        public InventoryItem CurrentItem { get => Inventory[currentItemIndex]; } // Gets the current item held by the player
 
         // Inventory Textures
         private Texture2D currentInventoryItemBackground;
         private Texture2D inventoryBackground;
         public InventoryManager()
         {
-            inventory = new InventoryItem[5];
+            Inventory = new InventoryItem[5];
             currentItemIndex = 0;
             currentInventoryItemBackground = Game1.TextureManager.GetTexture("Menus/inventoryBack");
             inventoryBackground = Game1.TextureManager.GetTexture("Menus/inventoryTexture");
@@ -41,9 +41,9 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         {
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] != null)
+                if (Inventory[i] != null)
                 {
-                    inventory[i].Item.Update(gameTime);
+                    Inventory[i].Item.Update(gameTime);
                 }
             }
 
@@ -74,16 +74,16 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                 new Vector2 (currentInventoryItemBackground.Width / 2, currentInventoryItemBackground.Height / 2), SpriteEffects.None, 0);
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] != null)
+                if (Inventory[i] != null)
                 {
                     spriteBatch.Draw(
-                        inventory[i].Item.Sprite.SpriteTexture,
-                        new Rectangle(1280/2 + 64 * (i - 2), 960 - 64, inventory[i].Item.Sprite.Width * 3, inventory[i].Item.Sprite.Height * 3),
-                        new Rectangle(0, 0, inventory[i].Item.Sprite.Width, inventory[i].Item.Sprite.Height),
+                        Inventory[i].Item.Sprite.SpriteTexture,
+                        new Rectangle(1280/2 + 64 * (i - 2), 960 - 64, Inventory[i].Item.Sprite.Width * 3, Inventory[i].Item.Sprite.Height * 3),
+                        new Rectangle(0, 0, Inventory[i].Item.Sprite.Width, Inventory[i].Item.Sprite.Height),
                         Color.White, 0,
-                        new Vector2(inventory[i].Item.Sprite.Width / 2, inventory[i].Item.Sprite.Height / 2), SpriteEffects.None, 0
+                        new Vector2(Inventory[i].Item.Sprite.Width / 2, Inventory[i].Item.Sprite.Height / 2), SpriteEffects.None, 0
                         );
-                    Game1.FontManager.WriteText(spriteBatch, inventory[i].Amount.ToString(), new Vector2(1280 / 2 + 64 * (i - 2), 960 - 64), Color.Red);
+                    Game1.FontManager.WriteText(spriteBatch, Inventory[i].Amount.ToString(), new Vector2(1280 / 2 + 64 * (i - 2), 960 - 64), Color.Red);
                 }
             }
 
@@ -92,24 +92,24 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         }
 
         
-        public void NewItem(Item item) // Adds a new item to the first empty spot in the inventory
+        public void NewItem(Item item, int amount = 1) // Adds a new item to the first empty spot in the inventory
         {
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] != null)
+                if (Inventory[i] != null)
                 {
-                    if (item.Name == inventory[i].Item.Name)
+                    if (item.Name == Inventory[i].Item.Name)
                     {
-                        inventory[i].Amount++;
+                        Inventory[i].Amount += amount;
                         return;
                     }
                 }
             }
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] == null)
+                if (Inventory[i] == null)
                 {
-                    inventory[i] = new InventoryItem(item, 1);
+                    Inventory[i] = new InventoryItem(item, amount);
                     return;
                 }
             }
@@ -121,15 +121,15 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             Item item;
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] == null)
+                if (Inventory[i] == null)
                     continue;
-                if (name == inventory[i].Item.Name)
+                if (name == Inventory[i].Item.Name)
                 {
-                    item = inventory[i].Item;
-                    if (inventory[i].Amount == 1)
-                        inventory[i] = null;
+                    item = Inventory[i].Item;
+                    if (Inventory[i].Amount == 1)
+                        Inventory[i] = null;
                     else
-                        inventory[i].Amount--;
+                        Inventory[i].Amount--;
                     return item;
                 }
             }
@@ -141,15 +141,15 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             Item item;
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] == null)
+                if (Inventory[i] == null)
                     continue;
-                if (name == inventory[i].Item.Name)
+                if (name == Inventory[i].Item.Name)
                 {
-                    item = inventory[i].Item;
-                    if (inventory[i].Amount == amount)
-                        inventory[i] = null;
+                    item = Inventory[i].Item;
+                    if (Inventory[i].Amount == amount)
+                        Inventory[i] = null;
                     else
-                        inventory[i].Amount-= amount;
+                        Inventory[i].Amount-= amount;
                     return item;
                 }
             }
@@ -159,13 +159,13 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         public Item RemoveAtCurrentIndex()
         {
             Item item;
-            if (inventory[currentItemIndex] != null)
+            if (Inventory[currentItemIndex] != null)
             {
-                item = inventory[currentItemIndex].Item;
-                if (inventory[currentItemIndex].Amount == 1)
-                    inventory[currentItemIndex] = null;
+                item = Inventory[currentItemIndex].Item;
+                if (Inventory[currentItemIndex].Amount == 1)
+                    Inventory[currentItemIndex] = null;
                 else
-                    inventory[currentItemIndex].Amount--;
+                    Inventory[currentItemIndex].Amount--;
                 return item;
             }
             return null;
@@ -176,9 +176,9 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         {
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] == null)
+                if (Inventory[i] == null)
                     continue;
-                if (inventory[i].Item.Name == name)
+                if (Inventory[i].Item.Name == name)
                 {
                     return true;
                 }
@@ -190,9 +190,9 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         {
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] == null)
+                if (Inventory[i] == null)
                     continue;
-                if (inventory[i].Item.Name == name && inventory[i].Amount >= amount)
+                if (Inventory[i].Item.Name == name && Inventory[i].Amount >= amount)
                 {
                     return true;
                 }
@@ -205,11 +205,11 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             int amount = 0;
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] == null)
+                if (Inventory[i] == null)
                     continue;
-                if (inventory[i].Item.Name == name)
+                if (Inventory[i].Item.Name == name)
                 {
-                    amount += inventory[i].Amount;
+                    amount += Inventory[i].Amount;
                 }
             }
             return amount;
@@ -217,7 +217,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
         public bool InventoryFull() // Returns true if the inventory is full
         {
-            foreach (InventoryItem item in inventory)
+            foreach (InventoryItem item in Inventory)
             {
                 if (item == null)
                     return false;
@@ -230,13 +230,18 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
             for (int i = 0; i < 5; i++)
             {
-                if (inventory[i] == null)
+                if (Inventory[i] == null)
                     continue;
-                if (name == inventory[i].Item.Name)
+                if (name == Inventory[i].Item.Name)
                 {
-                    inventory[i]= null;
+                    Inventory[i]= null;
                 }
             }
+        }
+
+        public void LoadInventoryFromData(InventoryItem[] inventoryItems)
+        {
+            Inventory = inventoryItems;
         }
     }
 }

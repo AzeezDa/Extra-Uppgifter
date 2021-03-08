@@ -119,3 +119,6 @@ C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some K
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Music\stoneQueenMusic.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Menus\button.xnb
 C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\titles_font.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Backgrounds\mainBackground.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Backgrounds\theMaw.xnb
+C:\Users\Azeez\Documents\GitHub\Extra-Uppgifter\Some Knights and a Dragon\Some Knights and a Dragon\bin\Debug\netcoreapp3.1\Content\Menus\textBackground.xnb

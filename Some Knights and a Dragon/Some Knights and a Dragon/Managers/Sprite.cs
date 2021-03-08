@@ -179,6 +179,20 @@ namespace Some_Knights_and_a_Dragon.Managers
                 0);
         }
 
+        // Draws the sprite on a given rectangle
+        public void DrawOnArea(ref SpriteBatch spriteBatch, Rectangle rectangle, int row, int column, TextureDirection textureDirection = TextureDirection.Right)
+        {
+            spriteBatch.Draw(
+                SpriteTexture,
+                rectangle,
+                new Rectangle(column * Width, row * Height, Width, Height),
+                Color.White,
+                Rotation,
+                Vector2.Zero,
+                textureDirection == TextureDirection.Left ? SpriteEffects.FlipHorizontally : textureDirection == TextureDirection.Down ? SpriteEffects.FlipVertically : SpriteEffects.None,
+                0);
+        }
+
         public Rectangle GetBoundaryBoxAt(Vector2 position)
         {
             return new Rectangle((int)position.X - Width * Scale / 2, (int)position.Y - Height * Scale / 2,

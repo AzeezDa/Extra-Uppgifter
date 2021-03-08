@@ -7,21 +7,27 @@ using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Managers
 {
-    public enum GameState { MainMenu, Playing, Paused, Dead, SettingsMainMenu, SettingsInGame };
+    public enum GameState { MainMenu, Playing, Paused, Dead, SettingsMainMenu, SettingsInGame, Error,
+                            HighScore, PrePlay, NewGame, ContinueGame };
     public class WindowManager
     {
-        private MainMenuWindow mainMenuWindow; // The starting menu window
-        private GameplayWindow gameplayWindow; // The window where the game is played
-        private PauseWindow pauseWindow; // When the game is paused this window is displayed
-        private DeathWindow deathWindow; // When the player dies this window is displayed
-        private SettingsWindow settingsWindow; // Where the settings are
+        Texture2D background;
+
+        public Dictionary<string, GameWindow> Windows;
 
         public GameState GameState { get; set; } // The different states of the game
         public WindowManager()
         {
-            mainMenuWindow = new MainMenuWindow();
-            settingsWindow = new SettingsWindow();
+            Windows = new Dictionary<string, GameWindow>();
+            Windows.Add("Main Menu", new MainMenuWindow());
+            Windows.Add("Settings", new SettingsWindow());
+            Windows.Add("Error", new ErrorWindow());
+            Windows.Add("High Score", new HighScoreWindow());
+            Windows.Add("Pre Play", new PrePlayWindow());
+            Windows.Add("New Game", new NewGameWindow());
             GameState = new GameState();
+            background = Game1.TextureManager.GetTexture("Backgrounds/mainBackground");
+
         }
 
         public void Update(GameTime gameTime)
@@ -29,20 +35,32 @@ namespace Some_Knights_and_a_Dragon.Managers
             switch (GameState) // Updates based on gamestates
             {
                 case GameState.MainMenu:
-                    mainMenuWindow.Update(ref gameTime); // Main Menu
+                    Windows["Main Menu"].Update(ref gameTime); // Main Menu
                     break;
                 case GameState.Playing:
-                    gameplayWindow.Update(ref gameTime); // Gameplay
+                    Windows["Gameplay"].Update(ref gameTime); // Gameplay
                     break;
                 case GameState.Paused:
-                    pauseWindow.Update(ref gameTime); // Pause menu
+                    Windows["Pause"].Update(ref gameTime); // Pause menu
                     break;
                 case GameState.Dead:
-                    deathWindow.Update(ref gameTime); // Death menu
+                    Windows["Death"].Update(ref gameTime); // Death menu
                     break;
                 case GameState.SettingsInGame:
                 case GameState.SettingsMainMenu:
-                    settingsWindow.Update(ref gameTime); // Settings if in game or in main menu
+                    Windows["Settings"].Update(ref gameTime); // Settings if in game or in main menu
+                    break;
+                case GameState.Error:
+                    Windows["Error"].Update(ref gameTime); // Error window, displayed when an error occurs
+                    break;
+                case GameState.HighScore:
+                    Windows["High Score"].Update(ref gameTime); // Display the highscore menu
+                    break;
+                case GameState.PrePlay:
+                    Windows["Pre Play"].Update(ref gameTime); // Display the window to choose how to play
+                    break;
+                case GameState.NewGame:
+                    Windows["New Game"].Update(ref gameTime); // Display the window to create new game
                     break;
                 default:
                     break;
@@ -62,11 +80,20 @@ namespace Some_Knights_and_a_Dragon.Managers
                         break;
                     case GameState.SettingsInGame:
                         GameState = GameState.Paused; // If in game and in settings -> Paused
-                        settingsWindow.SaveSettings();
+                        ((SettingsWindow)Windows["Settings"]).SaveSettings();
                         break;
                     case GameState.SettingsMainMenu:
                         GameState = GameState.MainMenu; // If in menu and in settings -> main menu
-                        settingsWindow.SaveSettings();
+                        ((SettingsWindow)Windows["Settings"]).SaveSettings();
+                        break;
+                    case GameState.HighScore:
+                        GameState = GameState.MainMenu; // Change from the highscore menu to the main menu
+                        break;
+                    case GameState.PrePlay:
+                        GameState = GameState.MainMenu; // Return to main menu
+                        break;
+                    case GameState.NewGame:
+                        GameState = GameState.PrePlay; // Return to play play
                         break;
                     default:
                         break;
@@ -79,25 +106,43 @@ namespace Some_Knights_and_a_Dragon.Managers
             switch (GameState) // Draws the different windows based on states
             {
                 case GameState.MainMenu:
-                    mainMenuWindow.Draw(ref spriteBatch);
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Main Menu"].Draw(ref spriteBatch);
                     break;
                 case GameState.Playing:
-                    gameplayWindow.Draw(ref spriteBatch);
+                    Windows["Gameplay"].Draw(ref spriteBatch);
                     break;
                 case GameState.Paused:
-                    gameplayWindow.Draw(ref spriteBatch);
-                    pauseWindow.Draw(ref spriteBatch);
+                    Windows["Gameplay"].Draw(ref spriteBatch);
+                    Windows["Pause"].Draw(ref spriteBatch);
                     break;
                 case GameState.Dead:
-                    gameplayWindow.Draw(ref spriteBatch);
-                    deathWindow.Draw(ref spriteBatch);
+                    Windows["Gameplay"].Draw(ref spriteBatch);
+                    Windows["Death"].Draw(ref spriteBatch);
                     break;
                 case GameState.SettingsInGame:
-                    gameplayWindow.Draw(ref spriteBatch);
-                    settingsWindow.Draw(ref spriteBatch);
+                    Windows["Gameplay"].Draw(ref spriteBatch);
+                    Windows["Settings"].Draw(ref spriteBatch);
                     break;
                 case GameState.SettingsMainMenu:
-                    settingsWindow.Draw(ref spriteBatch);
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Settings"].Draw(ref spriteBatch);
+                    break;
+                case GameState.Error:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.Red);
+                    Windows["Error"].Draw(ref spriteBatch);
+                    break;
+                case GameState.HighScore:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["High Score"].Draw(ref spriteBatch);
+                    break;
+                case GameState.PrePlay:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Pre Play"].Draw(ref spriteBatch); 
+                    break;
+                case GameState.NewGame:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["New Game"].Draw(ref spriteBatch);
                     break;
                 default:
                     break;
@@ -106,25 +151,45 @@ namespace Some_Knights_and_a_Dragon.Managers
 
         public GameplayWindow GetGameplayWindow() // Gets the gameplay window. UNSTABLE IF IS USED WHILE CURRENT WINDOW IS NOT A GAMEPLAYWINDOW
         {
-            return gameplayWindow;
+            return (GameplayWindow)Windows["Gameplay"];
         }
 
 
         public void LoadGameplay() // Loads the gameplay window and its content
         {
-            gameplayWindow = new GameplayWindow();
-            pauseWindow = new PauseWindow();
-            deathWindow = new DeathWindow();
-            gameplayWindow.LoadContent();
-            pauseWindow.LoadContent();
+            if (Windows.ContainsKey("Gameplay"))
+            {
+                Windows["Gameplay"] = new GameplayWindow();
+                Windows["Pause"] = new PauseWindow();
+                Windows["Death"] = new DeathWindow();
+            }
+            else
+            {
+                 Windows.Add("Gameplay", new GameplayWindow());
+                 Windows.Add("Pause", new PauseWindow());
+                 Windows.Add("Death", new DeathWindow());
+            }
+            
+            Windows["Pause"].LoadContent();
         }
 
         public void UnloadGameplay() // Removes all gameplay windows and their content
         {
-            gameplayWindow = null;
-            pauseWindow = null;
-            deathWindow = null;
+            Windows["Gameplay"] = null;
+            Windows["Pause"] = null;
+            Windows["Death"] = null;
             GC.Collect();
+        }
+
+        public void DisplayError(Exception exception, string errorMessage) // Show the error on screen on a new window
+        {
+            GameState = GameState.Error;
+            ((ErrorWindow)Windows["Error"]).NewError(exception, errorMessage);
+        }
+
+        public void DisplayError(Exception exception) // Overload of DisplayError with a default error message
+        {
+            DisplayError(exception, "An Error has occured.");
         }
     }
 }

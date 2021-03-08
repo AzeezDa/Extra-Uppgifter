@@ -15,7 +15,6 @@ namespace Some_Knights_and_a_Dragon.Managers
 
         private KeyboardState previousKeyboardState;
         private MouseState previousMouseState;
-
         public InputManager()
         {
         }
@@ -41,12 +40,12 @@ namespace Some_Knights_and_a_Dragon.Managers
 
         public int ScrollValue()
         {
-            // If scroll up return 1, if scroll down return -1
+            // If scroll up return -1, if scroll down return 1
             currentMouseState = Mouse.GetState();
             if (currentMouseState.ScrollWheelValue > previousMouseState.ScrollWheelValue)
-                return 1;
-            else if (currentMouseState.ScrollWheelValue < previousMouseState.ScrollWheelValue)
                 return -1;
+            else if (currentMouseState.ScrollWheelValue < previousMouseState.ScrollWheelValue)
+                return 1;
             return 0;
         }
 
@@ -84,6 +83,11 @@ namespace Some_Knights_and_a_Dragon.Managers
         {
             currentMouseState = Mouse.GetState();
             return currentMouseState.Position.ToVector2();
+        }
+
+        public KeyboardState GetCurrentKeyboardState()
+        {
+            return currentKeyboardState;
         }
         public void Update()
         {

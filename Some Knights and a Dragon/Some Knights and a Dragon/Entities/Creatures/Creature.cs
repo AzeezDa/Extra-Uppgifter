@@ -92,6 +92,11 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             MaxHealth = amount;
         }
 
+        public void ChangeCurrentHealth(int amount)
+        {
+            CurrentHealth = amount > MaxHealth ? MaxHealth : amount;
+        }
+
         public void AddToMaxHealth(int amount)
         {
             MaxHealth += amount;
