@@ -14,7 +14,7 @@ namespace Some_Knights_and_a_Dragon.Managers
         Texture2D background;
 
         public Dictionary<string, GameWindow> Windows;
-
+        Sprite ConnectionStatus;
         public GameState GameState { get; set; } // The different states of the game
         public WindowManager()
         {
@@ -27,7 +27,8 @@ namespace Some_Knights_and_a_Dragon.Managers
             Windows.Add("New Game", new NewGameWindow());
             GameState = new GameState();
             background = Game1.TextureManager.GetTexture("Backgrounds/mainBackground");
-
+            ConnectionStatus = new Sprite("Menus/connectionStatus", 2, 1);
+            ConnectionStatus.Scale = 2;
         }
 
         public void Update(GameTime gameTime)
@@ -147,6 +148,11 @@ namespace Some_Knights_and_a_Dragon.Managers
                 default:
                     break;
             }
+
+            if (NetworkClient.Connected)
+                ConnectionStatus.DrawFrame(ref spriteBatch, new Vector2(50, 50), 0, 0);
+            else
+                ConnectionStatus.DrawFrame(ref spriteBatch, new Vector2(50, 50), 0, 1);
         }
 
         public GameplayWindow GetGameplayWindow() // Gets the gameplay window. UNSTABLE IF IS USED WHILE CURRENT WINDOW IS NOT A GAMEPLAYWINDOW

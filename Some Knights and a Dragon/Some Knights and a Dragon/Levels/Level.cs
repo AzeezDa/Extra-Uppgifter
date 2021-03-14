@@ -145,6 +145,7 @@ namespace Some_Knights_and_a_Dragon.Levels
                 Game1.FontManager.WriteText(spriteBatch, "Press N to Continue!", new Vector2(640, 480));
             }
 
+            Game1.FontManager.WriteText(spriteBatch, Name, new Vector2(640, 100));
         }
 
         public void AddCreature(Creature creature) // Used to add creatures from outside the class, such as summoning minions.

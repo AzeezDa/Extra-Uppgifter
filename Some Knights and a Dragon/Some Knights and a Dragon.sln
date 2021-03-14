@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Some_Knights_and_a_Dragon", "Some Knights and a Dragon\Some_Knights_and_a_Dragon.csproj", "{F2008A5F-CF9B-40D9-A608-E33CB0712189}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Some_Knights_and_a_Dragon", "Some Knights and a Dragon\Some_Knights_and_a_Dragon.csproj", "{F2008A5F-CF9B-40D9-A608-E33CB0712189}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameServer", "GameServer\GameServer.csproj", "{A1AF0CF3-5B44-434C-8C12-D3BD66A5250B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F2008A5F-CF9B-40D9-A608-E33CB0712189}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2008A5F-CF9B-40D9-A608-E33CB0712189}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2008A5F-CF9B-40D9-A608-E33CB0712189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1AF0CF3-5B44-434C-8C12-D3BD66A5250B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AF0CF3-5B44-434C-8C12-D3BD66A5250B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AF0CF3-5B44-434C-8C12-D3BD66A5250B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AF0CF3-5B44-434C-8C12-D3BD66A5250B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

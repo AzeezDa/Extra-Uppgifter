@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Media;
 using Some_Knights_and_a_Dragon.Windows.Menus;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Xml;
 
@@ -77,7 +78,7 @@ namespace Some_Knights_and_a_Dragon.Windows
                 switch (node.Name)
                 {
                     case "MusicVolume":
-                        MediaPlayer.Volume = float.Parse(node.InnerText) / 100;
+                        MediaPlayer.Volume = float.Parse(node.InnerText, CultureInfo.InvariantCulture) / 100;
                         break;
                     default:
                         break;

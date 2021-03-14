@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Xml;
 using Microsoft.Xna.Framework.Input;
@@ -27,11 +29,16 @@ namespace Some_Knights_and_a_Dragon.Managers
     {
         public static List<HighScoreItem> LoadHighScores()
         {
+            // Send request to server to fetch the newest version of the highscore file
+            if (NetworkClient.Connected)
+                NetworkClient.Send("HSF");
+
             // List to store the high score items
             List<HighScoreItem> highScoreItems = new List<HighScoreItem>();
 
             // Load the document
             XmlDocument xmlDocument = new XmlDocument();
+
             xmlDocument.Load("../../../Data/HighScore.xml");
 
             // Loop inside each node and get the items
@@ -61,6 +68,20 @@ namespace Some_Knights_and_a_Dragon.Managers
 
             // Save the document
             xmlDocument.Save("../../../Data/HighScore.xml");
+
+            if (NetworkClient.Connected)
+                NetworkClient.Send($"NHS{highScoreItem.Name},{highScoreItem.BossesDefeated},{highScoreItem.Time.Ticks}");
+        }
+
+        public static void FetchHighScore(string fileData)
+        {
+            // If the data fetched from the server is correct then write the highscore data to the file
+            if (fileData != null)
+            {
+                // Writes the data received to the file
+                using StreamWriter writer = new StreamWriter("../../../Data/HighScore.xml");
+                    writer.Write(fileData);
+            }
         }
     }
 }

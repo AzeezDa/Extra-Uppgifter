@@ -40,6 +40,8 @@ namespace Some_Knights_and_a_Dragon
             TextureManager = new TextureManager(GraphicsDevice); // Mananges textures such that no duplicates are made
             SongManager = new SongManager(); // Manages background music
             WindowManager = new WindowManager(); // Manages displayed windows
+            NetworkClient.Setup();
+
             base.Initialize();
         }
 
@@ -55,11 +57,18 @@ namespace Some_Knights_and_a_Dragon
         protected override void Update(GameTime gameTime)
         {
             if (Quit)
+            {
+                NetworkClient.Shutdown();
                 Exit();
+            }
 
             // TODO: Add your update logic here
             InputManager.Update();
             WindowManager.Update(gameTime);
+
+
+            NetworkClient.CheckConnection(gameTime);
+
             base.Update(gameTime);
         }
 

@@ -30,6 +30,7 @@
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Weapons/queensBlade.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Weapons/sword.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Menus/button.png</File>
+    <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Menus/connectionStatus.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Menus/inventoryBack.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Menus/inventoryTexture.png</File>
     <File>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Menus/logo.png</File>
@@ -52,6 +53,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>Entities/Creatures/mysteriousMan.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -48,6 +48,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
 
         public void Save()
         {
+            LoadCurrentData();
             XmlDocument saveDataxml = new XmlDocument();
             XmlElement root = saveDataxml.CreateElement("SaveData");
             saveDataxml.AppendChild(root);
