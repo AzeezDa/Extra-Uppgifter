@@ -30,7 +30,7 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             Inventory.Update(ref gameTime); // Updates the inventory
 
             // If player close to dropped item, that item is added to the inventory
-            for (int i = Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems.Count - 1; i >= 0; --i)
+            foreach (int i in Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems.Keys)
             {
                 if (Vector2.Distance(Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems[i].Position, Creature.Position) <= 50)
                 {
@@ -39,9 +39,8 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                         !Inventory.InventoryFull())
                     {
                         Inventory.NewItem(Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems[i].Item);
-                        Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems.RemoveAt(i);
+                        Game1.WindowManager.GetGameplayWindow().CurrentLevel.DroppedItems.Remove(i);
                     }
-                    
                 }
             }
 
@@ -83,14 +82,23 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             {
                 Creature.AddToVelocity(new Vector2(Creature.Speed.X, 0));
                 Creature.WalkAnimation();
+                if (NetworkClient.Connected)
+                    Networking.GameplayNetworkingHandler.QueueRequest($"AD {Creature.ID}|{Creature.Speed.X},0");
+
             }
             if (Game1.InputManager.KeyPressed(Keys.A))
             {
                 Creature.AddToVelocity(new Vector2(-Creature.Speed.X, 0));
                 Creature.WalkAnimation();
+                if (NetworkClient.Connected)
+                    Networking.GameplayNetworkingHandler.QueueRequest($"AD {Creature.ID}|{-Creature.Speed.X},0");
             }
-            if (Game1.InputManager.KeyClicked(Keys.W) && Creature.Velocity.Y == 0)
+            if (Game1.InputManager.KeyClicked(Keys.W) && Creature.Velocity.Y == 0) 
+            {
                 Creature.AddToVelocity(new Vector2(0, -Creature.Speed.Y));
+                if (NetworkClient.Connected)
+                    Networking.GameplayNetworkingHandler.QueueRequest($"AD {Creature.ID}|0,{-Creature.Speed.Y}");
+            }
 
             // Use item if left mouse pressed
             if (Game1.InputManager.LeftMousePressed())

@@ -33,7 +33,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public override void Update(ref GameTime gameTime)
         {
             base.Update(ref gameTime);
-            foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures)
+            foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures.Values)
             {
                 if (creature == Owner)
                     continue;

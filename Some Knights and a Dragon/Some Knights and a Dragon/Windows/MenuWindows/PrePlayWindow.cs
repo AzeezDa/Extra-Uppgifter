@@ -19,6 +19,7 @@ namespace Some_Knights_and_a_Dragon.Windows
             // Add the buttons
             MenuItems.Add("New Game", new Button(new Vector2(340, 900), "New Game", NewGameButton));
             MenuItems.Add("Main Menu", new Button(new Vector2(840, 900), "Main Menu", MainMenuButton));
+            MenuItems.Add("Join", new Button(new Vector2(640, 960), "Join", JoinGameButton));
 
             // Get the background sprite
             textBackground = new Sprite("Menus/textBackground");
@@ -26,6 +27,14 @@ namespace Some_Knights_and_a_Dragon.Windows
             // Initiate the values
             SaveFilePaths = new List<ClickableText>();
             scrollValue = 0;
+        }
+
+        private void JoinGameButton()
+        {
+            Game1.WindowManager.LoadGameplay();
+            Game1.WindowManager.GetGameplayWindow().LoadFromSave("test.save");
+            Game1.WindowManager.GameState = GameState.Playing;
+            Managers.Networking.GameplayNetworkingHandler.QueueRequest($"PJ bob|{Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boss.Creature.GetType()}");
         }
 
         public override void Draw(ref SpriteBatch _spriteBatch)

@@ -6,6 +6,7 @@ using Some_Knights_and_a_Dragon.Levels;
 using System;
 using Some_Knights_and_a_Dragon.Managers.PlayerManagement;
 using Some_Knights_and_a_Dragon.Entities;
+using System.Collections.Generic;
 
 namespace Some_Knights_and_a_Dragon.Windows
 {
@@ -17,10 +18,14 @@ namespace Some_Knights_and_a_Dragon.Windows
         private SaveData saveData; // Save data to load
         public HighScoreRecorder HighScoreRecorder { get; private set; } // Records the time and bosses defeated to later save in the high score list
         public XMLManager<Level> LevelLoader { get; private set; } // Manages the loading of XML files
+
+        public Dictionary<string, Player> Players { get; private set; }
+
         public GameplayWindow() : base("Gameplay Window")
         {
             // Load the level
             LevelLoader = new XMLManager<Level>();
+            Players = new Dictionary<string, Player>();
         }
 
         public override void LoadContent() // Loads the content of the level
@@ -34,7 +39,7 @@ namespace Some_Knights_and_a_Dragon.Windows
             PlayerName = saveData.DataSaveValues["PlayerName"];
 
             // Load the player and its creature from the file
-            Player = new Player((Creature)Activator.CreateInstance(null,saveData.DataSaveValues["Character"]).Unwrap());
+            Player = new Player((Creature)Activator.CreateInstance(null, saveData.DataSaveValues["Character"]).Unwrap());
 
             // Load the level
             NewLevel(saveData.DataSaveValues["Level"]);
@@ -101,13 +106,13 @@ namespace Some_Knights_and_a_Dragon.Windows
                 GC.Collect();
                 CurrentLevel = LevelLoader.Get("Levels/" + levelName);
                 CurrentLevel.LoadContent();
-                CurrentLevel.Creatures.Add(Player.Creature);
+                CurrentLevel.AddCreature(Player.Creature);
             }
             catch (Exception e)
             {
                 Game1.WindowManager.DisplayError(e, "The XML file to load this level could not be found.");
             }
-            
+
         }
 
         // Resets the current level, this is used when the player dies
@@ -115,6 +120,12 @@ namespace Some_Knights_and_a_Dragon.Windows
         {
             Player.Creature.SetHealthToMax();
             NewLevel(CurrentLevel.Name + ".xml");
+        }
+
+        public void ConnectNewPlayer(string name, Creature creature)
+        {
+            Players.Add(name, new Player(creature));
+            CurrentLevel.AddCreature(Players[name].Creature);
         }
     }
 }

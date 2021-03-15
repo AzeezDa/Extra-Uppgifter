@@ -47,7 +47,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
             fireballTimer.CheckTimer(gameTime);
             if (fireballTimer.TimerOn)
             {
-                foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures)
+                foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures.Values)
                 {
                     if (creature == Creature)
                         continue;

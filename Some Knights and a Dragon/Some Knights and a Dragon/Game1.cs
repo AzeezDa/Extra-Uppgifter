@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Some_Knights_and_a_Dragon.Managers;
+using System;
 
 namespace Some_Knights_and_a_Dragon
 {
@@ -19,6 +20,7 @@ namespace Some_Knights_and_a_Dragon
         public static InputManager InputManager { get; private set; } // Static to be accessed by everywhere without being passed into objects.
         public static FontManager FontManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
         public static SongManager SongManager { get; private set; } // Static to be accessed by everywhere without being passed into the objects.
+        public static Random Random = new Random(); // Random to be used everywhere
 
         public static Microsoft.Xna.Framework.GameWindow GameWindow; // Static to be used from everywhere, this is used to handle text input events
         public Game1()
@@ -68,6 +70,7 @@ namespace Some_Knights_and_a_Dragon
 
 
             NetworkClient.CheckConnection(gameTime);
+            Managers.Networking.GameplayNetworkingHandler.SendRequests();
 
             base.Update(gameTime);
         }

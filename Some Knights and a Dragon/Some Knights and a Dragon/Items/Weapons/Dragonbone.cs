@@ -47,7 +47,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
             base.OnUse(gameTime);
             if (!attacked) // If is not attacking it attacks the creature in front of the user
             {
-                foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures)
+                foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures.Values)
                 {
                     if (creature == Game1.WindowManager.GetGameplayWindow().Player.Creature)
                         continue;

@@ -13,6 +13,8 @@ namespace Some_Knights_and_a_Dragon.Entities
 
     public abstract class Entity // Any object that moves and has a texture.
     {
+        public int ID { get; set; }
+
         public Sprite Sprite { get; protected set; }
         public string Name { get; protected set; }
 
@@ -107,30 +109,30 @@ namespace Some_Knights_and_a_Dragon.Entities
         }
 
         // THE BELOW FUNCTION ARE DOING AS THEIR SIGNATURES TELL
-        public void ChangePosition(Vector2 position)
+        public virtual void ChangePosition(Vector2 position)
         {
             Position = position;
         }
-        public void ChangeVelocity(Vector2 velocity)
+        public virtual void ChangeVelocity(Vector2 velocity)
         {
             Velocity = velocity;
         }
 
-        public void ChangeAcceleration(Vector2 acceleration)
+        public virtual void ChangeAcceleration(Vector2 acceleration)
         {
             Acceleration = acceleration;
         }
 
-        public void AddToPosition(Vector2 position)
+        public virtual void AddToPosition(Vector2 position)
         {
             Position += position;
         }
-        public void AddToVelocity(Vector2 velocity)
+        public virtual void AddToVelocity(Vector2 velocity)
         {
             Velocity += velocity;
         }
 
-        public void AddToAcceleration(Vector2 acceleration)
+        public virtual void AddToAcceleration(Vector2 acceleration)
         {
             Acceleration += acceleration;
         }

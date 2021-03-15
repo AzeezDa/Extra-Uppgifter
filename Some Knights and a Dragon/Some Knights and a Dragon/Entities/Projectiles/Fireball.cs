@@ -39,7 +39,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
                 LifeTime = 0;
             }
 
-            foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures)
+            foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures.Values)
             {
                 if (creature == Owner)
                     continue;

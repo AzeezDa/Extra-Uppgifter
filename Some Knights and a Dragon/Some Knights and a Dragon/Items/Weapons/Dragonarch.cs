@@ -45,7 +45,7 @@ namespace Some_Knights_and_a_Dragon.Items.Weapons
             if (shoot)
             {
                 Game1.WindowManager.GetGameplayWindow().Player.Inventory.RemoveItem("Arrow");
-                Game1.WindowManager.GetGameplayWindow().CurrentLevel.Projectiles.Add(new Fireball(
+                Game1.WindowManager.GetGameplayWindow().CurrentLevel.AddProjectile(new Fireball(
                     Game1.WindowManager.GetGameplayWindow().Player.Creature,
                     Game1.WindowManager.GetGameplayWindow().Player.Creature.Position,
                     Vector2.Normalize(Game1.InputManager.GetCursor() - Game1.WindowManager.GetGameplayWindow().Player.Creature.Position), power

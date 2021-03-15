@@ -1,0 +1,12 @@
+<SaveData>
+  <PlayerName>test</PlayerName>
+  <Character>Some_Knights_and_a_Dragon.Entities.Creatures.Elf</Character>
+  <Level>Dragonfall.xml</Level>
+  <CurrentHealth>43</CurrentHealth>
+  <MaxHealth>100</MaxHealth>
+  <InventoryItem ItemTypeName="Some_Knights_and_a_Dragon.Items.Weapons.ElvenBow" Amount="1" />
+  <InventoryItem ItemTypeName="Some_Knights_and_a_Dragon.Items.Other.Arrow" Amount="12" />
+  <InventoryItem ItemTypeName="Some_Knights_and_a_Dragon.Items.Weapons.Sword" Amount="1" />
+  <InventoryItem ItemTypeName="null" Amount="0" />
+  <InventoryItem ItemTypeName="null" Amount="0" />
+</SaveData>

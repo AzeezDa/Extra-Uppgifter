@@ -18,11 +18,11 @@ namespace Some_Knights_and_a_Dragon.Levels
     public class Level // This class is represents the "world" or "place" where creatures are and how they interaect with the enviroment
     {
         [XmlIgnore]
-        public List<Creature> Creatures { get; private set; } // All creatures in the game
+        public Dictionary<int, Creature> Creatures { get; private set; } // All creatures in the game
         [XmlIgnore]
-        public List<DroppedItem> DroppedItems { get; private set; } // Items that is dropped and picked by the player
+        public Dictionary<int, DroppedItem> DroppedItems { get; private set; } // Items that is dropped and picked by the player
         [XmlIgnore]
-        public List<Projectile> Projectiles { get; private set; } // Projectiles shot by the creatures
+        public Dictionary<int, Projectile> Projectiles { get; private set; } // Projectiles shot by the creatures
         [XmlIgnore]
         public Boss Boss { get; set; } // The boss object
         [XmlIgnore]
@@ -48,9 +48,9 @@ namespace Some_Knights_and_a_Dragon.Levels
         public void LoadContent() // Loads the level
         {
             // Recreates the Entity lists
-            Creatures = new List<Creature>();
-            DroppedItems = new List<DroppedItem>();
-            Projectiles = new List<Projectile>();
+            Creatures = new Dictionary<int, Creature>();
+            DroppedItems = new Dictionary<int, DroppedItem>();
+            Projectiles = new Dictionary<int, Projectile>();
 
             Game1.TextureManager.Reload(TexturesToLoad);
 
@@ -62,7 +62,7 @@ namespace Some_Knights_and_a_Dragon.Levels
 
             // Sets up the boss
             Boss = (Boss)Activator.CreateInstance(null, BossClassName).Unwrap();
-            Creatures.Add(Boss.Creature);
+            AddCreature(Boss.Creature);
 
             // Loads the trading system for the level
             TradingManager.LoadTrading();
@@ -74,37 +74,52 @@ namespace Some_Knights_and_a_Dragon.Levels
 
         public void Update(ref GameTime gameTime)
         {
+            List<int> creaturesToRemove = new List<int>();
+
             // Updates all creatures, if health is less than 0, they die. Removed from the creature less
-            for (int i = Creatures.Count - 1; i >= 0; --i)
+            foreach (int i in Creatures.Keys)
             {
                 Creatures[i].Update(ref gameTime);
                 if (Creatures[i].CurrentHealth <= 0)
-                {
-                    Creatures[i] = null;
-                    Creatures.RemoveAt(i);
-                }
+                    creaturesToRemove.Add(i);
             }
 
+            foreach (int i in creaturesToRemove)
+            {
+                Creatures[i] = null;
+                Creatures.Remove(i);
+            }
+
+            List<int> droppedItemsToRemove = new List<int>();
+
             // Updates all the items dropped on the ground
-            for (int i = DroppedItems.Count - 1; i >= 0; --i)
+            foreach (int i in DroppedItems.Keys)
             {
                 DroppedItems[i].Update(ref gameTime);
                 if (DroppedItems[i].LifeTime >= 300) // Removed after 5 mins
-                {
-                    DroppedItems[i] = null;
-                    DroppedItems.RemoveAt(i);
-                }
+                    droppedItemsToRemove.Add(i);
             }
 
+            foreach (int i in droppedItemsToRemove)
+            {
+                DroppedItems[i] = null;
+                DroppedItems.Remove(i);
+            }
+
+            List<int> projectilesToRemove = new List<int>();
+
             // Updates all the projectiles, if lifetime is less than or equal to 0, they are removed.
-            for (int i = Projectiles.Count - 1; i >= 0; --i)
+            foreach (int i in Projectiles.Keys)
             {
                 Projectiles[i].Update(ref gameTime);
                 if (Projectiles[i].LifeTime <= 0)
-                {
-                    Projectiles[i] = null;
-                    Projectiles.RemoveAt(i);
-                }
+                    projectilesToRemove.Add(i);
+            }
+
+            foreach (int i in projectilesToRemove)
+            {
+                Projectiles[i] = null;
+                Projectiles.Remove(i);
             }
 
             // If the boss of the level is up then they are updates, when dead a text appears to press N to continue.
@@ -125,15 +140,15 @@ namespace Some_Knights_and_a_Dragon.Levels
         {
             // Draws everything in this order: Background, Creatures, Items, Projectiles, Boss, Text
             Background.Draw(spriteBatch);
-            foreach (Creature creature in Creatures)
+            foreach (Creature creature in Creatures.Values)
             {
                 creature.Draw(ref spriteBatch);
             }
-            foreach (DroppedItem droppedItem in DroppedItems)
+            foreach (DroppedItem droppedItem in DroppedItems.Values)
             {
                 droppedItem.Draw(ref spriteBatch);
             }
-            foreach (Projectile projectile in Projectiles)
+            foreach (Projectile projectile in Projectiles.Values)
             {
                 projectile.Draw(ref spriteBatch);
             }
@@ -150,30 +165,50 @@ namespace Some_Knights_and_a_Dragon.Levels
 
         public void AddCreature(Creature creature) // Used to add creatures from outside the class, such as summoning minions.
         {
-            Creatures.Add(creature);
+            int id;
+            for (id = Game1.Random.Next(int.MinValue, int.MaxValue); Creatures.ContainsKey(id);)
+                id = Game1.Random.Next(int.MinValue, int.MaxValue);
+
+            Creatures.Add(id, creature);
+            creature.ID = id;
         }
 
         public void AddProjectile(Projectile projectile) // Adds a projectiles to the projectile list
         {
-            Projectiles.Add(projectile);
+            int id;
+            for (id = Game1.Random.Next(int.MinValue, int.MaxValue); Projectiles.ContainsKey(id);)
+                id = Game1.Random.Next(int.MinValue, int.MaxValue);
+
+            Projectiles.Add(id, projectile);
+            projectile.ID = id;
         }
 
         public void AddDroppedItem(Vector2 position, Item item) // Adds a dropped item to its list.
         {
-            DroppedItems.Add(new DroppedItem(position, item));
+            int id;
+            for (id = Game1.Random.Next(int.MinValue, int.MaxValue); DroppedItems.ContainsKey(id);)
+                id = Game1.Random.Next(int.MinValue, int.MaxValue);
+
+            DroppedItems.Add(id, new DroppedItem(position, item));
+            DroppedItems[id].ID = id;
         }
 
         public void AddDroppedItem(Vector2 position, Item item, int amount) // Adds a dropped item to its list.
         {
+            // FIX
+            int id;
+            for (id = Game1.Random.Next(int.MinValue, int.MaxValue); Creatures.ContainsKey(id);)
+                id = Game1.Random.Next(int.MinValue, int.MaxValue);
+
             for (int i = 0; i < amount; i++)
             {
-                DroppedItems.Add(new DroppedItem(position, item));
+                DroppedItems.Add(id, new DroppedItem(position, item));
             }
         }
 
         public void RemoveAllOfDroppedItem(string name) // Removes all of a dropped item
         {
-            foreach (DroppedItem item in DroppedItems)
+            foreach (DroppedItem item in DroppedItems.Values)
             {
                 if (item.Name == name)
                 {
