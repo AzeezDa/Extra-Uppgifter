@@ -17,9 +17,9 @@ namespace Some_Knights_and_a_Dragon.Windows
         public PrePlayWindow() : base("Pre Play Window")
         {
             // Add the buttons
-            MenuItems.Add("New Game", new Button(new Vector2(340, 900), "New Game", NewGameButton));
-            MenuItems.Add("Main Menu", new Button(new Vector2(840, 900), "Main Menu", MainMenuButton));
-            MenuItems.Add("Join", new Button(new Vector2(640, 960), "Join", JoinGameButton));
+            MenuItems.Add("New Game", new Button(new Vector2(240, 900), "New Game", NewGameButton));
+            MenuItems.Add("Main Menu", new Button(new Vector2(1040, 900), "Main Menu", MainMenuButton));
+            MenuItems.Add("Join", new Button(new Vector2(640, 900), "Online", OnlineButton));
 
             // Get the background sprite
             textBackground = new Sprite("Menus/textBackground");
@@ -29,12 +29,9 @@ namespace Some_Knights_and_a_Dragon.Windows
             scrollValue = 0;
         }
 
-        private void JoinGameButton()
+        private void OnlineButton()
         {
-            Game1.WindowManager.LoadGameplay();
-            Game1.WindowManager.GetGameplayWindow().LoadFromSave("test.save");
-            Game1.WindowManager.GameState = GameState.Playing;
-            Managers.Networking.GameplayNetworkingHandler.QueueRequest($"PJ bob|{Game1.WindowManager.GetGameplayWindow().CurrentLevel.Boss.Creature.GetType()}");
+            Game1.WindowManager.GameState = GameState.OnlinePrePlay;
         }
 
         public override void Draw(ref SpriteBatch _spriteBatch)

@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\Some_Knights_and_a_Dragon.csproj": {}
+    "C:\\Users\\Azeez\\Documents\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\Some_Knights_and_a_Dragon.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\Some_Knights_and_a_Dragon.csproj": {
+    "C:\\Users\\Azeez\\Documents\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\Some_Knights_and_a_Dragon.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\Some_Knights_and_a_Dragon.csproj",
+        "projectUniqueName": "C:\\Users\\Azeez\\Documents\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\Some_Knights_and_a_Dragon.csproj",
         "projectName": "Some_Knights_and_a_Dragon",
-        "projectPath": "C:\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\Some_Knights_and_a_Dragon.csproj",
-        "packagesPath": "C:\\Users\\azeez.daoud\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\obj\\",
+        "projectPath": "C:\\Users\\Azeez\\Documents\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\Some_Knights_and_a_Dragon.csproj",
+        "packagesPath": "C:\\Users\\Azeez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Azeez\\Documents\\GitHub\\Extra-Uppgifter\\Some Knights and a Dragon\\Some Knights and a Dragon\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\azeez.daoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Azeez\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -31,6 +31,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -42,6 +43,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
@@ -70,7 +72,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

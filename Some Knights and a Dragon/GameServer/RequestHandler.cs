@@ -38,9 +38,43 @@ namespace GameServer
                     }
                     break;
 
+                case "GME":
+                    foreach (Socket client in Program.ConnectedSockets)
+                    {
+                        if (client == socket)
+                            continue;
+                        Program.Send(client, "GME" + request);
+                    }
+                    break;
+
+                case "LGC":
+                    SendToAllExcept(socket, "LGC" + request);
+                    break;
+
+                case "HLV":
+                    SendToAllExcept(socket, "HLV" + request);
+                    break;
+
+                case "PLJ":
+                    SendToAllExcept(socket, "PLJ" + request);
+                    break;
+
+                case "PLL":
+                    SendToAllExcept(socket, "PLL" + request);
+                    break;
 
                 default:
                     break;
+            }
+        }
+
+        private static void SendToAllExcept(Socket socket, string request)
+        {
+            foreach (Socket client in Program.ConnectedSockets)
+            {
+                if (client == socket)
+                    continue;
+                Program.Send(client, request);
             }
         }
     }

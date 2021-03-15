@@ -173,6 +173,12 @@ namespace Some_Knights_and_a_Dragon.Levels
             creature.ID = id;
         }
 
+        public void AddCreature(Creature creature, int id) // Used to add creatures from outside the class, such as summoning minions.
+        {
+            Creatures.Add(id, creature);
+            creature.ID = id;
+        }
+
         public void AddProjectile(Projectile projectile) // Adds a projectiles to the projectile list
         {
             int id;

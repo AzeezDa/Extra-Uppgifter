@@ -8,7 +8,7 @@ using System.Text;
 namespace Some_Knights_and_a_Dragon.Managers
 {
     public enum GameState { MainMenu, Playing, Paused, Dead, SettingsMainMenu, SettingsInGame, Error,
-                            HighScore, PrePlay, NewGame, ContinueGame };
+                            HighScore, PrePlay, NewGame, OnlinePrePlay, OnlineHost, JoinedHost };
     public class WindowManager
     {
         Texture2D background;
@@ -25,6 +25,9 @@ namespace Some_Knights_and_a_Dragon.Managers
             Windows.Add("High Score", new HighScoreWindow());
             Windows.Add("Pre Play", new PrePlayWindow());
             Windows.Add("New Game", new NewGameWindow());
+            Windows.Add("Online Pre Play", new OnlinePrePlayWindow());
+            Windows.Add("Joined Host", new OnlineJoinWindow());
+            Windows.Add("Online Host", new LocalHostWindow());
             GameState = new GameState();
             background = Game1.TextureManager.GetTexture("Backgrounds/mainBackground");
             ConnectionStatus = new Sprite("Menus/connectionStatus", 2, 1);
@@ -63,6 +66,15 @@ namespace Some_Knights_and_a_Dragon.Managers
                 case GameState.NewGame:
                     Windows["New Game"].Update(ref gameTime); // Display the window to create new game
                     break;
+                case GameState.OnlinePrePlay:
+                    Windows["Online Pre Play"].Update(ref gameTime); // Display the window to play online
+                    break;
+                case GameState.JoinedHost:
+                    Windows["Joined Host"].Update(ref gameTime); // Display the window to play online
+                    break;
+                case GameState.OnlineHost:
+                    Windows["Online Host"].Update(ref gameTime); // Display the window to play online host
+                    break;
                 default:
                     break;
             }
@@ -94,7 +106,10 @@ namespace Some_Knights_and_a_Dragon.Managers
                         GameState = GameState.MainMenu; // Return to main menu
                         break;
                     case GameState.NewGame:
-                        GameState = GameState.PrePlay; // Return to play play
+                        GameState = GameState.PrePlay; // Return to pre play
+                        break;
+                    case GameState.OnlinePrePlay:
+                        GameState = GameState.PrePlay; // Return to pre play
                         break;
                     default:
                         break;
@@ -144,6 +159,18 @@ namespace Some_Knights_and_a_Dragon.Managers
                 case GameState.NewGame:
                     spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
                     Windows["New Game"].Draw(ref spriteBatch);
+                    break;
+                case GameState.OnlinePrePlay:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Online Pre Play"].Draw(ref spriteBatch); // Display the window to play online
+                    break;
+                case GameState.JoinedHost:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Joined Host"].Draw(ref spriteBatch); // Display the window to play online
+                    break;
+                case GameState.OnlineHost:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Online Host"].Draw(ref spriteBatch); // Display the window to play online host
                     break;
                 default:
                     break;

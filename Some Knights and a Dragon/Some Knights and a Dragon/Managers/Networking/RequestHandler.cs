@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Some_Knights_and_a_Dragon.Managers.Networking
@@ -16,6 +17,9 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
             // The rest is the "argument/s" of the command
             request = request[3..];
 
+            Debug.WriteLine(requestCommand);
+            Debug.WriteLine(request);
+
             switch (requestCommand)
             {
                 // The request is the high score data that is saved locally in the HighScore.xml
@@ -27,6 +31,26 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
                 case "GME":
                     GameplayNetworkingHandler.Handle(request);
                     break;
+
+                // Sets up local when there is host
+                case "LGC":
+                    ((Windows.OnlinePrePlayWindow)Game1.WindowManager.Windows["Online Pre Play"]).LocalAvailable = true;
+                    break;
+
+                // Host left
+                case "HLV":
+                    ((Windows.OnlinePrePlayWindow)Game1.WindowManager.Windows["Online Pre Play"]).LocalAvailable = false;
+                    break;
+
+                case "PLJ":
+                    
+                    ((Windows.LocalHostWindow)Game1.WindowManager.Windows["Online Host"]).PlayersJoined.Add(request);
+                    break;
+
+                case "PLL":
+                    ((Windows.LocalHostWindow)Game1.WindowManager.Windows["Online Host"]).PlayersJoined.Remove(request);
+                    break;
+
                 default:
                     break;
             }

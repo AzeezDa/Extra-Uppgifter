@@ -122,10 +122,11 @@ namespace Some_Knights_and_a_Dragon.Windows
             NewLevel(CurrentLevel.Name + ".xml");
         }
 
-        public void ConnectNewPlayer(string name, Creature creature)
+        public void ConnectNewPlayer(string name, Creature creature, int id)
         {
             Players.Add(name, new Player(creature));
-            CurrentLevel.AddCreature(Players[name].Creature);
+            creature.ChangePosition(CurrentLevel.PlayerStartingPosition);
+            CurrentLevel.AddCreature(Players[name].Creature, id);
         }
     }
 }

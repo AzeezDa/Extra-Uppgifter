@@ -5,6 +5,7 @@ using Some_Knights_and_a_Dragon.Entities;
 using Some_Knights_and_a_Dragon.Entities.Creatures;
 using Some_Knights_and_a_Dragon.Entities.Projectiles;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace Some_Knights_and_a_Dragon.Managers.Networking
 {
@@ -23,45 +24,47 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
 
         public static void SendRequests()
         {
-            // Add the request command
-            FullRequest.Append("GME ");
+            if (RequestQueue.Count > 0)
+            {
+                // Add the request command
+                FullRequest.Append("GME");
 
-            // Add all but last requests with the separator
-            for (int i = 0; i < RequestQueue.Count - 1; i++)
-                FullRequest.Append(RequestQueue.Dequeue() + "|");
+                // Add all but last requests with the separator
+                for (int i = 0; i < RequestQueue.Count - 1; i++)
+                    FullRequest.Append(RequestQueue.Dequeue() + "|");
 
-            // Add the last request
-            if(RequestQueue.Count > 0)
+                // Add the last request
                 FullRequest.Append(RequestQueue.Dequeue());
 
-            // Send the request to the server
-            NetworkClient.Send(FullRequest.ToString());
+                // Send the request to the server
+                NetworkClient.Send(FullRequest.ToString());
 
-            FullRequest.Clear();
+                FullRequest.Clear();
+            }
         }
 
         public static void Handle(string fullRequest)
         {
-            string requestCommand = fullRequest[0..2];
-            string[] requests = fullRequest[3..].Split('|');
+            Debug.WriteLine(fullRequest);
+            string[] requests = fullRequest[1..].Split('|');
 
-            // NC = New Creature (Type|Position|ID)
-            // NP = New Projectile (Type|Position|Velocity|ID)
-            // CH = Change Health (ID|Health)
-            // CP = Change Position (ID|Position)
-            // AV = Add to Velocity (ID|Velocity)
-            // PJ = Player Join (Name|Creature)
 
             for (int i = 0; i < requests.Length; i++)
             {
-                switch (requestCommand)
+                string command = requests[i][0..2];
+                string request = requests[i][3..];
+
+                Debug.WriteLine(command);
+                Debug.WriteLine(request);
+
+                switch (command)
                 {
                     case "AV":
-                        AddVelocity(requests[i]);
+                        AddVelocity(request);
                         break;
 
                     case "PJ":
-                        PlayerJoin(requests[i]);
+                        PlayerJoin(request);
                         break;
 
                     default:
@@ -72,8 +75,8 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
 
         private static void PlayerJoin(string request)
         {
-            string[] data = request.Split('|');
-            Game1.WindowManager.GetGameplayWindow().ConnectNewPlayer(data[0], (Creature)Activator.CreateInstance(null, data[1]).Unwrap());
+            string[] data = request.Split(':');
+            Game1.WindowManager.GetGameplayWindow().ConnectNewPlayer(data[0], (Creature)Activator.CreateInstance(null, data[1]).Unwrap(), int.Parse(data[2]));
         }
 
         private static void NewEntity()
@@ -93,7 +96,7 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
 
         private static void ChangePosition(string request)
         {
-            string[] requests = request.Split('|');
+            string[] requests = request.Split(':');
             string[] vectorData = requests[1].Split(',');
             Vector2 position = new Vector2(int.Parse(vectorData[0]), int.Parse(vectorData[1]));
 
@@ -102,7 +105,7 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
 
         private static void AddVelocity(string request)
         {
-            string[] requests = request.Split('|');
+            string[] requests = request.Split(':');
             string[] vectorData = requests[1].Split(',');
             Vector2 position = new Vector2(int.Parse(vectorData[0]), int.Parse(vectorData[1]));
 
