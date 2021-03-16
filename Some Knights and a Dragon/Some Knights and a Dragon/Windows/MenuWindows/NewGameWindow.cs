@@ -43,33 +43,42 @@ namespace Some_Knights_and_a_Dragon.Windows
         private void NewGameButton()
         {
             // Check if the name exists in the saves file
-            nameExistsError = true;
-            foreach (ClickableText text in ((PrePlayWindow)Game1.WindowManager.Windows["Pre Play"]).SaveFilePaths)
+
+            try
             {
-                if (text.Text == ((TextBox)MenuItems["Name Box"]).Text)
+                nameExistsError = true;
+                foreach (ClickableText text in ((PrePlayWindow)Game1.WindowManager.Windows["Pre Play"]).SaveFilePaths)
                 {
-                    nameExistsError = true;
-                    return;
+                    if (text.Text == ((TextBox)MenuItems["Name Box"]).Text)
+                    {
+                        nameExistsError = true;
+                        return;
+                    }
                 }
+
+                // A fresh new set up from an xml file similar to the save data, just with initial values for the data
+                SaveData saveData = new SaveData("../../../Data/fresh.start");
+
+                // Change the name of the save data to the player name
+                saveData.ChangeValue("PlayerName", ((TextBox)MenuItems["Name Box"]).Text);
+
+                // Load the gameplay
+                Game1.WindowManager.LoadGameplay();
+
+                // Load the data into the game using through the save data object
+                Game1.WindowManager.GetGameplayWindow().LoadFromSave(saveData);
+
+                // Set the gamestate to playing
+                Game1.WindowManager.GameState = Managers.GameState.Playing;
+
+                // Save the data with the new player name
+                saveData.Save();
             }
-
-            // A fresh new set up from an xml file similar to the save data, just with initial values for the data
-            SaveData saveData = new SaveData("../../../Data/fresh.start");
-
-            // Change the name of the save data to the player name
-            saveData.ChangeValue("PlayerName", ((TextBox)MenuItems["Name Box"]).Text);
-
-            // Load the gameplay
-            Game1.WindowManager.LoadGameplay();
-
-            // Load the data into the game using through the save data object
-            Game1.WindowManager.GetGameplayWindow().LoadFromSave(saveData);
-
-            // Set the gamestate to playing
-            Game1.WindowManager.GameState = Managers.GameState.Playing;
-
-            // Save the data with the new player name
-            saveData.Save();
+            catch (Exception e)
+            {
+                Game1.WindowManager.DisplayError(e);
+            }
+            
         }
 
         private void ReturnToPrePlay()

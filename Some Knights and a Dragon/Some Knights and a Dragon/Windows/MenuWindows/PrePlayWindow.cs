@@ -93,7 +93,7 @@ namespace Some_Knights_and_a_Dragon.Windows
                     // Anonymous function for every clickable text where it loads the save data for the corresponding save file
                     () => { Game1.WindowManager.LoadGameplay(); 
                         LoadGame(path); 
-                        Game1.WindowManager.GameState = GameState.Playing; }));
+                         }));
             }
         }
 
