@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Some_Knights_and_a_Dragon.GameWindow">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAEAAgAAAAAAAAQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Windows\GameWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Game1" Collapsed="true">
+    <Position X="54.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAwCABAAAAAAAAAAABABCAYAAYAAAAQQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Program" Collapsed="true">
+    <Position X="54.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Effects.Burning">
+    <Position X="9.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Effects\Burning.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Effects.Effect">
+    <Position X="9.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAiAgAAAAAAAAQAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Effects\Effect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.Boss">
+    <Position X="2" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAACAAAAAAgAAAAAAAIAgAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Bosses\Boss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.DragonBoss">
+    <Position X="0.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAQAAAAAAAAAAEAAAAAAAABAAAARAA=</HashCode>
+      <FileName>Entities\Bosses\DragonBoss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.StoneQueenBoss">
+    <Position X="3" Y="13.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAQgAAgAAAAAAgAABmgAAIAAAAAAAEAgCABQAAAABAA=</HashCode>
+      <FileName>Entities\Bosses\StoneQueenBoss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.Bird">
+    <Position X="17.5" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Creatures\Bird.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.Creature">
+    <Position X="9.5" Y="18.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QIQACAAAAEAgC4EAAAAAAEQECKAJAAgAAAAAgAAAAQA=</HashCode>
+      <FileName>Entities\Creatures\Creature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.Dragon">
+    <Position X="1.75" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAgAAAAAAAAAAAIAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\Creatures\Dragon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.Elf">
+    <Position X="4" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAgAAAAAAAAAAAIABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Creatures\Elf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.Knight">
+    <Position X="6.25" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAIAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\Creatures\Knight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.MysteriousMan">
+    <Position X="8.5" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIAAAAAgAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\Creatures\MysteriousMan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.Snake">
+    <Position X="10.75" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Creatures\Snake.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.StoneGuardian">
+    <Position X="13" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Creatures\StoneGuardian.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Creatures.StoneQueen">
+    <Position X="15.25" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Creatures\StoneQueen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.DroppedItem">
+    <Position X="24.25" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAAAQAAgAAAAAABAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Other\DroppedItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Entity">
+    <Position X="12.75" Y="11.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACQQAIAAiAAAgiAgBAAAAESFAAAAAAAQAAAEAIBEAAA=</HashCode>
+      <FileName>Entities\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Projectiles.Arrow">
+    <Position X="19.75" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Projectiles\Arrow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Projectiles.Fireball">
+    <Position X="22" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Projectiles\Fireball.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Entities.Projectiles.Projectile">
+    <Position X="21" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAADAAAAAAgAAAACAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Projectiles\Projectile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Consumables.DiskOfFortune">
+    <Position X="43.75" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Consumables\DiskOfFortune.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Consumables.HealingPotion">
+    <Position X="46" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Consumables\HealingPotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Other.Arrow">
+    <Position X="41.5" Y="26.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Other\Arrow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Other.Coin">
+    <Position X="48.25" Y="26.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Other\Coin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Other.Queenleaf">
+    <Position X="25.75" Y="26.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Other\Queenleaf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Weapons.Dragonarch">
+    <Position X="28" Y="29.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAEAAAAAAAAAAAAAAAAAAEAAAAACAQAAAAAAAA=</HashCode>
+      <FileName>Items\Weapons\Dragonarch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Weapons.Dragonbone">
+    <Position X="30.25" Y="29.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAAAAAABAAgAAAAAAQBAAAAAAA=</HashCode>
+      <FileName>Items\Weapons\Dragonbone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Weapons.ElvenBow">
+    <Position X="32.5" Y="29.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAEAAAAAAAAAAAAAAAAAAEAAAAACAQAAAAAAAA=</HashCode>
+      <FileName>Items\Weapons\ElvenBow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Weapons.HornOfTheWild">
+    <Position X="34.75" Y="29.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAAAAAAACAAAAAAAIAAAQAAAAA=</HashCode>
+      <FileName>Items\Weapons\HornOfTheWild.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Weapons.QueensBlade">
+    <Position X="37" Y="29.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAABAAAAAAAQAQAAAAAAAA=</HashCode>
+      <FileName>Items\Weapons\QueensBlade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Weapons.Sword">
+    <Position X="39.25" Y="29.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Items\Weapons\Sword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Consumable">
+    <Position X="44.75" Y="26.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Consumable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Item">
+    <Position X="36.75" Y="22.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAgAAAAAAAAAAQEAAAAAAYQCAQAAAAAAAA=</HashCode>
+      <FileName>Items\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Items.Weapon">
+    <Position X="33.5" Y="26.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Levels.Level" Collapsed="true">
+    <Position X="57.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAIMgAQIAiAAwJAAAAQgAAAAAEAAIAAgAAQQAAQ=</HashCode>
+      <FileName>Levels\Level.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.Networking.GameplayNetworkingHandler" Collapsed="true">
+    <Position X="56" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAJAAAIAAAEAAAAIQAACgAAAAAAIAAAAAAAACAAE=</HashCode>
+      <FileName>Managers\Networking\GameplayNetworkingHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.Networking.RequestHandler" Collapsed="true">
+    <Position X="56" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\Networking\RequestHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.ResponeState" Collapsed="true">
+    <Position X="57.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAABAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\Networking\NetworkClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.NetworkClient" Collapsed="true">
+    <Position X="50.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAEACAAAQAAACEAAAcAAiAAAAAAQQEAAABAgQIA=</HashCode>
+      <FileName>Managers\Networking\NetworkClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.Background" Collapsed="true">
+    <Position X="50.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAgAAAAAAAAAQAAAAAAAEAIJAAAAAAAQ=</HashCode>
+      <FileName>Managers\Background.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.FontManager" Collapsed="true">
+    <Position X="52.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAIAAAAAAEAAAAAACgAAAAAAAA=</HashCode>
+      <FileName>Managers\FontManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.HealthBar" Collapsed="true">
+    <Position X="57.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAACAAAAAAAAAggAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Managers\HealthBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.HighScoreItem">
+    <Position X="6.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Managers\HighScoreManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.HighScoreManager" Collapsed="true">
+    <Position X="50.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIABAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\HighScoreManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.InputManager" Collapsed="true">
+    <Position X="52.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAiAAABAAACICBABUAAAAAAAAAAACAQAABQAAQ=</HashCode>
+      <FileName>Managers\InputManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.SongManager" Collapsed="true">
+    <Position X="52.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAgAAAA=</HashCode>
+      <FileName>Managers\SongManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.Sprite" Collapsed="true">
+    <Position X="54.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQjAAAAhAQAAoEAAgIAAEQAACIAAQIiAAAAAwAAAAI=</HashCode>
+      <FileName>Managers\Sprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.TextureManager" Collapsed="true">
+    <Position X="56" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAAAIA=</HashCode>
+      <FileName>Managers\TextureManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.Timer" Collapsed="true">
+    <Position X="57.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgEIAAAAAAAAAAAAgAACAAAAAAAACAAAAAAAAAQA=</HashCode>
+      <FileName>Managers\Timer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.WindowManager" Collapsed="true">
+    <Position X="52.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAABQAAgAAAAAAAAAAEAAAAAAAABAACAAAIAA=</HashCode>
+      <FileName>Managers\WindowManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.XMLManager&lt;T&gt;" Collapsed="true">
+    <Position X="54.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAACAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Managers\XMLManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.PlayerManagement.HighScoreRecorder">
+    <Position X="6.75" Y="13.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAIAQIAAAAAAAAAA=</HashCode>
+      <FileName>Managers\PlayerManagement\HighScoreRecorder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.PlayerManagement.InventoryItem" Collapsed="true">
+    <Position X="54.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\PlayerManagement\InventoryManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.PlayerManagement.InventoryManager" Collapsed="true">
+    <Position X="56" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAAAAAAAgAEAAAAQAAAAABAIAQEIDAAAwAAQAA=</HashCode>
+      <FileName>Managers\PlayerManagement\InventoryManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.PlayerManagement.Player" Collapsed="true">
+    <Position X="52.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAAAAAAgAIAAAAAAAgAAAAAAAAEAAAAgAAAAA=</HashCode>
+      <FileName>Managers\PlayerManagement\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.PlayerManagement.SaveData" Collapsed="true">
+    <Position X="50.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAIAAAAAAAIAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\PlayerManagement\SaveData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Managers.PlayerManagement.TradingManager" Collapsed="true">
+    <Position X="50.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIAAAAIgAAAAAAAEAAAAAAIAAABAAAAAAAAAg=</HashCode>
+      <FileName>Managers\PlayerManagement\TradingManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.Menus.Button">
+    <Position X="34.75" Y="13.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Some_Knights_and_a_Dragon.Windows.Menus.Button.OnClickDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Windows\Menus\Button.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Windows\Menus\Button.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.Menus.ClickableText">
+    <Position X="28" Y="13.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Some_Knights_and_a_Dragon.Windows.Menus.ClickableText.OnClickDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Windows\Menus\ClickableText.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AASAAIAAAAAAAgAAAAAAAAACAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Windows\Menus\ClickableText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.Menus.MenuItem">
+    <Position X="31.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAgAgAAAAAAAAAAAAAAAQAQAAAAAAAAA=</HashCode>
+      <FileName>Windows\Menus\MenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.Menus.Slider">
+    <Position X="30.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAACAAgAAAAAAAAAAAAAAAAAAAAAACABAAAA=</HashCode>
+      <FileName>Windows\Menus\Slider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.Menus.TextBox">
+    <Position X="32.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAABIAAAAAAAKAAAAAA=</HashCode>
+      <FileName>Windows\Menus\TextBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.DeathWindow">
+    <Position X="12.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAABAAAAAAAAAAAAAAAAAAAEQ=</HashCode>
+      <FileName>Windows\MenuWindows\DeathWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.ErrorWindow">
+    <Position X="17" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAEAAAAAAgAAAAAAAAAAAAAAAAAAAAAAgCAAAAQ=</HashCode>
+      <FileName>Windows\MenuWindows\ErrorWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.HighScoreWindow">
+    <Position X="21.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAACAAAAAgAAEAAAAAAAAAABAAEAAQAAAAIAQAQ=</HashCode>
+      <FileName>Windows\MenuWindows\HighScoreWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.LocalHostWindow">
+    <Position X="27.25" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAAAAAAgAAAAAAAIAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Windows\MenuWindows\LocalHostWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.MainMenuWindow">
+    <Position X="29.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAEAEgAAAAAAAAAAAAgAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Windows\MenuWindows\MainMenuWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.NewGameWindow">
+    <Position X="2" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>RAQAAAAAAAAAAgAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\MenuWindows\NewGameWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.OnlineJoinWindow">
+    <Position X="4.5" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\MenuWindows\OnlineJoinWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.OnlinePrePlayWindow">
+    <Position X="7" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAAAAgAggAAAAEAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\MenuWindows\OnlinePrePlayWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.PauseWindow">
+    <Position X="9.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAgAAAAAAAAAAAAAAAAACAEAAAAAAAAQ=</HashCode>
+      <FileName>Windows\MenuWindows\PauseWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.PrePlayWindow">
+    <Position X="14.5" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAQAAABAEAAAAgAAEAAAAAAAAAABAAEAAAAAAAAAAQE=</HashCode>
+      <FileName>Windows\MenuWindows\PrePlayWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.SettingsWindow">
+    <Position X="19.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAgAAAAAAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Windows\MenuWindows\SettingsWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.GameplayWindow">
+    <Position X="24.25" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQUAAAAAAABSAgIAABAAAAAAAAAkAAAAAAAACQAAAAQ=</HashCode>
+      <FileName>Windows\GameplayWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Some_Knights_and_a_Dragon.Windows.MenuWindow">
+    <Position X="16" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\MenuWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Some_Knights_and_a_Dragon.Managers.PlayerManagement.TradeItem" Collapsed="true">
+    <Position X="50.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABCEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\PlayerManagement\TradingManager.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Some_Knights_and_a_Dragon.Entities.TextureDirection" Collapsed="true">
+    <Position X="52.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
+      <FileName>Entities\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Some_Knights_and_a_Dragon.Managers.GameState" Collapsed="true">
+    <Position X="50.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABgAAAAAAAEgQAAAAAgIAgYBAAAAAAAAgAACAAAAAA=</HashCode>
+      <FileName>Managers\WindowManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
