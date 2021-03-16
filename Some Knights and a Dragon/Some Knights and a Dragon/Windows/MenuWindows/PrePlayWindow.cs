@@ -18,7 +18,7 @@ namespace Some_Knights_and_a_Dragon.Windows
         {
             // Add the buttons
             MenuItems.Add("New Game", new Button(new Vector2(340, 900), "New Game", NewGameButton));
-            MenuItems.Add("Main Menu", new Button(new Vector2(840, 900), "Main Menu", MainMenuButton));
+            MenuItems.Add("Main Menu", new Button(new Vector2(940, 900), "Main Menu", MainMenuButton));
 
             // Get the background sprite
             textBackground = new Sprite("Menus/textBackground");
