@@ -63,6 +63,10 @@ namespace GameServer
                     SendToAllExcept(socket, "PLL" + request);
                     break;
 
+                case "LGS":
+                    SendToAllExcept(socket, "LGS" + request);
+                    break;
+
                 default:
                     break;
             }

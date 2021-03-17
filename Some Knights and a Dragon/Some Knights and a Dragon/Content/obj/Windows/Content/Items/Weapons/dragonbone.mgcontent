@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Weapons/dragonbone.png</SourceFile>
-  <SourceTime>2021-03-11T10:39:16.6752796+01:00</SourceTime>
-  <DestFile>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/bin/Windows/Content/Items/Weapons/dragonbone.xnb</DestFile>
-  <DestTime>2021-03-16T09:47:32.8049253+01:00</DestTime>
+  <SourceFile>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Items/Weapons/dragonbone.png</SourceFile>
+  <SourceTime>2020-12-07T19:38:41.0526647+01:00</SourceTime>
+  <DestFile>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/bin/Windows/Content/Items/Weapons/dragonbone.xnb</DestFile>
+  <DestTime>2021-03-16T20:58:23.7954342+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

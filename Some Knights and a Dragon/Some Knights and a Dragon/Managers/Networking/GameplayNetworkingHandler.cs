@@ -46,13 +46,13 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
         public static void Handle(string fullRequest)
         {
             Debug.WriteLine(fullRequest);
-            string[] requests = fullRequest[1..].Split('|');
+            string[] requests = fullRequest.Split('|');
 
 
             for (int i = 0; i < requests.Length; i++)
             {
                 string command = requests[i][0..2];
-                string request = requests[i][3..];
+                string request = requests[i][2..];
 
                 Debug.WriteLine(command);
                 Debug.WriteLine(request);
@@ -63,21 +63,12 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
                         AddVelocity(request);
                         break;
 
-                    case "PJ":
-                        PlayerJoin(request);
-                        break;
-
                     default:
                         break;
                 }
             }
         }
 
-        private static void PlayerJoin(string request)
-        {
-            string[] data = request.Split(':');
-            Game1.WindowManager.GetGameplayWindow().ConnectNewPlayer(data[0], (Creature)Activator.CreateInstance(null, data[1]).Unwrap(), int.Parse(data[2]));
-        }
 
         private static void NewEntity()
         {
@@ -109,6 +100,7 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
             string[] vectorData = requests[1].Split(',');
             Vector2 position = new Vector2(int.Parse(vectorData[0]), int.Parse(vectorData[1]));
 
+            Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures[int.Parse(requests[0])].MultiplyWithVelocity(Vector2.Zero);
             Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures[int.Parse(requests[0])].AddToVelocity(position);
         }
     }

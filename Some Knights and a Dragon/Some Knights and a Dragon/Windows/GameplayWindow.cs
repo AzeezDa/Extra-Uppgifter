@@ -21,11 +21,14 @@ namespace Some_Knights_and_a_Dragon.Windows
 
         public Dictionary<string, Player> Players { get; private set; }
 
+        public bool Online { get; set; }
+
         public GameplayWindow() : base("Gameplay Window")
         {
             // Load the level
             LevelLoader = new XMLManager<Level>();
             Players = new Dictionary<string, Player>();
+            Online = false;
         }
 
         public override void LoadContent() // Loads the content of the level
@@ -43,6 +46,7 @@ namespace Some_Knights_and_a_Dragon.Windows
 
             // Load the level
             NewLevel(saveData.DataSaveValues["Level"]);
+            CurrentLevel.AddCreature(Player.Creature);
 
             // Load the health data
             Player.Creature.ChangeMaxHealth(int.Parse(saveData.DataSaveValues["MaxHealth"]));
@@ -50,6 +54,9 @@ namespace Some_Knights_and_a_Dragon.Windows
 
             // Load the inventory
             Player.Inventory.LoadInventoryFromData(saveData.InventoryItems);
+
+            // Set player position to start
+            Player.Creature.ChangePosition(CurrentLevel.PlayerStartingPosition);
 
             // Initiate the high score recorder and start recording
             HighScoreRecorder = new HighScoreRecorder(PlayerName);
@@ -68,6 +75,53 @@ namespace Some_Knights_and_a_Dragon.Windows
         {
             this.saveData = saveData;
             LoadContent();
+        }
+
+        public void LoadFromRequest(string request)
+        {
+            string[] requests = request.Split('|');
+
+            Dictionary<int, Creature> creaturesToAdd = new Dictionary<int, Creature>();
+            Dictionary<int, string> playersToAdd = new Dictionary<int, string>(); 
+
+            foreach (string startRequest in requests)
+            {
+                string[] requestData = startRequest.Split(':');
+
+                switch (requestData[0])
+                {
+                    case "L":
+                        saveData = new SaveData("../../../Saves/" + requestData[1]);
+                        break;
+
+                    case "P":
+                        Creature playerCreature = (Creature)Activator.CreateInstance(null, requestData[2]).Unwrap();
+                        int id = int.Parse(requestData[3]);
+                        creaturesToAdd.Add(id, playerCreature);
+                        if (requestData[1] == ((OnlinePrePlayWindow)Game1.WindowManager.Windows["Online Pre Play"]).LocalPlayerName)
+                        {
+                            Player = new Player(playerCreature);
+                            Player.Inventory.LoadInventoryFromData(saveData.InventoryItems);
+                            NewLevel(saveData.DataSaveValues["Level"]);
+                            Player.Creature.ChangePosition(CurrentLevel.PlayerStartingPosition);
+                        }
+                        else
+                            playersToAdd.Add(id, requestData[1]);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            foreach (KeyValuePair<int, Creature> creature in creaturesToAdd)
+                CurrentLevel.AddCreature(creature.Value, creature.Key);
+
+            foreach (KeyValuePair<int, string> player in playersToAdd)
+                ConnectNewPlayer(player.Value, player.Key);
+
+            Game1.WindowManager.GameState = GameState.Playing;
+            Online = true;
         }
 
         // Save the game
@@ -106,7 +160,6 @@ namespace Some_Knights_and_a_Dragon.Windows
                 GC.Collect();
                 CurrentLevel = LevelLoader.Get("Levels/" + levelName);
                 CurrentLevel.LoadContent();
-                CurrentLevel.AddCreature(Player.Creature);
             }
             catch (Exception e)
             {
@@ -122,11 +175,10 @@ namespace Some_Knights_and_a_Dragon.Windows
             NewLevel(CurrentLevel.Name + ".xml");
         }
 
-        public void ConnectNewPlayer(string name, Creature creature, int id)
+        public void ConnectNewPlayer(string name, int id)
         {
-            Players.Add(name, new Player(creature));
-            creature.ChangePosition(CurrentLevel.PlayerStartingPosition);
-            CurrentLevel.AddCreature(Players[name].Creature, id);
+            Players.Add(name, new Player(CurrentLevel.Creatures[id]));
+            CurrentLevel.Creatures[id].ChangePosition(CurrentLevel.PlayerStartingPosition);
         }
     }
 }

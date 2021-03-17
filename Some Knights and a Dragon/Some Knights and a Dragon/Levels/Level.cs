@@ -62,13 +62,10 @@ namespace Some_Knights_and_a_Dragon.Levels
 
             // Sets up the boss
             Boss = (Boss)Activator.CreateInstance(null, BossClassName).Unwrap();
-            AddCreature(Boss.Creature);
+            AddCreature(Boss.Creature, 0);
 
             // Loads the trading system for the level
             TradingManager.LoadTrading();
-
-            // Sets the player's position to the level's starting position
-            Game1.WindowManager.GetGameplayWindow().Player.Creature.ChangePosition(PlayerStartingPosition);
 
         }
 
@@ -91,6 +88,7 @@ namespace Some_Knights_and_a_Dragon.Levels
             }
 
             List<int> droppedItemsToRemove = new List<int>();
+            Boss.Creature.Kill();
 
             // Updates all the items dropped on the ground
             foreach (int i in DroppedItems.Keys)
@@ -163,7 +161,7 @@ namespace Some_Knights_and_a_Dragon.Levels
             Game1.FontManager.WriteText(spriteBatch, Name, new Vector2(640, 100));
         }
 
-        public void AddCreature(Creature creature) // Used to add creatures from outside the class, such as summoning minions.
+        public int AddCreature(Creature creature) // Used to add creatures from outside the class, such as summoning minions.
         {
             int id;
             for (id = Game1.Random.Next(int.MinValue, int.MaxValue); Creatures.ContainsKey(id);)
@@ -171,6 +169,8 @@ namespace Some_Knights_and_a_Dragon.Levels
 
             Creatures.Add(id, creature);
             creature.ID = id;
+
+            return id;
         }
 
         public void AddCreature(Creature creature, int id) // Used to add creatures from outside the class, such as summoning minions.
@@ -179,7 +179,7 @@ namespace Some_Knights_and_a_Dragon.Levels
             creature.ID = id;
         }
 
-        public void AddProjectile(Projectile projectile) // Adds a projectiles to the projectile list
+        public int AddProjectile(Projectile projectile) // Adds a projectiles to the projectile list
         {
             int id;
             for (id = Game1.Random.Next(int.MinValue, int.MaxValue); Projectiles.ContainsKey(id);)
@@ -187,9 +187,11 @@ namespace Some_Knights_and_a_Dragon.Levels
 
             Projectiles.Add(id, projectile);
             projectile.ID = id;
+
+            return id;
         }
 
-        public void AddDroppedItem(Vector2 position, Item item) // Adds a dropped item to its list.
+        public int AddDroppedItem(Vector2 position, Item item) // Adds a dropped item to its list.
         {
             int id;
             for (id = Game1.Random.Next(int.MinValue, int.MaxValue); DroppedItems.ContainsKey(id);)
@@ -197,6 +199,8 @@ namespace Some_Knights_and_a_Dragon.Levels
 
             DroppedItems.Add(id, new DroppedItem(position, item));
             DroppedItems[id].ID = id;
+
+            return id;
         }
 
         public void AddDroppedItem(Vector2 position, Item item, int amount) // Adds a dropped item to its list.

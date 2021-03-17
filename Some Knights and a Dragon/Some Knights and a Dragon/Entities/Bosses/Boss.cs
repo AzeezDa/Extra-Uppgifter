@@ -40,7 +40,8 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         // On death: the boss Drops all the loot and update the high score recorder
         public virtual void OnDeath()
         {
-            Game1.WindowManager.GetGameplayWindow().HighScoreRecorder.BossDefeatedUpdate();
+            if (!Game1.WindowManager.GetGameplayWindow().Online)
+                Game1.WindowManager.GetGameplayWindow().HighScoreRecorder.BossDefeatedUpdate();
             Random r = new Random();
             for (int i = 0; i < Loot.Count; i++)
             {

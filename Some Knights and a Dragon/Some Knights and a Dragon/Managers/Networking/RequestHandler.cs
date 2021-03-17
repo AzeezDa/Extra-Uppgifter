@@ -51,6 +51,14 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
                     ((Windows.LocalHostWindow)Game1.WindowManager.Windows["Online Host"]).PlayersJoined.Remove(request);
                     break;
 
+                case "LGS":
+                    if (Game1.WindowManager.GameState == GameState.JoinedHost)
+                    {
+                        Game1.WindowManager.LoadGameplay();
+                        Game1.WindowManager.GetGameplayWindow().LoadFromRequest(request);
+                    }
+                    break;
+
                 default:
                     break;
             }
