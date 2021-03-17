@@ -1,18 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Items>
   <Item Name="Sob" BossesDefeated="3" Ticks="100000000012" />
   <Item Name="Job" BossesDefeated="3" Ticks="100000000000" />
-  <Item Name="test" BossesDefeated="0" Ticks="400302493" />
-  <Item Name="test" BossesDefeated="0" Ticks="147342710" />
-  <Item Name="test" BossesDefeated="0" Ticks="149268321" />
-  <Item Name="test" BossesDefeated="0" Ticks="384313970" />
-  <Item Name="test" BossesDefeated="0" Ticks="140917773" />
-  <Item Name="test" BossesDefeated="0" Ticks="61296461" />
-  <Item Name="test" BossesDefeated="0" Ticks="124847356" />
-  <Item Name="test" BossesDefeated="0" Ticks="169062865" />
-  <Item Name="test" BossesDefeated="0" Ticks="108493396" />
-  <Item Name="" BossesDefeated="0" Ticks="43799845" />
-  <Item Name="" BossesDefeated="0" Ticks="228257472" />
-  <Item Name="" BossesDefeated="0" Ticks="641012777" />
-  <Item Name="" BossesDefeated="0" Ticks="591587586" />
 </Items>
