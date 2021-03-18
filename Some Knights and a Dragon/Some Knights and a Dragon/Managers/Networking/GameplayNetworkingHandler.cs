@@ -45,7 +45,6 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
 
         public static void Handle(string fullRequest)
         {
-            Debug.WriteLine(fullRequest);
             string[] requests = fullRequest.Split('|');
 
 
@@ -54,13 +53,13 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
                 string command = requests[i][0..2];
                 string request = requests[i][2..];
 
-                Debug.WriteLine(command);
-                Debug.WriteLine(request);
-
                 switch (command)
                 {
-                    case "AV":
+                    case "av":
                         AddVelocity(request);
+                        break;
+                    case "mv":
+                        MultiplyWithVelocity(request);
                         break;
 
                     default:
@@ -91,7 +90,7 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
             string[] vectorData = requests[1].Split(',');
             Vector2 position = new Vector2(int.Parse(vectorData[0]), int.Parse(vectorData[1]));
 
-            Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures[int.Parse(requests[0])].ChangePosition(position);
+            Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures[int.Parse(requests[0])].ChangePosition(position, false);
         }
 
         private static void AddVelocity(string request)
@@ -100,8 +99,16 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
             string[] vectorData = requests[1].Split(',');
             Vector2 position = new Vector2(int.Parse(vectorData[0]), int.Parse(vectorData[1]));
 
-            Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures[int.Parse(requests[0])].MultiplyWithVelocity(Vector2.Zero);
-            Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures[int.Parse(requests[0])].AddToVelocity(position);
+            Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures[int.Parse(requests[0])].AddToVelocity(position, false);
+        }
+
+        private static void MultiplyWithVelocity(string request)
+        {
+            string[] requests = request.Split(':');
+            string[] vectorData = requests[1].Split(',');
+            Vector2 position = new Vector2(int.Parse(vectorData[0]), int.Parse(vectorData[1]));
+
+            Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures[int.Parse(requests[0])].MultiplyWithVelocity(position, false);
         }
     }
 }

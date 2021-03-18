@@ -82,22 +82,16 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
             {
                 Creature.AddToVelocity(new Vector2(Creature.Speed.X, 0));
                 Creature.WalkAnimation();
-                if (NetworkClient.Connected)
-                    Networking.GameplayNetworkingHandler.QueueRequest($"AV{Creature.ID}:{Creature.Speed.X},0");
 
             }
             if (Game1.InputManager.KeyPressed(Keys.A))
             {
                 Creature.AddToVelocity(new Vector2(-Creature.Speed.X, 0));
                 Creature.WalkAnimation();
-                if (NetworkClient.Connected)
-                    Networking.GameplayNetworkingHandler.QueueRequest($"AV{Creature.ID}:{-Creature.Speed.X},0");
             }
             if (Game1.InputManager.KeyClicked(Keys.W) && Creature.Velocity.Y == 0) 
             {
                 Creature.AddToVelocity(new Vector2(0, -Creature.Speed.Y));
-                if (NetworkClient.Connected)
-                    Networking.GameplayNetworkingHandler.QueueRequest($"AV{Creature.ID}:0,{-Creature.Speed.Y}");
             }
 
             // Use item if left mouse pressed

@@ -1,8 +1,8 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Some_Knights_and_a_Dragon.Managers;
 using Some_Knights_and_a_Dragon.Windows;
+using Some_Knights_and_a_Dragon.Managers.Networking;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -109,46 +109,64 @@ namespace Some_Knights_and_a_Dragon.Entities
         }
 
         // THE BELOW FUNCTION ARE DOING AS THEIR SIGNATURES TELL
-        public virtual void ChangePosition(Vector2 position)
+        public virtual void ChangePosition(Vector2 position, bool send = true)
         {
             Position = position;
+            if (NetworkClient.Connected && Game1.WindowManager.GetGameplayWindow().Online && send)
+                GameplayNetworkingHandler.QueueRequest($"cp:{ID}:{position.X},{position.Y}");
         }
-        public virtual void ChangeVelocity(Vector2 velocity)
+        public virtual void ChangeVelocity(Vector2 velocity, bool send = true)
         {
             Velocity = velocity;
+            if (NetworkClient.Connected && Game1.WindowManager.GetGameplayWindow().Online && send)
+                GameplayNetworkingHandler.QueueRequest($"cv:{ID}:{velocity.X},{velocity.Y}");
         }
 
-        public virtual void ChangeAcceleration(Vector2 acceleration)
+        public virtual void ChangeAcceleration(Vector2 acceleration, bool send = true)
         {
             Acceleration = acceleration;
+            if (NetworkClient.Connected && Game1.WindowManager.GetGameplayWindow().Online && send)
+                GameplayNetworkingHandler.QueueRequest($"ca:{ID}:{acceleration.X},{acceleration.Y}");
         }
 
-        public virtual void AddToPosition(Vector2 position)
+        public virtual void AddToPosition(Vector2 position, bool send = true)
         {
             Position += position;
+            if (NetworkClient.Connected && Game1.WindowManager.GetGameplayWindow().Online && send)
+                GameplayNetworkingHandler.QueueRequest($"ap:{ID}:{position.X},{position.Y}");
         }
-        public virtual void AddToVelocity(Vector2 velocity)
+        public virtual void AddToVelocity(Vector2 velocity, bool send = true)
         {
             Velocity += velocity;
+            if (NetworkClient.Connected && Game1.WindowManager.GetGameplayWindow().Online && send)
+                GameplayNetworkingHandler.QueueRequest($"av:{ID}:{velocity.X},{velocity.Y}");
         }
 
-        public virtual void AddToAcceleration(Vector2 acceleration)
+        public virtual void AddToAcceleration(Vector2 acceleration, bool send = true)
         {
             Acceleration += acceleration;
+            if (NetworkClient.Connected && Game1.WindowManager.GetGameplayWindow().Online && send)
+                GameplayNetworkingHandler.QueueRequest($"aa:{ID}:{acceleration.X},{acceleration.Y}");
         }
 
-        public void MultiplyWithPosition(Vector2 position)
+        public void MultiplyWithPosition(Vector2 position, bool send = true)
         {
             Position *= position;
+            if (NetworkClient.Connected && Game1.WindowManager.GetGameplayWindow().Online && send)
+                GameplayNetworkingHandler.QueueRequest($"mp:{ID}:{position.X},{position.Y}");
         }
-        public void MultiplyWithVelocity(Vector2 velocity)
+        public void MultiplyWithVelocity(Vector2 velocity, bool send = true)
         {
             Velocity *= velocity;
+            if (NetworkClient.Connected && Game1.WindowManager.GetGameplayWindow().Online && send)
+                GameplayNetworkingHandler.QueueRequest($"mv:{ID}:{velocity.X},{velocity.Y}");
         }
 
-        public void MultiplyWithAcceleration(Vector2 acceleration)
+        public void MultiplyWithAcceleration(Vector2 acceleration, bool send = true)
         {
             Acceleration *= acceleration;
+            if (NetworkClient.Connected && Game1.WindowManager.GetGameplayWindow().Online && send)
+                GameplayNetworkingHandler.QueueRequest($"ma:{ID}:{acceleration.X},{acceleration.Y}");
         }
     }
 }

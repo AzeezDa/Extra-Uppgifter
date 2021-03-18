@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Backgrounds/Endwood.png</SourceFile>
-  <SourceTime>2021-01-17T19:48:26.0373199+01:00</SourceTime>
-  <DestFile>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/bin/Windows/Content/Backgrounds/endwood.xnb</DestFile>
-  <DestTime>2021-03-16T20:58:23.0985089+01:00</DestTime>
+  <SourceFile>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/Backgrounds/Endwood.png</SourceFile>
+  <SourceTime>2021-03-18T13:51:40.3458984+01:00</SourceTime>
+  <DestFile>C:/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/bin/Windows/Content/Backgrounds/endwood.xnb</DestFile>
+  <DestTime>2021-03-18T13:52:05.7573917+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

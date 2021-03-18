@@ -152,10 +152,5 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
                 }
             }
         }
-
-        public override void AddToVelocity(Vector2 velocity)
-        {
-            base.AddToVelocity(velocity);
-        }
     }
 }

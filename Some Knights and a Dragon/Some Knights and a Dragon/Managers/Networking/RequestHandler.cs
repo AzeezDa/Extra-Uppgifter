@@ -17,9 +17,6 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
             // The rest is the "argument/s" of the command
             request = request[3..];
 
-            Debug.WriteLine(requestCommand);
-            Debug.WriteLine(request);
-
             switch (requestCommand)
             {
                 // The request is the high score data that is saved locally in the HighScore.xml
