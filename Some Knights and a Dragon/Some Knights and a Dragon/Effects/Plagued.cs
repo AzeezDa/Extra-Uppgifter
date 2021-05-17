@@ -20,9 +20,10 @@ namespace Some_Knights_and_a_Dragon.Effects
             base.Update(gameTime, creature);
             timer.CheckTimer(gameTime);
 
+            // Player takes damage based on health. Less health, more damage.
             if (timer.TimerOn)
             {
-                creature.TakeDamage((int)(50f * (1 - creature.GetHealthRatio)));
+                creature.TakeDamage((int)(50.0f * (1 - creature.GetHealthRatio)));
             }
         }
 

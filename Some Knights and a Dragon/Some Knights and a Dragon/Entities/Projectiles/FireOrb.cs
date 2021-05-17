@@ -24,16 +24,18 @@ namespace Some_Knights_and_a_Dragon.Entities.Projectiles
         public override void Update(ref GameTime gameTime)
         {
             base.Update(ref gameTime);
+
+            // Collide with walls, remove
             if (CollidingWithBoundries)
-            {
                 LifeTime = 0;
-            }
 
             foreach (Creature creature in Game1.WindowManager.GetGameplayWindow().CurrentLevel.Creatures)
             {
+                // If creature is owner, skip
                 if (creature == Owner)
                     continue;
 
+                // If it hits a creature, deal damage and add a burning effect
                 if (HitBox.Intersects(creature.HitBox))
                 {
                     creature.TakeDamage(50);

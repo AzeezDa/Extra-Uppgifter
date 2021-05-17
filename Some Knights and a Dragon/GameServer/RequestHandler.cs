@@ -38,6 +38,7 @@ namespace GameServer
                     }
                     break;
 
+                // Handles Local Game requests
                 case "GME":
                     GameplayHandler.Handle(socket, request);
                     break;

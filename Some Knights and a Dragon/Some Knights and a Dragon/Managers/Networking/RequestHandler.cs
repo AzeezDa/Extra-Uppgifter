@@ -23,7 +23,7 @@ namespace Some_Knights_and_a_Dragon.Managers.Networking
                     HighScoreManager.FetchHighScore(request);
                     break;
 
-                case "GME":
+                case "GME": // Handle game requests
                     GameplayNetworkHandler.Handle(request);
                     break;
                 default:

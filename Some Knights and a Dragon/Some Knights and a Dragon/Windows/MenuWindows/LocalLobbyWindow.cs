@@ -20,6 +20,8 @@ namespace Some_Knights_and_a_Dragon.Windows
 
         private void mainMenuButton()
         {
+
+            // If host leaves let the server know and reset values
             if (GameplayNetworkHandler.IsHost)
             {
                 GameplayNetworkHandler.Send("LHL");
@@ -30,6 +32,7 @@ namespace Some_Knights_and_a_Dragon.Windows
 
         private void startButtonClick()
         {
+            // If host starts the game then let the server know
             GameplayNetworkHandler.Send("LGS");
         }
 
@@ -37,9 +40,11 @@ namespace Some_Knights_and_a_Dragon.Windows
         {
             base.Draw(ref _spriteBatch);
 
+            // Draw certain buttons if the player is host
             if (GameplayNetworkHandler.IsHost)
                 HostStart.Draw(_spriteBatch);
 
+            // Write the current players in the local game
             Game1.FontManager.WriteTitle(_spriteBatch, "Players Joined", new Vector2(640, 100), Color.White);
             for (int i = 0; i < GameplayNetworkHandler.Players.Count; i++)
                 Game1.FontManager.WriteText(_spriteBatch, GameplayNetworkHandler.Players[i], new Vector2(640, 150 + i * 50), Color.White);

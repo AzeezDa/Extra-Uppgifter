@@ -25,18 +25,25 @@ namespace Some_Knights_and_a_Dragon.Windows
         public override void Draw(ref SpriteBatch _spriteBatch)
         {
             base.Draw(ref _spriteBatch);
+
+            // Index to start writing the leaderboard
             int i = 1;
+
+            // Name of the player
             string player;
+
+            // For every value in the Sorted List scorelist
             foreach (KeyValuePair<string, int> score in GameplayNetworkHandler.PlayerHighscore)
             {
                 if (i == 1)
-                    player = $"Winner: {score.Key}";
+                    player = $"Winner: {score.Key}"; // First player gets: "Winner: <playerName>"
                 else
-                    player = $"{i}. {score.Key}";
+                    player = $"{i}. {score.Key}"; // Other get their corresponding position: e.g. 2. <playerName>
 
+                // Write the name
                 Game1.FontManager.WriteText(_spriteBatch, player, new Vector2(640, 150 + i * 50), Color.White);
 
-                if (i++ > 5)
+                if (i++ > 5) // Only show top 5
                     break;
             }
         }

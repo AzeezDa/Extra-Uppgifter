@@ -20,17 +20,19 @@ namespace Some_Knights_and_a_Dragon.Windows
 
         private void JoinLocalButton()
         {
+            // Check if connected, and if there is a name and if there is a local game
             if (NetworkClient.Connected && ((TextBox)MenuItems["Name"]).Text.Length > 0 && GameplayNetworkHandler.LocalExists)
             {
-                GameplayNetworkHandler.Send("LGJ" + ((TextBox)MenuItems["Name"]).Text);
+                GameplayNetworkHandler.Send("LGJ" + ((TextBox)MenuItems["Name"]).Text); // Send Local Game Join request: LGJ<playerName>
             }
         }
 
         private void CreateLocalButton()
         {
+            // Check if connected, there is a name and if there local exists
             if (NetworkClient.Connected && ((TextBox)MenuItems["Name"]).Text.Length > 0 && !GameplayNetworkHandler.LocalExists)
             {
-                GameplayNetworkHandler.Send("LGH" + ((TextBox)MenuItems["Name"]).Text);
+                GameplayNetworkHandler.Send("LGH" + ((TextBox)MenuItems["Name"]).Text); // Request to become host by: Local Game Host: LGH<playerName>
             }
         }
 
@@ -38,6 +40,7 @@ namespace Some_Knights_and_a_Dragon.Windows
         {
             base.Draw(ref _spriteBatch);
 
+            // Write informative text is the player exists
             if (GameplayNetworkHandler.LocalExists)
                 Game1.FontManager.WriteText(_spriteBatch, "Local Game Available!", new Vector2(640, 600), Color.Green);
             else
