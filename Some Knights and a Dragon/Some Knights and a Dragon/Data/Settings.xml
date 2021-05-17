@@ -3,5 +3,9 @@
 <!--Includes all the settings to be parsed into the game-->
 <Settings>
   <!--Volume of the music played-->
+<<<<<<< HEAD
   <MusicVolume>7.692308</MusicVolume>
+=======
+  <MusicVolume>66,410255</MusicVolume>
+>>>>>>> ebf6105290679b6a5bad875e1cb6d0724a206741
 </Settings>

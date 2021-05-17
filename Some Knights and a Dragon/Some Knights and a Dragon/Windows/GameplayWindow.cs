@@ -116,6 +116,7 @@ namespace Some_Knights_and_a_Dragon.Windows
                 CurrentLevel = LevelLoader.Get("Levels/" + levelName);
                 CurrentLevel.LoadContent();
                 CurrentLevel.Creatures.Add(Player.Creature);
+                Game1.WindowManager.GameState = GameState.Playing;
             }
             catch (Exception e)
             {
