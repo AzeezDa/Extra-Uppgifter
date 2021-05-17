@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/titles_font.spritefont</SourceFile>
+  <SourceTime>2021-02-02T12:45:21.3344452+01:00</SourceTime>
+  <DestFile>C:/Users/Azeez/Documents/GitHub/Extra-Uppgifter/Some Knights and a Dragon/Some Knights and a Dragon/Content/bin/Windows/Content/titles_font.xnb</DestFile>
+  <DestTime>2021-02-02T12:47:05.6969194+01:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2020-08-10T16:17:54+02:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
