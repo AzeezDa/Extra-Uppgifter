@@ -52,13 +52,10 @@ namespace Some_Knights_and_a_Dragon.Managers
             try
             {
                 // Try to asynchronously connect to the server
+                ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 ClientSocket.BeginConnect(EndPoint, ConnectCallback, ClientSocket);
             }
             catch (SocketException)
-            {
-                CloseSocket();
-            }
-            catch (Exception)
             {
                 CloseSocket();
             }
@@ -78,10 +75,6 @@ namespace Some_Knights_and_a_Dragon.Managers
                 Receive();
             }
             catch (SocketException) // Close the socket upon errors
-            {
-                CloseSocket();
-            }
-            catch (Exception)
             {
                 CloseSocket();
             }
@@ -105,10 +98,6 @@ namespace Some_Knights_and_a_Dragon.Managers
             {
                 CloseSocket();
             }
-            catch (Exception)
-            {
-                CloseSocket();
-            }
         }
 
         private static void ReceiveCallback(IAsyncResult ar)
@@ -123,6 +112,12 @@ namespace Some_Knights_and_a_Dragon.Managers
             {
                 // Receive the data and store the amount of bytes received
                 received = state.Socket.EndReceive(ar);
+
+                if (received == 0) // If no data then listen
+                {
+                    Receive();
+                    return;
+                }
 
                 // Convert the response from bytes to string
                 string response = Encoding.UTF8.GetString(Buffer);
@@ -152,10 +147,6 @@ namespace Some_Knights_and_a_Dragon.Managers
                 }
             }
             catch (SocketException) // Close sockets upon errors
-            {
-                CloseSocket();
-            }
-            catch (Exception)
             {
                 CloseSocket();
             }
@@ -200,10 +191,6 @@ namespace Some_Knights_and_a_Dragon.Managers
             {
                 CloseSocket();
             }
-            catch (Exception)
-            {
-                CloseSocket();
-            }
         }
 
         public static void Send(string data)
@@ -221,10 +208,6 @@ namespace Some_Knights_and_a_Dragon.Managers
             {
                 CloseSocket();
             }
-            catch (Exception)
-            {
-                CloseSocket();
-            }
         }
 
         private static void SendCallback(IAsyncResult ar)
@@ -238,10 +221,6 @@ namespace Some_Knights_and_a_Dragon.Managers
                 socket.EndSend(ar);
             }
             catch (SocketException) // Close sockets upon errors
-            {
-                CloseSocket();
-            }
-            catch (Exception)
             {
                 CloseSocket();
             }
@@ -263,10 +242,6 @@ namespace Some_Knights_and_a_Dragon.Managers
                     ClientSocket.BeginSend(PingMessage, 0, 5, SocketFlags.None, SendCallback, ClientSocket);
                 }
                 catch (SocketException) // Close socket upon errors
-                {
-                    CloseSocket();
-                }
-                catch (Exception)
                 {
                     CloseSocket();
                 }
@@ -298,8 +273,7 @@ namespace Some_Knights_and_a_Dragon.Managers
                 ClientSocket.Shutdown(SocketShutdown.Both);
                 ClientSocket.Close();
             }
-            catch (SocketException) { }
-            catch (Exception) { }
+            catch (SocketException) {}
         }
     }
 }

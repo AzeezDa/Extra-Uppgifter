@@ -32,7 +32,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         int guardianLevel;
 
         int brokenStatus;
-        public StoneQueenBoss()
+        public StoneQueenBoss() : base ("Queen Asaseya")
         {
             // Creatures
             Creature = new StoneQueen();

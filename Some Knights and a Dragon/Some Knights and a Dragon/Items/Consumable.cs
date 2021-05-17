@@ -1,4 +1,5 @@
-﻿using Some_Knights_and_a_Dragon.Managers;
+﻿using Microsoft.Xna.Framework;
+using Some_Knights_and_a_Dragon.Managers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,10 @@ namespace Some_Knights_and_a_Dragon.Items
 {
     public abstract class Consumable : Item
     {
+        protected bool Consuming { get; set; }
         public Consumable()
         {
-
+            Consuming = false;
         }
 
         protected override void LoadSprite(string filePath, int width, int height) // Overriden method to load from the right path
@@ -21,6 +23,5 @@ namespace Some_Knights_and_a_Dragon.Items
         {
             Sprite = new Sprite("Items/Consumables/" + filePath);
         }
-
     }
 }

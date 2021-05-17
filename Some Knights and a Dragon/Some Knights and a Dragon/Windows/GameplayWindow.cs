@@ -4,6 +4,7 @@ using Some_Knights_and_a_Dragon.Managers;
 using Some_Knights_and_a_Dragon.Entities.Creatures;
 using Some_Knights_and_a_Dragon.Levels;
 using System;
+using System.Collections.Generic;
 using Some_Knights_and_a_Dragon.Managers.PlayerManagement;
 using Some_Knights_and_a_Dragon.Entities;
 
@@ -17,10 +18,14 @@ namespace Some_Knights_and_a_Dragon.Windows
         private SaveData saveData; // Save data to load
         public HighScoreRecorder HighScoreRecorder { get; private set; } // Records the time and bosses defeated to later save in the high score list
         public XMLManager<Level> LevelLoader { get; private set; } // Manages the loading of XML files
+
+        private Sprite ScoreMenu;
         public GameplayWindow() : base("Gameplay Window")
         {
             // Load the level
             LevelLoader = new XMLManager<Level>();
+            ScoreMenu = new Sprite("Menus/scoreList");
+            ScoreMenu.Scale = 10;
         }
 
         public override void LoadContent() // Loads the content of the level
@@ -82,6 +87,15 @@ namespace Some_Knights_and_a_Dragon.Windows
             base.Draw(ref _spriteBatch);
             CurrentLevel.Draw(ref _spriteBatch);
             Player.Draw(ref _spriteBatch);
+
+            if (Managers.Networking.GameplayNetworkHandler.InLocalGame && Game1.InputManager.KeyPressed(Microsoft.Xna.Framework.Input.Keys.Tab))
+            {
+                ScoreMenu.Draw(ref _spriteBatch, new Vector2(640, 400), TextureDirection.Right);
+                Game1.FontManager.WriteTitle(_spriteBatch, "Scores", new Vector2(640, 200), Color.Red);
+                int index = 0;
+                foreach (KeyValuePair<string, int> score in Managers.Networking.GameplayNetworkHandler.PlayerHighscore)
+                    Game1.FontManager.WriteText(_spriteBatch, $"{score.Key} - {score.Value}", new Vector2(640, 250 + index++ * 50), Color.Red);
+            }
         }
 
         public override void Update(ref GameTime gameTime)

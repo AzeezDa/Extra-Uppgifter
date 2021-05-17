@@ -119,5 +119,10 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
                     Inventory.RemoveAtCurrentIndex());
             }
         }
+
+        public void ChangeCreature(Creature creature)
+        {
+            Creature = creature;
+        }
     }
 }

@@ -2,4 +2,5 @@
 <Items>
   <Item Name="Sob" BossesDefeated="3" Ticks="100000000012" />
   <Item Name="Job" BossesDefeated="3" Ticks="100000000000" />
+  <Item Name="baba" BossesDefeated="0" Ticks="44295742" />
 </Items>

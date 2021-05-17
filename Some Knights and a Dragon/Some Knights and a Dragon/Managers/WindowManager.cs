@@ -8,7 +8,7 @@ using System.Text;
 namespace Some_Knights_and_a_Dragon.Managers
 {
     public enum GameState { MainMenu, Playing, Paused, Dead, SettingsMainMenu, SettingsInGame, Error,
-                            HighScore, PrePlay, NewGame, ContinueGame };
+                            HighScore, PrePlay, NewGame, ContinueGame, LocalPreplay, LocalLobby, LocalEnd };
     public class WindowManager
     {
         Texture2D background;
@@ -25,6 +25,9 @@ namespace Some_Knights_and_a_Dragon.Managers
             Windows.Add("High Score", new HighScoreWindow());
             Windows.Add("Pre Play", new PrePlayWindow());
             Windows.Add("New Game", new NewGameWindow());
+            Windows.Add("Local Preplay", new LocalPrePlayWindow());
+            Windows.Add("Local Lobby", new LocalLobbyWindow());
+            Windows.Add("Local End", new LocalGameEndWindow());
             GameState = new GameState();
             background = Game1.TextureManager.GetTexture("Backgrounds/mainBackground");
             ConnectionStatus = new Sprite("Menus/connectionStatus", 2, 1);
@@ -62,6 +65,15 @@ namespace Some_Knights_and_a_Dragon.Managers
                     break;
                 case GameState.NewGame:
                     Windows["New Game"].Update(ref gameTime); // Display the window to create new game
+                    break;
+                case GameState.LocalPreplay:
+                    Windows["Local Preplay"].Update(ref gameTime);
+                    break;
+                case GameState.LocalLobby:
+                    Windows["Local Lobby"].Update(ref gameTime);
+                    break;
+                case GameState.LocalEnd:
+                    Windows["Local End"].Update(ref gameTime);
                     break;
                 default:
                     break;
@@ -144,6 +156,18 @@ namespace Some_Knights_and_a_Dragon.Managers
                 case GameState.NewGame:
                     spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
                     Windows["New Game"].Draw(ref spriteBatch);
+                    break;
+                case GameState.LocalPreplay:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Local Preplay"].Draw(ref spriteBatch);
+                    break;
+                case GameState.LocalLobby:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Local Lobby"].Draw(ref spriteBatch);
+                    break;
+                case GameState.LocalEnd:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Local End"].Draw(ref spriteBatch);
                     break;
                 default:
                     break;

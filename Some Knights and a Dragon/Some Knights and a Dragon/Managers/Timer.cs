@@ -55,5 +55,11 @@ namespace Some_Knights_and_a_Dragon.Managers
                 }
             }
         }
+
+        public void Reset()
+        {
+            previousTime = 0;
+            TimerOn = false;
+        }
     }
 }

@@ -13,6 +13,30 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Backgrounds/dragonightmare.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/dragonightmare.png
+
+#begin Backgrounds/dragonrise.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/dragonrise.png
+
 #begin Backgrounds/Endwood.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -68,6 +92,30 @@
 /processorParam:TextureFormat=Compressed
 /build:default_font.spritefont
 
+#begin Entities/Creatures/bellyFlame.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Creatures/bellyFlame.png
+
+#begin Entities/Creatures/bellyPlague.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Creatures/bellyPlague.png
+
 #begin Entities/Creatures/bird.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -91,6 +139,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Entities/Creatures/dragon.png
+
+#begin Entities/Creatures/dragonLord.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Creatures/dragonLord.png
 
 #begin Entities/Creatures/elf.png
 /importer:TextureImporter
@@ -128,6 +188,18 @@
 /processorParam:TextureFormat=Color
 /build:Entities/Creatures/mysteriousman.png;Entities/Creatures/mysteriousMan.png
 
+#begin Entities/Creatures/nightmareOrb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Creatures/nightmareOrb.png
+
 #begin Entities/Creatures/snake.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -164,6 +236,30 @@
 /processorParam:TextureFormat=Color
 /build:Entities/Creatures/stoneQueen.png
 
+#begin Entities/Projectiles/bloodball.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Projectiles/bloodball.png
+
+#begin Entities/Projectiles/dreamOrb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Projectiles/dreamOrb.png
+
 #begin Entities/Projectiles/fireball.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -175,6 +271,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Entities/Projectiles/fireball.png
+
+#begin Entities/Projectiles/fireOrb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Projectiles/fireOrb.png
+
+#begin Entities/Projectiles/lightOrb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Entities/Projectiles/lightOrb.png
 
 #begin Items/Consumables/diskOfFortune.png
 /importer:TextureImporter
@@ -308,6 +428,18 @@
 /processorParam:TextureFormat=Color
 /build:Items/Weapons/sword.png
 
+#begin Menus/bossHealthbar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Menus/bossHealthbar.png
+
 #begin Menus/button.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -368,6 +500,18 @@
 /processorParam:TextureFormat=Color
 /build:Menus/logo.png
 
+#begin Menus/scoreList.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Menus/scoreList.png
+
 #begin Menus/sliderBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -410,6 +554,12 @@
 /processorParam:Quality=Best
 /build:Music/dragonBossMusic.mp3
 
+#begin Music/dragonpower.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/dragonpower.mp3
+
 #begin Music/intro.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -421,6 +571,18 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:Music/stoneQueenMusic.mp3
+
+#begin Other/lightning.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Other/lightning.png
 
 #begin titles_font.spritefont
 /importer:FontDescriptionImporter

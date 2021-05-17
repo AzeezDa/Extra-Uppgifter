@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Items>
   <Item Name="Sob" BossesDefeated="3" Ticks="100000000012" />
   <Item Name="Job" BossesDefeated="3" Ticks="100000000000" />
+  <Item Name="haha" BossesDefeated="3" Ticks="4794122915" />
+  <Item Name="baba" BossesDefeated="2" Ticks="4600034514" />
+  <Item Name="baba" BossesDefeated="0" Ticks="72646079" />
+  <Item Name="baba" BossesDefeated="0" Ticks="91817278" />
+  <Item Name="haha" BossesDefeated="0" Ticks="22338658" />
+  <Item Name="baba" BossesDefeated="0" Ticks="82526438" />
+  <Item Name="baba" BossesDefeated="0" Ticks="44295742" />
 </Items>

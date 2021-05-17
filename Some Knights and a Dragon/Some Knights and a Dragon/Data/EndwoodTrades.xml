@@ -9,4 +9,5 @@
   <Item Name ="Some_Knights_and_a_Dragon.Items.Consumables.DiskOfFortune" Cost="500" Amount ="1"/>
   <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.QueensBlade" Cost="1000" Amount ="1"/>
   <Item Name ="Some_Knights_and_a_Dragon.Items.Weapons.HornOfTheWild" Cost="2500" Amount ="1"/>
+  <Item Name ="Some_Knights_and_a_Dragon.Items.Other.Queenleaf" Cost="2" Amount ="1"/>
 </Items>

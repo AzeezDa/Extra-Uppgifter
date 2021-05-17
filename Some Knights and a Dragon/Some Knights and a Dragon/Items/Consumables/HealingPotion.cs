@@ -21,8 +21,17 @@ namespace Some_Knights_and_a_Dragon.Items.Consumables
         public override void OnUse(GameTime gameTime)
         {
             base.OnUse(gameTime);
+            if (Consuming)
+                return;
             Game1.WindowManager.GetGameplayWindow().Player.Inventory.RemoveAtCurrentIndex();
             Game1.WindowManager.GetGameplayWindow().Player.Creature.AddHealth(20);
+            Consuming = true;
+        }
+
+        public override void AfterUse()
+        {
+            base.AfterUse();
+            Consuming = false;
         }
     }
 }

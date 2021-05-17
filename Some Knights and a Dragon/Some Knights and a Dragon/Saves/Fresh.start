@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- This is the default start up values for a new player, starts in Dragonfall -->
+<SaveData>
+  <PlayerName></PlayerName>
+  <Character>Some_Knights_and_a_Dragon.Entities.Creatures.Elf</Character>
+  <Level>Dragonfall.xml</Level>
+  <CurrentHealth>100</CurrentHealth>
+  <MaxHealth>100</MaxHealth>
+  <InventoryItem ItemTypeName="Some_Knights_and_a_Dragon.Items.Weapons.ElvenBow" Amount="1" />
+  <InventoryItem ItemTypeName="Some_Knights_and_a_Dragon.Items.Other.Arrow" Amount="32" />
+  <InventoryItem ItemTypeName="Some_Knights_and_a_Dragon.Items.Weapons.Sword" Amount="1" />
+  <InventoryItem ItemTypeName="null" Amount="0" />
+  <InventoryItem ItemTypeName="null" Amount="0" />
+</SaveData>

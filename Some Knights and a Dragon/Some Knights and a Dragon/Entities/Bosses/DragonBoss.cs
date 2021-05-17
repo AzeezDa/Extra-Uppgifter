@@ -20,7 +20,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         Timer rainOfFireTimer; // Timer for the fireballs that rain from the sky (phase 1 and 2)
         Random r = new Random();
         int power = 5; // The power of the Dragon's attacks
-        public DragonBoss()
+        public DragonBoss() : base("Serpentlord Ignis")
         {
             // Sets up the dragon and its timers.
             Creature = new Dragon();

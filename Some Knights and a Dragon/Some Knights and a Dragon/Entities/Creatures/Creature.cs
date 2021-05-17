@@ -79,7 +79,7 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         // Reduce current health if creature takes damage. Virtual because some creatures can reduce damage taken
         public virtual void TakeDamage(int amount)
         {
-            CurrentHealth -= amount;
+            CurrentHealth -= Math.Max(0, amount);
         }
 
         public virtual void AddHealth(int amount) // Add health to the creature

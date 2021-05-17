@@ -12,7 +12,7 @@
     <Layers>1</Layers>
   </Background>
   <BossClassName>Some_Knights_and_a_Dragon.Entities.Creatures.StoneQueenBoss</BossClassName>
-  <NextLevel>Dragonfall.xml</NextLevel>
+  <NextLevel>Dragonrise.xml</NextLevel>
   <LevelMusic>stoneQueenMusic</LevelMusic>
   <TraderData>EndwoodTrades.xml</TraderData>
   <Gravity>

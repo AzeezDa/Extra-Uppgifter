@@ -28,6 +28,9 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         {
             // When a boss is defeated, add one to the bosses defeated
             BossesDefeated++;
+
+            if (Networking.GameplayNetworkHandler.InLocalGame)
+                Networking.GameplayNetworkHandler.Send("PDB" + Networking.GameplayNetworkHandler.Name);
         }
 
         public void SaveHighScore()

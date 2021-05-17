@@ -243,5 +243,10 @@ namespace Some_Knights_and_a_Dragon.Managers.PlayerManagement
         {
             Inventory = inventoryItems;
         }
+
+        public void EmptyInventory()
+        {
+            Inventory = new InventoryItem[5];
+        }
     }
 }

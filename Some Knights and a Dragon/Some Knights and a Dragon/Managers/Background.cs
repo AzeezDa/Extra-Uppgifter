@@ -49,13 +49,13 @@ namespace Some_Knights_and_a_Dragon.Managers
             // Draws the layers in the correct order and in their position if they have a scroll value
             for (int i = 0; i < LayerSpeeds.Count; i++)
             {
-                spriteBatch.Draw(Texture, new Rectangle((int)LayerFrames[i], 0, 1280, 1080),
+                spriteBatch.Draw(Texture, new Rectangle((int)LayerFrames[i], 0, 1280, 960),
                                 new Rectangle(0, i * Texture.Height / Layers, Texture.Width, Texture.Height / Layers),
                                 Color.White);
                 if (LayerSpeeds[i] != 0)
                 {
                     spriteBatch.Draw(Texture,
-                                new Rectangle((int)LayerFrames[i] - 1280, 0, 1280, 1080),
+                                new Rectangle((int)LayerFrames[i] - 1280, 0, 1280, 960),
                                 new Rectangle(0, i * Texture.Height / Layers, Texture.Width, Texture.Height / Layers),
                                 Color.White);
                 }

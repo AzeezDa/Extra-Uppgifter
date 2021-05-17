@@ -38,7 +38,9 @@ namespace GameServer
                     }
                     break;
 
-
+                case "GME":
+                    GameplayHandler.Handle(socket, request);
+                    break;
                 default:
                     break;
             }

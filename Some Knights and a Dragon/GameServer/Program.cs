@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml;
+using System.Linq;
 
 namespace GameServer
 {
@@ -167,19 +168,13 @@ namespace GameServer
             catch (SocketException)
             {
                 // If a socket exception is encountered then close the socket, shut it down and remove it.
-                Console.WriteLine($"$ Connection with {state.Socket.RemoteEndPoint} encountered an error.");
-                state.Socket.Shutdown(SocketShutdown.Both);
-                state.Socket.Close();
-                ConnectedSockets.Remove(state.Socket);
+                CloseErrorSocket(state.Socket);
                 return;
             }
             catch (Exception)
             {
                 // If any exception is encountered then close the socket, shut it down and remove it.
-                Console.WriteLine($"$ Connection with {state.Socket.RemoteEndPoint} encountered an error.");
-                state.Socket.Shutdown(SocketShutdown.Both);
-                state.Socket.Close();
-                ConnectedSockets.Remove(state.Socket);
+                CloseErrorSocket(state.Socket);
                 return;
             }
 
@@ -227,19 +222,13 @@ namespace GameServer
             catch (SocketException)
             {
                 // If a socket exception is encountered then close the socket, shut it down and remove it.
-                Console.WriteLine($"$ Connection with {state.Socket.RemoteEndPoint} encountered an error.");
-                state.Socket.Shutdown(SocketShutdown.Both);
-                state.Socket.Close();
-                ConnectedSockets.Remove(state.Socket);
+                CloseErrorSocket(state.Socket);
                 return;
             }
             catch (Exception)
             {
                 // If any exception is encountered then close the socket, shut it down and remove it.
-                Console.WriteLine($"$ Connection with {state.Socket.RemoteEndPoint} encountered an error.");
-                state.Socket.Shutdown(SocketShutdown.Both);
-                state.Socket.Close();
-                ConnectedSockets.Remove(state.Socket);
+                CloseErrorSocket(state.Socket);
                 return;
             }
         }
@@ -258,19 +247,13 @@ namespace GameServer
             catch (SocketException)
             {
                 // If a socket exception is encountered then close the socket, shut it down and remove it.
-                Console.WriteLine($"$ Connection with {socket.RemoteEndPoint} encountered an error.");
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
-                ConnectedSockets.Remove(socket);
+                CloseErrorSocket(socket);
                 return;
             }
             catch (Exception)
             {
                 // If any exception is encountered then close the socket, shut it down and remove it.
-                Console.WriteLine($"$ Failed to send to {socket.RemoteEndPoint}.");
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
-                ConnectedSockets.Remove(socket);
+                CloseErrorSocket(socket);
                 return;
             }
         }
@@ -291,10 +274,7 @@ namespace GameServer
             catch (Exception)
             {
                 // If any exception is encountered then close the socket, shut it down and remove it.
-                Console.WriteLine($"$ Failed to send to {socket.RemoteEndPoint}.");
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
-                ConnectedSockets.Remove(socket);
+                CloseErrorSocket(socket);
             }
         }
 
@@ -306,8 +286,21 @@ namespace GameServer
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
             }
-
             ServerSocket.Close();
+        }
+
+        private static void CloseErrorSocket(Socket socket)
+        {
+            Console.WriteLine($"$ Connection with {socket.RemoteEndPoint} encountered an error.");
+            if (GameplayHandler.PlayerSocketPairs.ContainsValue(socket))
+            {
+                var s = GameplayHandler.PlayerSocketPairs.First(pair => pair.Value == socket);
+                GameplayHandler.PlayerSocketPairs.Remove(s.Key);
+            }
+
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
+            ConnectedSockets.Remove(socket);
         }
     }
 }

@@ -165,6 +165,19 @@ namespace Some_Knights_and_a_Dragon.Managers
         }
 
         // Draws a frame of the sprite
+        public void DrawFrame(ref SpriteBatch spriteBatch, Vector2 position, int row, int column, float widthFactor, float heightFactor, TextureDirection textureDirection = TextureDirection.Right, Vector2? origin = null)
+        {
+            spriteBatch.Draw(
+                SpriteTexture,
+                new Rectangle((int)position.X, (int)position.Y, (int)Math.Round(Width * Scale * widthFactor), (int)Math.Round(Height * Scale * heightFactor)),
+                new Rectangle(column * Width, row * Height, (int)Math.Round(Width * widthFactor), (int)Math.Round(Height * heightFactor)),
+                Color.White,
+                Rotation,
+                origin ?? new Vector2((float)Width / 2, (float)Height / 2),
+                textureDirection == TextureDirection.Left ? SpriteEffects.FlipHorizontally : textureDirection == TextureDirection.Down ? SpriteEffects.FlipVertically : SpriteEffects.None,
+                0);
+        }
+
         public void DrawFrame(ref SpriteBatch spriteBatch, Vector2 position, int row, int column, TextureDirection textureDirection = TextureDirection.Right, Vector2? origin = null)
         {
 

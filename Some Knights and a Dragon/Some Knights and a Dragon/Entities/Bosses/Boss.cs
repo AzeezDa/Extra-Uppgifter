@@ -17,10 +17,14 @@ namespace Some_Knights_and_a_Dragon.Entities.Creatures
         protected List<InventoryItem> Loot; // List of all the loot dropped from the boss
         public bool IsAlive { get; protected set; }
 
-        public Boss()
+        public string Name { get; protected set; }
+
+        public Boss(string name)
         {
             Loot = new List<InventoryItem>();
             IsAlive = true;
+
+            Name = name;
         }
 
         public virtual void Update(GameTime gameTime)

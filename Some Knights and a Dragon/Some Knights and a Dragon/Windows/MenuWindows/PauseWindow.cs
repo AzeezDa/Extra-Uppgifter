@@ -50,7 +50,8 @@ namespace Some_Knights_and_a_Dragon.Windows
         public void BackToMainMenu()
         {
             // Save the game
-            Game1.WindowManager.GetGameplayWindow().SaveGame();
+            if (!Managers.Networking.GameplayNetworkHandler.InLocalGame)
+                Game1.WindowManager.GetGameplayWindow().SaveGame();
 
             // Change gamestate to mainmenu
             Game1.WindowManager.GameState = Managers.GameState.MainMenu;
