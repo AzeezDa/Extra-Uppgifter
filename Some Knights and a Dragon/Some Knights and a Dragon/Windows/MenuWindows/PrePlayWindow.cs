@@ -17,14 +17,10 @@ namespace Some_Knights_and_a_Dragon.Windows
         public PrePlayWindow() : base("Pre Play Window")
         {
             // Add the buttons
-<<<<<<< HEAD
+
             MenuItems.Add("New Game", new Button(new Vector2(240, 900), "New Game", NewGameButton));
             MenuItems.Add("Local", new Button(new Vector2(640, 900), "Local", LocalButton));
             MenuItems.Add("Main Menu", new Button(new Vector2(1040, 900), "Main Menu", MainMenuButton));
-=======
-            MenuItems.Add("New Game", new Button(new Vector2(340, 900), "New Game", NewGameButton));
-            MenuItems.Add("Main Menu", new Button(new Vector2(940, 900), "Main Menu", MainMenuButton));
->>>>>>> ebf6105290679b6a5bad875e1cb6d0724a206741
 
             // Get the background sprite
             textBackground = new Sprite("Menus/textBackground");
