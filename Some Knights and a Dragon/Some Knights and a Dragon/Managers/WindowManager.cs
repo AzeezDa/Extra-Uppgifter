@@ -8,7 +8,7 @@ using System.Text;
 namespace Some_Knights_and_a_Dragon.Managers
 {
     public enum GameState { MainMenu, Playing, Paused, Dead, SettingsMainMenu, SettingsInGame, Error,
-                            HighScore, PrePlay, NewGame, ContinueGame, LocalPreplay, LocalLobby, LocalEnd };
+                            HighScore, PrePlay, NewGame, ContinueGame, LocalPreplay, LocalLobby, LocalEnd, TryConnect };
     public class WindowManager
     {
         Texture2D background;
@@ -28,6 +28,7 @@ namespace Some_Knights_and_a_Dragon.Managers
             Windows.Add("Local Preplay", new LocalPrePlayWindow());
             Windows.Add("Local Lobby", new LocalLobbyWindow());
             Windows.Add("Local End", new LocalGameEndWindow());
+            Windows.Add("Try Connect", new TryConnectWindow());
             GameState = new GameState();
             background = Game1.TextureManager.GetTexture("Backgrounds/mainBackground");
             ConnectionStatus = new Sprite("Menus/connectionStatus", 2, 1);
@@ -75,6 +76,9 @@ namespace Some_Knights_and_a_Dragon.Managers
                 case GameState.LocalEnd:
                     Windows["Local End"].Update(ref gameTime);
                     break;
+                case GameState.TryConnect:
+                    Windows["Try Connect"].Update(ref gameTime);
+                    break;
                 default:
                     break;
             }
@@ -107,6 +111,9 @@ namespace Some_Knights_and_a_Dragon.Managers
                         break;
                     case GameState.NewGame:
                         GameState = GameState.PrePlay; // Return to play play
+                        break;
+                    case GameState.TryConnect:
+                        GameState = GameState.MainMenu;
                         break;
                     default:
                         break;
@@ -168,6 +175,10 @@ namespace Some_Knights_and_a_Dragon.Managers
                 case GameState.LocalEnd:
                     spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
                     Windows["Local End"].Draw(ref spriteBatch);
+                    break;
+                case GameState.TryConnect:
+                    spriteBatch.Draw(background, new Rectangle(0, 0, 1280, 960), Color.White);
+                    Windows["Try Connect"].Draw(ref spriteBatch);
                     break;
                 default:
                     break;

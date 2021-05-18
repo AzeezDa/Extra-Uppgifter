@@ -20,7 +20,7 @@ namespace Some_Knights_and_a_Dragon.Windows
             MenuItems.Add("Settings", new Button(new Vector2(640, 600), "Settings", SettingsButtonClick));
             MenuItems.Add("High Score", new Button(new Vector2(640, 700), "High Score", HighScoreButtonClick));
             MenuItems.Add("Quit", new Button(new Vector2(640, 800), "Quit", QuitButtonClick));
-            MenuItems.Add("Connect", new Button(new Vector2(300, 50), "Connect", NetworkClient.Setup));
+            MenuItems.Add("Connect", new Button(new Vector2(300, 50), "Connect", TryConnectButton));
 
             // Load the logo of the game
             logo = new Sprite("Menus/logo");
@@ -28,6 +28,11 @@ namespace Some_Knights_and_a_Dragon.Windows
             // Play the main menu music
             Game1.SongManager.Play("intro");
             Loaded = true;
+        }
+
+        private void TryConnectButton()
+        {
+            Game1.WindowManager.GameState = GameState.TryConnect;
         }
 
         public override void Draw(ref SpriteBatch _spriteBatch)

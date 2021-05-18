@@ -1,4 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <Item Name="Best Player EU" BossesDefeated="1000" Ticks="111996544" />
+  <Item Name="Sob" BossesDefeated="3" Ticks="100000000012" />
+  <Item Name="Job" BossesDefeated="3" Ticks="100000000000" />
+  <Item Name="baba" BossesDefeated="0" Ticks="44295742" />
 </Items>

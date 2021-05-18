@@ -59,8 +59,11 @@ namespace GameServer
                 // Create the server socket as a TCP socket
                 ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
+                // Create endpoint
+                IPAddress Ip = IPAddress.Parse(Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString());
+
                 // Bind it to an endpoint
-                ServerSocket.Bind(new IPEndPoint(IPAddress.Any, Port));
+                ServerSocket.Bind(new IPEndPoint(Ip, Port));
 
                 // Listen for connections
                 ServerSocket.Listen(5);
@@ -70,6 +73,7 @@ namespace GameServer
 
                 // Information
                 Console.WriteLine("$ Server is Ready");
+                Console.Title = $"{Ip}:{Port}";
             }
             catch (Exception e)
             {

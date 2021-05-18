@@ -30,11 +30,11 @@ namespace Some_Knights_and_a_Dragon.Managers
 
 
         // Port used for communication
-        private const int Port = 4301;
+        public const int Port = 4301;
 
         // The client socket and server address
         private static Socket ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        private static IPEndPoint EndPoint = new IPEndPoint(IPAddress.Loopback, Port);
+        public static IPEndPoint EndPoint = new IPEndPoint(IPAddress.Any, Port);
 
         // Timer to occasionally check if there is a connection and if there is not, try to connect
         private static Timer connectionCheckTimer = new Timer(20000);
